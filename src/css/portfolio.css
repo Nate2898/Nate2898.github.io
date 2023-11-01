@@ -1,0 +1,326 @@
+body{
+  padding:0px;
+	padding-top: 35px;
+  margin:0px;
+	background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+/*START navigation bar code*/
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 5px solid rgb(18, 179, 248);
+}
+
+.navbar {
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	  font-family: Arial Black;
+}
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 15px;
+}
+
+.logo {
+    max-height: 30px;
+}
+.navimg, .navimg-small{
+	  flex-wrap:wrap;
+    margin-top: 5px;
+ 	  width: 100%;
+    max-width:350px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 0px;
+	  max-height: 50px;
+    transition: transform 0.3s ease;
+}
+.nav-item-highlight {
+  color: #00A2E8;
+  text-decoration: none;
+  padding: 15px 15px;
+}
+.navimg:hover,.navimg-small:hover{
+    transform: scale(1.1);
+    filter: saturate(10);
+  }
+@media (max-width:629px) {
+    img.navimg {
+      display: none;
+    }
+  }
+  @media (min-width:629px) {
+    .navimg-small {
+      display: none;        
+    }
+  }
+  @media (max-width:300px) {
+    .navimg-small, img.navimg {
+      display: none;        
+    }
+  }
+.navbar a:hover{
+	color: #10EEEE;
+}
+/*END navigation bar code */
+/*START bottom navigation bar code*/
+.navbottomcontent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.navbottomblock{
+  background-color: #333;
+  border-top: 5px solid #10EEEE;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  padding-bottom: 1%;
+}
+.navbarbottom {
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial Black;
+}
+
+/* END bottom navigation bar code*/
+/*START text box*/
+.align{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.wrapper{
+  margin-top: 10px auto;
+	margin-bottom: 30px;
+  width: 70%;
+  background-color: lightgray;
+  border: 5px solid rgb(18, 179, 248);
+  border-bottom: 8px solid rgb(19, 157, 216);
+  border-radius: 20px;
+}
+.wrapper img, .wrapper li {
+  max-width: 400px;
+  float:right;
+  margin-top:25px;
+  border-radius: 20px;
+  margin-right: 19%;
+  margin-bottom: 0;
+  text-align: center;
+  transition: transform 0.3s ease;
+  padding-bottom: 1%;
+  }
+  @media (max-width:700px) {
+    .wrapper img ,.wrapper li{
+      max-width: 100%;
+      float:none;
+      margin-right: 0%;
+    }
+  }
+  @media (max-width:700px) {
+    .wrapper {
+      width: 100%;
+    }
+  }
+/*END text box*/
+/*-Fade down effect-*/
+.bgimg{
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,162,232) 79%);
+  background-repeat: no-repeat;
+  height: 220px;
+}
+/*Text css*/
+h1 {
+	text-align: center;
+	font-family: sans-serif;
+	padding-top: 50px;
+	font-size: 30px;
+}
+h2 {
+	text-align: center;
+	font-family: sans-serif;
+	padding: 40px;
+	font-size: 25px;
+}
+h3, h3 a{
+  text-align: center;
+  font-family: sans-serif;
+  padding-left: 20px;
+
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+h4{
+  float: right;
+  font-family: sans-serif;
+  color: white;
+  padding-right: 5%;
+}
+p{
+  font-family: sans-serif;
+  font-size: 20px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 8px;
+}
+.wrapperleft li{
+  font-family: sans-serif;
+  font-size: 20;
+  text-align: center;
+  padding-top: 8px;
+  margin-right: 20%;
+}
+li{
+  font-family: sans-serif;
+  font-size: 20px;
+  text-align: center;
+
+}
+/*END text css*/
+/*START Left text box*/
+.wrapperleft{
+  margin-top: 10px auto;
+	margin-bottom: 30px;
+  width: 70%;
+  background-color: lightgray;
+  border: 5px solid rgb(18, 179, 248);
+  border-bottom: 8px solid rgb(19, 157, 216);
+  border-radius: 20px;
+}
+.wrapperleft img {
+  max-width: 400px;
+  float:left;
+  margin-top:-20px;
+  border-radius: 20px;
+  margin-left: 10%;
+  }
+  @media (max-width:700px) {
+    .wrapperleft img  {
+      max-width: 100%;
+      float:none;
+      margin-left: 0%;
+      
+    }
+  }
+  @media (max-width:700px) {
+    .wrapperleft,li {
+      width: 100%;
+    }
+  }
+  a{
+    text-decoration: none;
+    color: #00A2E8;
+    text-decoration: underline;
+    transition: font-size 0.3s ease;
+    font-size: 20px;
+  }
+  a:hover{
+    color: #28bfff;
+    text-decoration: underline;
+    font-size: 20.5px;  
+    
+  }
+  a:active{
+    color: #0049e8;
+    text-decoration: underline;
+ 
+  }
+/*END Left text box*/
+/*START small wrapper*/
+.wrappersmall{
+  margin-top: 10px auto;
+	margin-bottom: 30px;
+  width: 40%;
+  background-color: lightgray;
+  border: 5px solid rgb(18, 179, 248);
+  border-bottom: 8px solid rgb(19, 157, 216);
+  border-radius: 20px;
+}
+.wrappersmall img{
+  max-width: 200px;
+  float:right;
+  border-radius: 20px;
+  margin-left: 2%;
+  margin-right: 8%;
+}
+@media (max-width:700px) {
+  .wrappersmall img{
+    max-width: 50%;
+    float:right;
+    margin-right: 0%;
+  }
+}
+@media (max-width:700px) {
+  .wrappersmall {
+    width: 100%;
+  }
+}
+@media (max-width:700px) {
+  .wrappersmall p {
+    margin-left: -30px;
+  }
+}
+.wrappersmall p{
+  font-family: sans-serif;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 5%;
+}
+/*END small wrapper*/
+/*spinner css*/ 
+#spinner {
+  animation: rotate 2s linear infinite;
+  z-index: -1;
+  position: absolute;
+  top: 0%;
+  margin: 15% 50% 0% 50%;
+  width: 50px;
+  height: 50px;
+  stroke: #fff;
+  }
+  .path {
+    stroke: hsl(210, 70, 75);
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

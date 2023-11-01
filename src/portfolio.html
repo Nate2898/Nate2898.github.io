@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Nathans Portfolio</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/portfolio.css" type="text/css">
+        <link rel="stylesheet" href="css/chat.css" type="text/css">
+    </head>
+    <body>
+    <nav>
+        <div class="navbar">
+            <a href="html/portfolioprojects.html" class="nav-item">Projects</a>
+            <a href="html/portfolio.html"> <img class="navimg-small" src="images/namesmall.png" alt="Small"></a>
+			<a href="portfolio.html"> <img class="navimg" src="images/name.png" alt="Large"></a>
+            <a href="html/portfoliocontact.html" class="nav-item">Contact</a>
+        </div>
+    </nav>
+    <div class="bgimg">
+        <h1>Nathan Drummond - Schwass Portfolio</h1>
+        <h1>Introduction</h1>
+    </div>
+    <div class="align">
+        <div class="wrappersmall">
+            <img src="images/nathan.jpg" title="Picture of Nathan" alt="Nathan">
+            <p>My name is Nathan Drummond-Schwass I am currently studying for a Bachelor of Information Technology at NMIT where I hope to major in Information Systems.</p>
+        </div>
+    </div>
+    <div class="align">
+        <div class="wrapper">
+            <h2>Personal Interests</h2>
+            <img src="images/personalinterest.jpg" title="Personal Interests" alt="personal interest">
+            <p>My personal interests are in the areas of design and photography. 
+            My desired career would be in the sector of designing products, websites, or user interfaces, such as UX/UI design
+            I've spent a lot of my spare time creating and editing pictures in Photoshop which I've used for websites that I have created using a template website like <a href="https://www.weebly.com" target="_blank">weebly.com</a>. I have used weebly to create a website that is to display my photography as set out like a portfolio and where people can view and buy photos. I've made another website based on a music artist I listen to which includes all his music and introduction about his career. <a href="portfolioprojects.html">My Projects</a></p>
+        </div>
+      </div>
+    
+    <div class="align">
+        <div class="wrapperleft">
+            <h2>Personal Skills</h2>
+            <strong><p>Skills I have gained from work experiences include:</p></strong>
+            <img src="images/personalskills.jpg" title="Grow, Learn, Explore" alt="personal skils">
+                <li>Customer interaction</li>
+                 <li>Advanced computer skills</li>
+                 <li>Problem solving</li>
+                 <li>Payment transaction</li>
+                 <li>Liaise with co-workers</li>.
+                 <strong><p>I have gained personal skills from studying and my own research:</p></strong>
+                 <img src="images/computers.png" title="Device screens" alt="computer" >
+                 <li>HTML and CSS</li>
+                 <li>Javascript, GitHub and Devops</li>
+                 <li>UX and UI design</li>
+                 <li>Computer building and troubleshooting</li>
+                 <li>Video editing software such as Adobe Premier Pro and After Effects</li>   
+        </div>
+      </div>
+      <!-- Popup Chat -->
+        <div class="popup-button-box">
+          <button id="popup-button">Chat</button>
+        </div>
+        <div id="popup-container">
+        <div class="popup-content" id="popup-content">
+          <svg id="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          </svg>
+        <div id="user-actions">
+            <button id="login-button">Log In</button>
+            <button id="register-button">Register</button>
+            <button id="logoutButton">Log Out</button>
+        </div>
+
+    <section id="login-form-pop">
+        <div id="login-form">
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button type="submit" id="loginBtn">Log In</button> 
+        </div>
+    </section>
+
+    <section id="registration-form">
+        <div id="register-form">
+            <input type="text" id="register-username" placeholder="Username">
+            <input type="email" id="register-email" placeholder="Email">
+            <input type="password" id="register-password" placeholder="Password">
+            <button type="submit" id="registerButton">Register</button>
+        </div>
+    </section>
+    <div id="chatsView" >
+      <div>
+        <ul id="messageList">
+         
+        </ul>
+        
+      </div>
+    </div>
+    <div id="message-form">
+      <input id="messageInput" placeholder="Your message..." type="text"/>
+      <button id="sendButton">Send</button>
+    </div>
+        </div>
+        
+      </div>
+
+    <div class="navbottomblock">
+        <div class="navbottomcontent">
+            <div class="navbarbottom">
+                <h3><a href="portfolio.html">Home</a></h3>
+                <h3><a href="html/portfolioprojects.html">Projects</a></h3>
+                <h3><a href="html/portfoliocontact.html">Contact</a></h3>
+                <h3>|</h3>
+                <h3 style="padding: 0%;"><a target="_blank" href="https://www.linkedin.com/in/nathan-d1998">Linkedin</a></h3>
+                <h3 style="padding: 0%;"><a target="_blank" href="https://mintphotographynz.weebly.com">Photography Website</a></h3>
+            </div>
+         </div>
+         <h4>Website By Nathan Drummond-Schwass</h4>
+    </div>
+    <!-- scripts -->
+    <script  type="module" src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+    //allow user to press enter to send a messsage
+  const messageInput = document.getElementById("messageInput");
+  const sendButton = document.getElementById("sendButton");
+  const maxMessageLength = 25;
+
+  messageInput.addEventListener("input", function () {
+  const inputValue = messageInput.value;
+  if (inputValue.length > maxMessageLength) {
+    messageInput.value = inputValue.substring(0, maxMessageLength);
+  }
+});
+
+messageInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    sendButton.click();
+  }
+});
+    </script>
+    </body>
+</html>
