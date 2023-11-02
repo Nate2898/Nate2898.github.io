@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Nathans Portfolio | Projects</title>
+        <title>Nathans Portfolio | Contacts</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/portfoliocontact.css" type="text/css">
         <link rel="stylesheet" href="../css/chat.css" type="text/css">
+        <link rel="icon" href="../images/nameicon.ico" type="image/ico">
     </head>
     <body>
     <nav>
@@ -25,9 +26,11 @@
     <div class="align">
         <div class="wrapper">
             <p>You can contact me through the following ways:</p>
+            <ul style="list-style-position: inside;">
                 <li><a href="https://www.linkedin.com/in/nathan-d1998">Linkedin</a></li>
-                <li><a href = "mailto: nathandrummond06@gmail.com">Send Email</a></li> 
+                <li><a href = "mailto:nathandrummond06@gmail.com">Send Email</a></li> 
                 <li><a href = "https://mintphotographynz.weebly.com/">Website</a></li>
+            </ul>
         </div>
     </div>
     <h2>Contact Me</h2>
@@ -74,6 +77,9 @@
                 <!-- This is required to make the javascript work -->
                 <div class="popup-button-box" style="display: none;">
                     <button id="popup-button"  style="display: none;">Chat</button>
+                    <svg id="spinner" viewBox="0 0 50 50">
+                        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                      </svg>
                   </div>
                   <div id="popup-container"  style="display: none;"></div>
                   <div class="popup-content" id="popup-content"></div>
@@ -90,6 +96,7 @@
 
             <label for="country">Country:</label>
             <select id="country" name="country" required>
+                <option value="">Select a country</option> <!-- Add a default option -->
                 <option value="usa">United States of America</option>
                 <option value="canada">Canada</option>
                 <option value="uk">United Kingdom</option>
@@ -105,8 +112,7 @@
         </form>
     </div>
 </div>
-</div>
-</div>
+
 <div class="navbottomblock">
     <div class="navbottomcontent">
         <div class="navbarbottom">
