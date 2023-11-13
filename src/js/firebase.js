@@ -154,39 +154,35 @@ loginBtn.addEventListener("click", async (e) => {
 
 //loads chat content when the page is loaded //added after documentation
 window.addEventListener('load', () => {
-  //checks if the user was previously logged in
+   //checks if the user was previously logged in
   const storedUserLoggedIn = localStorage.getItem('userLoggedIn');
 
-  if (storedUserLoggedIn === 'true') {
-    //changes userLoggedIn to true
+  //changes userLoggedIn to true
+  userLoggedIn = storedUserLoggedIn === 'true';
+
+  //retrieve the user UID and username from local storage
+  const storedUID = localStorage.getItem('userUID');
+  const storedUsername = localStorage.getItem('username');
+
+  specifiedUsername = storedUsername;
+
+  //loads the chat content
+  Promise.all([loadHistoricalMessages(), subscribeToNewMessages()]);
+  writeMessagesArray();
+
+    //update the UI to reflect the users login status
+  if (userLoggedIn) {
+    loginBtn.disabled = false; //added after documentation
     userLoggedIn = true;
-
-    //retrieve the user UID and username from local storage
-    const storedUID = localStorage.getItem('userUID');
-    const storedUsername = localStorage.getItem('username');
-
-    specifiedUsername = storedUsername;
-
-    //loads the chat content if userLoggedIn is true
-    if (userLoggedIn) {
-      Promise.all([loadHistoricalMessages(), subscribeToNewMessages()]);
-      writeMessagesArray();
-    }
-
-     //update the UI to reflect the users login status
-    if (userLoggedIn) {
-      loginBtn.disabled = false; //added after documentation
-      userLoggedIn = true;
-      console.log("User logged-in");
-      loginFormPop.classList.remove("show");
-      loginFormPop.style.display = "none";
-      logoutButton.style.display = "block";
-      loginBtn.textContent = "Logged In";
-      messageContainer.style.display = "flex";
-      loginButton.style.display = "none";
-      scrollToBottom();
-    }
-  } else{
+    console.log("User logged-in");
+    loginFormPop.classList.remove("show");
+    loginFormPop.style.display = "none";
+    logoutButton.style.display = "block";
+    loginBtn.textContent = "Logged In";
+    messageContainer.style.display = "flex";
+    loginButton.style.display = "none";
+    scrollToBottom();
+  }else {
     //if user is not logged in, hide the logout button and message container
     logoutButton.style.display = "none";
     messageContainer.style.display = "none";
@@ -252,13 +248,6 @@ sendButton.addEventListener("click", async () => {
   else{
     alert("Please enter a message"); //if message is empty, alert pops up
   }
-});
-
-//load messages when the page is ready
-document.addEventListener("DOMContentLoaded", () => {
-  loadHistoricalMessages();
-  subscribeToNewMessages();
-  scrollToBottom();
 });
 
 const maxMessageCount = 20; //limits the number of displayed messages
@@ -357,4 +346,3 @@ function messageTemplate(message, username, timestamp) {//
     </div>
   </li>`;
 }
-
