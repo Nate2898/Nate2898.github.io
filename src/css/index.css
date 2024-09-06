@@ -7,7 +7,7 @@ body{
   align-items: center;
 }
 /*START navigation bar code*/
-nav {
+header {
     position: fixed;
     top: 0;
     width: 100%;
@@ -247,27 +247,35 @@ li{
   }
 /*END Left text box*/
 /*START small wrapper*/
-.wrappersmall{
-  margin-top: 10px auto;
-	margin-bottom: 30px;
-  width: 40%;
+.wrappersmall {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  margin-bottom: 30px;
+  width: 60%;
   background-color: lightgray;
   border: 5px solid rgb(18, 179, 248);
   border-bottom: 8px solid rgb(19, 157, 216);
   border-radius: 20px;
 }
-.wrappersmall img{
+
+.wrappersmall img {
   max-width: 200px;
-  float:right;
   border-radius: 20px;
-  margin-left: 2%;
-  margin-right: 8%;
+  margin-left: 10%;
+}
+
+.wrappersmall p {
+  font-family: sans-serif;
+  font-size: 20px;
+  padding-top: 5%;
 }
 @media (max-width:700px) {
-  .wrappersmall img{
+  .wrappersmall img, .wrappersmall p {
     max-width: 50%;
-    float:right;
+    /* float:right; */
     margin-right: 0%;
+    font-size: 120%;
   }
 }
 @media (max-width:700px) {
@@ -280,12 +288,7 @@ li{
     margin-left: -30px;
   }
 }
-.wrappersmall p{
-  font-family: sans-serif;
-  font-size: 20px;
-  text-align: center;
-  padding-top: 5%;
-}
+
 /*END small wrapper*/
 /*spinner css*/ 
 #spinner {
