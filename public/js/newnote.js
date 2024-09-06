@@ -23,7 +23,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     //tries to post the note to the server
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:3000/api/notes', {
+        const response = await fetch('https://nate2898-github-io.onrender.com/api/notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ async function loadNotes() {
         document.getElementById('spinner').style.zIndex = 7;
         document.getElementById('spinner').style.display = 'block';
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:3000/api/notes',{
+        const response = await fetch('https://nate2898-github-io.onrender.com/api/notes',{
             method: 'GET',
             headers: {
                 'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid
@@ -189,7 +189,7 @@ function hideDeletePopup() {
 async function deleteNote(noteId) {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, { 
+        const response = await fetch(`https://nate2898-github-io.onrender.com/api/notes/${noteId}`, { 
             method: 'DELETE' ,
             headers: {
             'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid

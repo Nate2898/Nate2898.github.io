@@ -13,7 +13,7 @@ if(registerForm){ //used to check if the register form exists
     const password = document.getElementById('password').value
     //tries to send a post request to the server with the body json data
     try{
-    const response = await fetch('http://localhost:3000/api/auth/register',{
+    const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/register',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ if(loginForm){ //used to check if the login form exists
     console.log(email + password)//ensures the email and password values are being captured
     //tries to send a post request to the server with the body json data
     try{
-    const response = await fetch('http://localhost:3000/api/auth/login',{
+    const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/login',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
