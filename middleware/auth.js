@@ -4,7 +4,7 @@ const { JWT_SECRET } = process.env;
 //checks the token to ensure the user is authenticated to access the routes
 module.exports = function(req,res,next){
     const token = req.header('x-auth-token')
-     console.log(token)
+    //  console.log(token)
     //if there is no token its shows the message
     if (!token || token === 'null') {
         return res.status(401).json({ message: 'No token, authorization denied!' });

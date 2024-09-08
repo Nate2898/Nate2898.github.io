@@ -33,6 +33,6 @@ app.use(authMiddleware); //use the auth middleware
 app.use(handleErrors); //use to handle errors
 
 //starts the local server
-// app.listen(port, ()=>{
-//     console.log(`Server is running on http://localhost:${port}`)
-// })
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
