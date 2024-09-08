@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid
             }
         });
-        console.log(response);
+        // console.log(response);
         const note = await response.json();
         if(response.status != 200) {
             console.error('Invalid ID');
@@ -136,7 +136,7 @@ async function saveNote(noteId) {
         const result = await response.json();
 
         if (response.status === 200) {
-            console.log(response)
+            // console.log(response)
             console.log('Note saved successfully');
             hasEdit = false; //allows the user to leave the page without a popup
             showToast(result.message, '28a745'); //shows the rosponse from the router in a toast with green color

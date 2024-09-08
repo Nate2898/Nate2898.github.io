@@ -27,12 +27,18 @@ function handleError(err, req, res, next) {
             stack: err.stack 
         });
         console.log(err.message, err.stack);
-    } else if(err.status === 401) {
-        console.log(err.message);
+    }else if(err.status === 401) {
+        console.log("err.message");
         res.status(401).json({ 
             success: false,
-            message: err.message
+            message: "err.message"
         });
+    // } else if(err.status === 401) {
+    //     console.log(err.message);
+    //     res.status(401).json({ 
+    //         success: false,
+    //         message: err.message
+    //     });
         //404 error code handling
     } else if (err.status === 404 && ERROR_LEVEL === "development") {
         res.status(404).json({ 
