@@ -58,11 +58,11 @@ router.post('/login', async (req,res)=>{
             return res.status(400).json({success: false, message: 'Invalid Password' })
         }
         //otherwise it creates a payload with the user id used to create a token
-        const payload = {user : {id: user.id}}
+        const payload = { user: { id: user.id, username: user.username } };
 
-        jwt.sign(payload, JWT_SECRET , {expiresIn: 36000}, (err,token)=>{
-            if(err) throw err
-            res.json({token})
+        jwt.sign(payload, JWT_SECRET, { expiresIn: "24hr" }, (err, token) => {
+            if (err) throw err;
+            res.json({ token, username: user.username });
         })
     } catch (err) {
         res.status(500).json({

@@ -20,11 +20,11 @@ function loggedIn() {
 function logout() {
     logoutBar.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.href = '/src/public/index.html';
+        window.location.href = '/public/index.html';
     });
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.href = '/src/public/index.html';
+        window.location.href = '/public/index.html';
     });
 }
 

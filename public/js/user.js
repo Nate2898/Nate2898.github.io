@@ -46,6 +46,7 @@ if(registerForm){ //used to check if the register form exists
 }
 })
 }
+
 //adds submit event listener to the login form, so when the form is submitted it sends a post request to the server with the user data
 const loginForm = document.getElementById('loginForm')
 if(loginForm){ //used to check if the login form exists
@@ -57,7 +58,7 @@ if(loginForm){ //used to check if the login form exists
     console.log(email + password)//ensures the email and password values are being captured
     //tries to send a post request to the server with the body json data
     try{
-    const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/login',{
+    const response = await fetch( 'https://nate2898-github-io.onrender.com/api/auth/login' || 'http://localhost:3000/api/auth/login',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -65,11 +66,17 @@ if(loginForm){ //used to check if the login form exists
         body: JSON.stringify({email,password})
         })
         const result = await response.json()
+        console.log(result)
+        
 
         if(response.ok){
             showToast(result.message, '28a745')
             localStorage.setItem('token', result.token);
-            window.location.href = '../index.html';
+            localStorage.setItem('username', result.username);
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 500);
+        
 
         }else{
             showToast(result.message, 'dc3545')

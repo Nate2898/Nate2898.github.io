@@ -124,7 +124,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-left:-230px ;
+    /* margin-left:-230px ; */
 }
 
 .notepad{

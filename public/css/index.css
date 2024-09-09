@@ -56,7 +56,7 @@ body {
 
 .topbar-middle{
    position: relative;  
-   margin-left: -230px; 
+   /* margin-left: -230px;  */
    background-color:  rgba(0, 47, 255);
 }
 @media (max-width: 650px) {
@@ -113,7 +113,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-left:-230px ;
+    /* margin-left:-230px ; */ /* disabled for now */
 }
 @media(max-width: 650px){
     .welcome-box{
