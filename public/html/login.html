@@ -36,18 +36,21 @@
                 <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email">
             </div>
             <div class="inputs">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Your Password" required autocomplete="current-password">
-            </div>
+                <div class="password-container">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Your Password" required autocomplete="current-password">
+                    <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('password', this)"></i>
+                </div>
+             </div>
             <div class="buttons">
-                <a  id="regbutton" class="alt" href="./register.html">Register?</a>
+                <a id="regbutton" class="alt" href="./register.html">Register?</a>
                 <button id="logbutton" type="submit">Login</button>
             </div>
         </form>
     </div>
     <!-- Toaster popups -->
-<div class="toast-container position-fixed">
-</div>
+    <div class="toast-container position-fixed">
+    </div>
 
 <!-- Loading popup -->
 <div id="loading-popup" style="display: none;">
@@ -62,6 +65,18 @@
 
 <!-- Login button Enter -->
 <script>
+    function togglePassword(inputId, icon) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+        } else {
+            input.type = "password";
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+        }
+    }
     document.getElementById("loginForm").addEventListener("submit", function(event){
         event.preventDefault();
         login();

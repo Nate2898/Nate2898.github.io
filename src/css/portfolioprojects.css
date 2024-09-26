@@ -1,6 +1,6 @@
 body{
   padding:0px;
-	padding-top: 35px;
+	padding-top: 28px;
   margin:0px;
 	background-color: white;
   justify-content: center;
@@ -151,23 +151,26 @@ nav {
 /*Text css*/
 h1 {
 	text-align: center;
-	font-family: sans-serif;
-	padding-top: 50px;
+	font-family: kalam,sans-serif;
+	padding-top: 79px;
 	font-size: 30px;
+  font-weight: bold;
 }
 h2 {
 	text-align: center;
-	font-family: sans-serif;
+  font-family: kalam,sans-serif;
+  font-weight: bold;
 	padding: 40px;
-	font-size: 25px;
+	font-size: 30px;
 }
 h3, h3 a{
   text-align: center;
-  font-family: sans-serif;
-  padding-left: 20px;
-
-  font-size: 20px;
-  color: white;
+  font-family: kalam,sans-serif;
+  /* padding-left: 20px; */
+  margin-bottom: -8px;
+font-weight: bold;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 h4{
@@ -175,6 +178,15 @@ h4{
   font-family: sans-serif;
   color: white;
   padding-right: 5%;
+}
+
+h5, h5 a{
+  text-align: center;
+ font-family: sans-serif;
+ padding-left: 20px;
+ font-size: 20px;
+ color: white;
+ text-decoration: none;
 }
 p{
   font-family: sans-serif;
@@ -238,7 +250,7 @@ p{
   a:hover{
     color: #28bfff;
     text-decoration: underline;
-    font-size: 20.5px;  
+    font-size: 19.5px;
     
   }
   a:active{
@@ -272,7 +284,7 @@ p{
       }
   }
   @media (min-width:450px) {
-    .game p {
+    .hide {
       display: none;
       }
   }

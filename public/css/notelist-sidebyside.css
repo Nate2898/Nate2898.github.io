@@ -557,6 +557,15 @@ a {
     height: 100%;
     z-index: 9;
 }
+
+#change-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .popup-content{
     position: absolute;
     top: 50%; 
@@ -591,12 +600,7 @@ a {
     padding: 5px;
     /* background-color: rgba(255, 0, 0, 0.397); */
 }
-/* #change-username-popup-content h3 {
-    font-family: kanit, sans-serif;
-    font-size: 40px;
-    font-style: normal;
-    text-align: center;
-} */
+
 .popup-content button{
     padding: 10px;
     font-size: 20px;
@@ -611,6 +615,43 @@ a {
 .popup-content button:hover{
     background-color: #f1f1f1;
     transform: scale(1.05);
+}
+
+.popup-content input{
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1px;
+    background-color: #fbfbfb;
+    border: 1px solid #000000;
+}
+.popup-content p{
+    font-family: kanit, sans-serif;
+    font-size: 20px;
+    display: flex;
+    font-style: normal;
+    text-align: center;
+    padding: 5px;
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+#owner{
+    font-family: kanit, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
 }
 
 /* server loading spinner */
@@ -656,6 +697,7 @@ a {
         transform: translate(-50%, -50%);
     }
 }
+
 
 #spinner2 {
     animation: rotate 2s linear infinite;

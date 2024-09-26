@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
 body{
   padding:0px;
-	padding-top: 35px;
+	padding-top: 28px;
   margin:0px;
 	background-color: white;
   justify-content: center;
   align-items: center;
+  font-family: kalam;
 }
 /*START navigation bar code*/
 header {
@@ -12,8 +15,8 @@ header {
     top: 0;
     width: 100%;
     background-color: #333;
-    height: 50px;
-    display: flex;
+    /* height: 50px; */
+    /* display: flex; */
     align-items: center;
     border-bottom: 5px solid rgb(18, 179, 248);
 }
@@ -99,7 +102,42 @@ header {
   align-items: center;
   font-family: Arial Black;
 }
+.center-under {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+}
 
+@keyframes sizeChange {
+  0% {
+    transform: scale(1);
+    color: rgb(0, 255, 251);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.center-under #important {
+  font-size: 25px;
+  font-weight: bold;
+  color: #fcfcfc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: -10px;;
+  animation: sizeChange 1s infinite;
+}
+
+#important:hover {
+  color: #10EEEE;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+  animation-play-state: paused; /* Pause the animation on hover */
+}
 /* END bottom navigation bar code*/
 /*START text box*/
 .align{
@@ -122,11 +160,12 @@ header {
   float:right;
   margin-top:25px;
   border-radius: 20px;
-  margin-right: 19%;
+  margin-right: 10%;
   margin-bottom: 0;
   text-align: center;
   transition: transform 0.3s ease;
   padding-bottom: 1%;
+  padding-left: 1%;
   }
   @media (max-width:700px) {
     .wrapper img ,.wrapper li{
@@ -145,20 +184,22 @@ header {
 .bgimg{
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,162,232) 79%);
   background-repeat: no-repeat;
-  height: 220px;
+  /* height: 220px; */
 }
 /*Text css*/
 h1 {
 	text-align: center;
-	font-family: sans-serif;
-	padding-top: 50px;
+	font-family: kalam,sans-serif;
+	padding-top: 79px;
 	font-size: 30px;
+  font-weight: bold;
 }
 h2 {
 	text-align: center;
-	font-family: sans-serif;
+	font-family: kalam,sans-serif;
 	padding: 40px;
-	font-size: 25px;
+	font-size: 35px;
+  font-weight: bold;
 }
 h3, h3 a{
   text-align: center;
@@ -179,8 +220,8 @@ p{
   font-family: sans-serif;
   font-size: 20px;
   text-align: center;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   padding-top: 8px;
 }
 .wrapperleft li{
@@ -237,7 +278,7 @@ li{
   a:hover{
     color: #28bfff;
     text-decoration: underline;
-    font-size: 20.5px;  
+    font-size: 19.5px;  
     
   }
   a:active{
@@ -267,25 +308,40 @@ li{
 
 .wrappersmall p {
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   padding-top: 5%;
 }
-@media (max-width:700px) {
-  .wrappersmall img, .wrappersmall p {
-    max-width: 50%;
-    /* float:right; */
-    margin-right: 0%;
-    font-size: 120%;
+@media (max-width:1000px) {
+  .wrappersmall {
+    width: 80%;
   }
 }
-@media (max-width:700px) {
+
+@media (max-width:800px) {
   .wrappersmall {
     width: 100%;
   }
 }
-@media (max-width:700px) {
+@media (max-width:800px) {
   .wrappersmall p {
-    margin-left: -30px;
+    padding-right: 0%;
+    padding-left: 0%;
+    font-size: 150%;
+    /* font-size: 20px; */
+  }
+}
+
+
+@media (max-width:500px) {
+  .wrappersmall p {
+    font-size: 120%;
+  }
+}
+@media (max-width:500px) {
+  .wrappersmall img {
+    max-width: 50%;
+    float:none;
+    margin-left: 0%;
   }
 }
 

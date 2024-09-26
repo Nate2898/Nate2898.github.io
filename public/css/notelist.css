@@ -450,7 +450,6 @@ a {
     right:  10px;
     z-index: 100;
 }
-
 /* spinner */
 #spinner {
     animation: rotate 2s linear infinite;

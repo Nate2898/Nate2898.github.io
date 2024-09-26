@@ -180,6 +180,16 @@ form {
     z-index: 100;
 }
 
+.password-container {
+    position: relative;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    transform: translateY(40%);
+    cursor: pointer;
+}
+
 /* server loading spinner */
 
 #loading-popup{
@@ -245,3 +255,26 @@ form {
     stroke: rgb(0, 0, 0);
     stroke-width: 4; 
   }
+
+    
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+
