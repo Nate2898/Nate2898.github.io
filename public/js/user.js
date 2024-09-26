@@ -12,6 +12,11 @@ if(registerForm){ //used to check if the register form exists
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     //tries to send a post request to the server with the body json data
+    const loadingPopupTimeout = setTimeout(() => {
+        document.getElementById('loading-popup').style.display = 'flex';
+    }, 5000);
+
+    
     try{
     const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/register',{
     method: 'POST',
@@ -23,6 +28,8 @@ if(registerForm){ //used to check if the register form exists
     })
     //sets any response from the server to result
     const result = await response.json()
+    clearTimeout(loadingPopupTimeout);
+    document.getElementById('loading-popup').style.display = 'none';
     //if the status code is 200 - 299 then the user registered successfully
     if(response.ok){
         console.log("Registered Successfully") 
@@ -43,6 +50,8 @@ if(registerForm){ //used to check if the register form exists
     showToast(`Server Unreachable: ${err}`, 'dc3545')
     registerButton.disabled = false;
     registerButton.textContent = 'Register';
+    clearTimeout(loadingPopupTimeout);
+    document.getElementById('loading-popup').style.display = 'none';
 }
 })
 }
@@ -57,6 +66,10 @@ if(loginForm){ //used to check if the login form exists
     const password = document.getElementById('password').value
     console.log(email + password)//ensures the email and password values are being captured
     //tries to send a post request to the server with the body json data
+    const loadingPopupTimeout = setTimeout(() => {
+        document.getElementById('loading-popup').style.display = 'flex';
+    }, 5000);
+
     try{
     const response = await fetch( 'https://nate2898-github-io.onrender.com/api/auth/login',{
     //    const response = await fetch('http://localhost:3000/api/auth/login',{
@@ -68,6 +81,8 @@ if(loginForm){ //used to check if the login form exists
         })
         const result = await response.json()
         console.log(result)
+        clearTimeout(loadingPopupTimeout);
+        document.getElementById('loading-popup').style.display = 'none';
         
 
         if(response.ok){
@@ -93,6 +108,8 @@ if(loginForm){ //used to check if the login form exists
         showToast(`Server Unreachable: ${err}`, 'dc3545')
         registerButton.disabled = false;
         registerButton.textContent = 'Register';
+        clearTimeout(loadingPopupTimeout);
+        document.getElementById('loading-popup').style.display = 'none';
     }
     })
 }

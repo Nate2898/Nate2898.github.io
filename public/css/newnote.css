@@ -55,7 +55,7 @@ body {
 }
 .topbar-middle{
     position: relative;  
-    margin-left: -230px; 
+    /* margin-left: -230px;  */
     background-color:  rgba(0, 47, 255);
  }
  @media (max-width: 650px) {
