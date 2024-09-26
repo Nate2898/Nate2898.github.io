@@ -126,7 +126,6 @@ body {
     justify-content: center;
     /* margin-left:-230px ; */
 }
-
 .notepad{
     background-color: rgba(184, 184, 184, 0.7);
     margin: 20px;
@@ -136,13 +135,14 @@ body {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     .noted {
         margin-left:0px ;
     }
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     .notepad {
         width: 100% ;
     }
@@ -164,11 +164,20 @@ body {
     font-weight: 700;
     text-align: center;
 }
-#your-note{
+#your-note {
     border: #000000 2px solid;
-    justify-content: center;
-    width: 90%;
+    width: 84%;
+    min-height: 35vw;
+    display: flex;
+    align-items: flex-start; /* Align the content at the top */
+    background-color: none;
 }
+@media (max-width: 750px) {
+    #your-note {    
+        min-height: 60vw;
+    }
+}
+
 
 /* Popup login */
 #popup-box{
@@ -223,22 +232,72 @@ body {
     font-style: normal;
     text-align: center;
 }
+
 /* toolbar */
-.toolbar {
-    background-color: #f0f0f0;
-    padding: 10px;
+#text-style{
     display: flex;
-    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px; 
+    margin-right: 5px;
+    width: 100%;
+    border: #0000002a 1px solid;
 }
 
-.toolbar button {
+
+.toolbar {
+    background-color: #f0f0f0;
+    margin: 5px;
+    padding: 2px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 84%;
+    border: 1px solid #000000;
+}
+/* @media (max-width: 1058px){
+    .toolbar {
+        left: -5%;
+    }
+} */
+@media (max-width: 750px){
+    .toolbar {
+        /* position: fixed; */
+        /* margin: 10px 0px 0px 15px; */
+        /* top: auto; */
+        display: flex;
+        flex-flow: row wrap;
+        /* bottom: 0; */
+        justify-content: center;
+        /* left: 0;
+        right: 0; */
+    }
+}
+
+.style-buttons button {
     background-color: white;
     border: 1px solid #ccc;
     padding: 5px 10px;
-    margin-right: 5px;
     cursor: pointer;
+    display: inline-flex;
+    /* justify-content: center; */
+    justify-content: space-evenly;
 }
 
-.toolbar button:hover {
+@media (max-width: 750px){
+    .style-buttons button {
+        display: wrap;
+        width: 130px;
+        height: 50px;
+        max-width: 99%;
+    }
+}
+.style-buttons{
+    display: none;
+    
+    transition: transform 0.5s ease;
+}
+
+.style-buttons button:hover {
     background-color: #ddd;
 }

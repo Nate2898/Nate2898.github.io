@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelector('.your-note');
     
@@ -12,12 +14,17 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     const titleInput = document.getElementById('title-input');
     const noteInput = document.getElementById('your-note');
     const title = titleInput.value;
-    const note = noteInput.innerHTML;
+    const note = noteInput.value;
 
     //checks if title is empty if so it shows custom validation message
     if (title.trim().length < 5) {
         titleInput.setCustomValidity('A Title with 5 Characters is required.');
         titleInput.reportValidity();
+        return;
+    }
+    if (note.trim().length < 1) {
+        noteInput.setCustomValidity('A Note is required.');
+        noteInput.reportValidity();
         return;
     }
     //tries to post the note to the server
@@ -56,51 +63,83 @@ const barLogin = document.getElementById('bar-login');
 
 let sortOrder = 'newest';
 let notesArray = [];
+import { userExport } from "./sidepanel.js";
 
 //reloads the notes when the reload button is clicked
 document.getElementById('reloadnotes').addEventListener('click', loadNotes); 
 
 //loads notes from the server and displays them in the note list
 async function loadNotes() {
+    // Start spinner immediately
+    document.getElementById('spinner').querySelector('.path').style.animation = '';
+    document.getElementById('spinner').querySelector('.path').style.stroke = '';
+    document.getElementById('spinner').style.zIndex = 7;
+    document.getElementById('spinner').style.display = 'block';
+
+    // Set a 5-second delay for showing the "Loading server" popup
+    const loadingPopupTimeout = setTimeout(() => {
+        document.getElementById('loading-popup').style.display = 'flex';
+    }, 5000);
+
     try {
-        document.getElementById('spinner').querySelector('.path').style.animation = '';
-        document.getElementById('spinner').querySelector('.path').style.stroke = '';
-        document.getElementById('spinner').style.zIndex = 7;
-        document.getElementById('spinner').style.display = 'block';
         const token = localStorage.getItem('token');
-        const response = await fetch('https://nate2898-github-io.onrender.com/api/notes',{
+        // const response = await fetch('http://localhost:3000/api/notes', {
+        const response = await fetch('https://nate2898-github-io.onrender.com/api/notes', {
             method: 'GET',
             headers: {
-                'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid
+                'x-auth-token': `${token}`
             }
         });
         const notes = await response.json();
-        if(notes.message === 'Token has expired! Please login again'){
+
+        // Clear the popup timeout if the notes load within 5 seconds
+        clearTimeout(loadingPopupTimeout);
+        document.getElementById('loading-popup').style.display = 'none';
+
+        if (notes.message === 'Token has expired! Please login again') {
             showToast(notes.message, 'dc3545');
             logoutBar.style.display = 'none';
-             barLogin.style.display = 'block';
+            barLogin.style.display = 'block';
+            localStorage.removeItem('username');
             localStorage.removeItem('token');
-            // window.location.href = 'html/login.html';
             document.getElementById('spinner').querySelector('.path').style.animation = 'none';
             document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
+            userExport();
             return;
-        }
-        else if(response.status != 200) {
+        } else if (response.status !== 200) {
             console.error('Invalid ID');
             showToast(notes.message, 'dc3545');
             document.getElementById('spinner').querySelector('.path').style.animation = 'none';
             document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
             return;
         }
-        notesArray = notes; //stores the notes in the array
-        displayNotes(); //display notes based on the current sort order
+
+        // Store the notes and display them
+        notesArray = notes;
+        displayNotes();
     } catch (error) {
         console.error('Error loading notes:', error);
-        showToast(`Server Unreachable: ${error}`, 'dc3545')
+        showToast(`Server Unreachable: ${error}`, 'dc3545');
         document.getElementById('spinner').querySelector('.path').style.animation = 'none';
         document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
+
+        // Clear the popup timeout in case of error
+        clearTimeout(loadingPopupTimeout);
+        document.getElementById('loading-popup').style.display = 'none';
     }
 }
+
+
+document.getElementById('text-style').addEventListener('click', () => {
+    if (document.getElementById('style-buttons').style.display === 'block') {
+        document.getElementById('style-buttons').style.display = 'none';
+        document.getElementById('text-style').style.width = '100%';
+        return;
+    }
+    document.getElementById('style-buttons').style.display = 'block';
+    document.getElementById('text-style').style.width = '10%';
+});
+
 //start of the notes becoming displayed
 function displayNotes() {
     const notesList = document.getElementById('note-list'); //sets the notes list to the note-list element

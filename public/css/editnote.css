@@ -15,14 +15,14 @@ body {
         background-image: url('../images/pencil-backgroundDARK.jpg');
     }
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     body {
         background-image: url("");
       
     }
 }
 
-@media (max-width: 650px) and (prefers-color-scheme: dark) {
+@media (max-width: 750px) and (prefers-color-scheme: dark) {
     body {
         background-image: url("");
         background-color: #363636;
@@ -58,7 +58,7 @@ body {
     /* margin-left: -230px;  */
     background-color:  rgba(0, 47, 255);
  }
- @media (max-width: 650px) {
+ @media (max-width: 750px) {
      .topbar-middle {
          margin-left: 0px; 
      }
@@ -68,7 +68,7 @@ body {
      right: 0;
      top: 0;
  }
- @media (max-width: 650px) {
+ @media (max-width: 750px) {
      .topbar-right {
          position: relative;
          right: 0;
@@ -146,12 +146,12 @@ body {
     flex-wrap: wrap;
     position: relative;
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     .noted {
         margin-left:0px ;
     }
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     .notepad {
         width: 100% ;
     }
@@ -179,7 +179,7 @@ body {
     width: 84%;
     min-height: 35vw;
 }
-@media (max-width: 650px) {
+@media (max-width: 750px) {
     #your-note {
         min-height: 60vw;
     }
@@ -265,7 +265,7 @@ body {
         left: -5%;
     }
 } */
-@media (max-width: 650px){
+@media (max-width: 750px){
     .toolbar {
         /* position: fixed; */
         /* margin: 10px 0px 0px 15px; */
@@ -289,7 +289,7 @@ body {
     justify-content: space-evenly;
 }
 
-@media (max-width: 650px){
+@media (max-width: 750px){
     .style-buttons button {
         display: wrap;
         width: 130px;

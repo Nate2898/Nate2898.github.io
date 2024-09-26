@@ -3,6 +3,7 @@ const { JWT_SECRET } = process.env;
 
 //checks the token to ensure the user is authenticated to access the routes
 module.exports = function(req,res,next){
+    console.log('Auth middleware called');
     const token = req.header('x-auth-token')
     //  console.log(token)
     //if there is no token its shows the message

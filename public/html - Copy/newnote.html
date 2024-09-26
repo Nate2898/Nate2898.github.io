@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/notelist-sidebyside.css" type="text/css">
+    <link rel="stylesheet" href="../css/notelist.css" type="text/css">
     <link rel="stylesheet" href="../css/newnote.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,15 +83,7 @@
     <div class="settings-block" id="settings-block">
         <div class="settings-pop">
             <h1>Settings</h1>
-            <div class="user" style="margin-top: -11px;">
-                <!-- <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3> -->
-            </div>
             <div class="settings-content">
-                <!-- new settings appear -->
-                    <a title="Settings"  style="cursor: pointer; display:none;" class="settings-button2" id="settings-button2">
-                        <i class="bi bi-gear" aria-hidden="true"></i>
-                        <i class="bi bi-gear-fill" aria-hidden="true" ></i>
-                    </a>
                 <div class="settings-content">
                     <p>Change Theme:</p>
                     <div class="center">
@@ -106,27 +98,23 @@
                         <button id="font2" type="button">Font 2</button>
                     </div>
                     
-                   
-                    <div id="user-settings" style="display: none;">
-                        <div class="user">
-                            <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
+                    <div class="user">
+                        <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
+                    </div>
+
+                    <div class="content">
+                        <p>Change Account Settings:</p>
+                        <div class="center">
+                            <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
                         </div>
-    
-                        <div class="content">
-                            <p>Change Account Settings:</p>
-                            <div class="center">
-                                <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
-                            </div>
-                            <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
-                            <div class="center">
-                                <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
-                                    <i class="bi bi-x-square" aria-hidden="true"></i>
-                                    <i class="bi bi-x-square-fill" aria-hidden="true"></i>
-                                </a>
-                            </div>
+                        <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
+                        <div class="center">
+                            <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
+                                <i class="bi bi-x-square" aria-hidden="true"></i>
+                                <i class="bi bi-x-square-fill" aria-hidden="true"></i>
+                            </a>
                         </div>
-                        </div>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,25 +126,19 @@
         <div class="notepad-title">
          <input id="title-input" maxlength="20" type="text" placeholder="Title" required>      
         </div>
-        <textarea id="your-note" type="text" class="your-note" placeholder="Enter your note here" required></textarea>
-        <!-- <div id="your-note" contenteditable="true" class="your-note" style="color:  rgb(0, 0, 24);"></div> -->
-        <!-- notepad buttons  -->
-        
-        <div class="toolbar">
-            <a style="cursor: pointer;" title="Text Style" id="text-style">
-                <i class="bi bi-highlighter" aria-hidden="true"></i>
-            </a>
-            <div class="style-buttons" id="style-buttons">
-                <button id="bold" onclick="document.execCommand('bold', false, '')"><b>B</b></button>
-                <button id="italic" style="padding: 5px 13.6px;" onclick="document.execCommand('italic', false, '')"><i>I</i></button>
-                <button id="underline" onclick="document.execCommand('underline', false, '')"><u>U</u></button>
-            </div>
+        <div id="your-note" contenteditable="true" class="your-note" style="color: rgb(0, 0, 24);  min-height: 725px;">Your new Note
         </div>
+        <!-- notepad buttons  -->
         <div class="save-btn">  
             <a type="submit" title="Save Note" href="#save" id="save-note"><p>Save Note</p>
                 <i class="bi bi-floppy" aria-hidden="true"></i>
                 <i class="bi bi-floppy-fill" aria-hidden="true"></i>
             </a>
+        </div>
+        <div class="toolbar">
+            <button onclick="document.execCommand('bold', false, '')"><b>B</b></button>
+            <button onclick="document.execCommand('italic', false, '')"><i>I</i></button>
+            <button onclick="document.execCommand('underline', false, '')"><u>U</u></button>
         </div>
     </div>
 </div>
@@ -175,48 +157,6 @@
     </div>
 </div>
 
-<!-- Loading server popup -->
-<div id="loading-popup" style="display: none;">
-    <div class="loading-content">
-        <h3>Server is Starting Up</h3>
-        <svg id="spinner2" viewBox="0 0 50 50">
-            <circle class="outline" cx="25" cy="25" r="20" fill="none"></circle>
-            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-        </svg>
-    </div>
-</div>
-
-
-<!-- Change Username popup -->
-<div style="display: none;" class="change-popup"   id="change-username-popup">
-    <div id="change-username-popup-content" class="popup-content">
-        <h3>Change Username</h3>
-        <p>Enter your new Username</p>
-        <input id="new-username" type="text" placeholder="New Username" required>
-        <p>Confirm your Email:</p>
-        <input id="email" type="email" placeholder="Email" required>
-        <p>Confirm your Password:</p>
-        <input id="password" type="password" placeholder="Password" required>
-        <button id="confirm-username">Confirm</button>
-        <button id="cancel-username">Cancel</button>
-    </div>
-</div>
-
-<!-- Change Password popup -->
-<div class="change-popup" style="display: none;" id="change-password-popup">
-    <div id="change-password-popup-content" class="popup-content">
-        <h3>Change Password for:</h3>
-        <p id="your-email" style="font-weight: bold;"></p>
-        <p>Enter your Old Password</p>
-        <input id="old-password" type="password" placeholder="Old Password" required>
-        <p>Enter your New Password</p>
-        <input id="new-password" type="password" placeholder="New Password" required>
-        <button id="confirm-password">Confirm</button>
-        <button id="cancel-password">Cancel</button>
-    </div>
-</div>
-
-
 <!-- Popup login  -->
 <div id="popup-box">
     <div class="popup-login">
@@ -225,41 +165,6 @@
         <i class="bi bi-exclamation-triangle"></i>
     </div>
 </div>
-<script>
-    document.getElementById('new-password').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-password').click();
-        }
-
-    document.getElementById('old-password').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-password').click();
-        }
-    });
-    if (e.key === 'Enter') {
-        document.getElementById('confirm-password').click();
-    }
-    });
-
-    document.getElementById('new-username').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
-
-    document.getElementById('email').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
-
-    document.getElementById('password').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
-
-</script>
 
 <script src="../js/authpopup.js" type="module"></script>
 <script src="../js/newnote.js" type="module"></script>

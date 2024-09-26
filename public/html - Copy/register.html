@@ -14,14 +14,14 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
       <link rel="icon" href="../images/nameicon.ico" type="image/ico">
-    <title>Login | Notepad Online</title>
+    <title>Register | Notepad Online</title>
 </head>
 <body>
     <header>
         <div class="topbar">
             <a  class="topbar-middle" href="../index.html">Notepad Online</a>
             <div>
-                <a class="topbar-right" href="">Login</a>
+                <a class="topbar-right" href="">Register</a>
                 <a class="topbar-right" href="#logout" style="display: none;">LogOut</a>
             </div>
         </div>
@@ -29,36 +29,30 @@
     </header>
     
     <div class="box">
-        <form id="loginForm">
-            <h2>Login</h2>
+        <form id="registerForm">
+            <h2>Register</h2>
+            <div class="inputs">
+                <label for="username">Username:</label>
+                <input type="username" id="username" name="username" placeholder="Your Username" required autocomplete="name">
+            </div>
             <div class="inputs">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email">
             </div>
             <div class="inputs">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Your Password" required autocomplete="current-password">
+                <input type="password" id="password" name="password" placeholder="Your Password" required autocomplete="new-password">
             </div>
             <div class="buttons">
-                <a  id="regbutton" class="alt" href="./register.html">Register?</a>
-                <button id="logbutton" type="submit">Login</button>
+                <a id="logbutton" class="alt" href="./login.html">Login?</a>
+                <button id="regbutton" type="submit">Register</button>
             </div>
         </form>
     </div>
     <!-- Toaster popups -->
 <div class="toast-container position-fixed">
 </div>
-
-<!-- Login button Enter -->
-<script>
-    document.getElementById("loginForm").addEventListener("submit", function(event){
-        event.preventDefault();
-        login();
-    });
-    
-</script>
-
-
+        
 <script src="../js/user.js"></script>
 <!-- <script src="../js/sidepanel.js"></script> -->
 </body>

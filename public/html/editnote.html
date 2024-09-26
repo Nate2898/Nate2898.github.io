@@ -86,11 +86,11 @@
         <div class="settings-pop">
             <h1>Settings</h1>
             <div class="user" style="margin-top: -11px;">
-                <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
+                <!-- <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3> -->
             </div>
             <div class="settings-content">
                 <!-- new settings appear -->
-                    <a title="Settings" style="cursor: pointer;" class="settings-button2" id="settings-button2">
+                    <a title="Settings"  style="cursor: pointer; display:none;" class="settings-button2" id="settings-button2">
                         <i class="bi bi-gear" aria-hidden="true"></i>
                         <i class="bi bi-gear-fill" aria-hidden="true" ></i>
                     </a>
@@ -108,23 +108,27 @@
                         <button id="font2" type="button">Font 2</button>
                     </div>
                     
-                    <div class="user">
-                        <!-- <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3> -->
-                    </div>
-
-                    <div class="content">
-                        <p>Change Account Settings:</p>
-                        <div class="center">
-                            <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
+                   
+                    <div id="user-settings" style="display: none;">
+                        <div class="user">
+                            <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
                         </div>
-                        <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
-                        <div class="center">
-                            <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
-                                <i class="bi bi-x-square" aria-hidden="true"></i>
-                                <i class="bi bi-x-square-fill" aria-hidden="true"></i>
-                            </a>
+    
+                        <div class="content">
+                            <p>Change Account Settings:</p>
+                            <div class="center">
+                                <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
+                            </div>
+                            <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
+                            <div class="center">
+                                <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
+                                    <i class="bi bi-x-square" aria-hidden="true"></i>
+                                    <i class="bi bi-x-square-fill" aria-hidden="true"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                        </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -133,11 +137,10 @@
 <!-- Notepad input -->
 <div class="noted">
     <div class="notepad">
-       
         <div class="notepad-title">
              <input id="title-input" maxlength="20" type="text" placeholder="Title" required >      
         </div>
-        <div class="your-note" id="your-note" contenteditable="true" style="color: rgb(0, 0, 24);">Your new Note
+        <div class="your-note" id="your-note" contenteditable="true" style="color: rgb(0, 0, 24);">Your note will appear here
         </div>
         <!-- Notepad Buttons -->
         <div class="toolbar">
@@ -163,6 +166,18 @@
     </div>
 </div>
 
+<!-- Loading server popup -->
+<div id="loading-popup" style="display: none;">
+    <div class="loading-content">
+        <h3>Server is Starting Up</h3>
+        <svg id="spinner2" viewBox="0 0 50 50">
+            <circle class="outline" cx="25" cy="25" r="20" fill="none"></circle>
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    </div>
+</div>
+
+
 <!-- Delete popup -->
 <div id="delete-popup-box" style="display: none;">
     <div id="popup-delete">
@@ -177,6 +192,35 @@
 <div class="toast-container position-fixed">
 </div>
 
+<!-- Change Username popup -->
+<div style="display: none;" class="change-popup"   id="change-username-popup">
+    <div id="change-username-popup-content" class="popup-content">
+        <h3>Change Username</h3>
+        <p>Enter your new Username</p>
+        <input id="new-username" type="text" placeholder="New Username" required>
+        <p>Confirm your Email:</p>
+        <input id="email" type="email" placeholder="Email" required>
+        <p>Confirm your Password:</p>
+        <input id="password" type="password" placeholder="Password" required>
+        <button id="confirm-username">Confirm</button>
+        <button id="cancel-username">Cancel</button>
+    </div>
+</div>
+
+<!-- Change Password popup -->
+<div class="change-popup" style="display: none;" id="change-password-popup">
+    <div id="change-password-popup-content" class="popup-content">
+        <h3>Change Password for:</h3>
+        <p id="your-email" style="font-weight: bold;"></p>
+        <p>Enter your Old Password</p>
+        <input id="old-password" type="password" placeholder="Old Password" required>
+        <p>Enter your New Password</p>
+        <input id="new-password" type="password" placeholder="New Password" required>
+        <button id="confirm-password">Confirm</button>
+        <button id="cancel-password">Cancel</button>
+    </div>
+</div>
+
 <!-- Popup login  -->
 <div id="popup-box">
     <div class="popup-login">
@@ -185,6 +229,42 @@
         <i class="bi bi-exclamation-triangle"></i>
     </div>
 </div>
+
+<script>
+    document.getElementById('new-password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-password').click();
+        }
+
+    document.getElementById('old-password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-password').click();
+        }
+    });
+    if (e.key === 'Enter') {
+        document.getElementById('confirm-password').click();
+    }
+    });
+
+    document.getElementById('new-username').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+    document.getElementById('email').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+    document.getElementById('password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+</script>
 
 <script src="../js/authpopup.js" type="module"></script>
 <script src="../js/editnote.js"  type="module"></script>

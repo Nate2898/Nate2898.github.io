@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 });
 
+
+
 document.getElementById('text-style').addEventListener('click', () => {
     if (document.getElementById('style-buttons').style.display === 'block') {
         document.getElementById('style-buttons').style.display = 'none';
@@ -22,6 +24,7 @@ document.getElementById('text-style').addEventListener('click', () => {
     document.getElementById('style-buttons').style.display = 'block';
     document.getElementById('text-style').style.width = '10%';
 });
+
 
 // document.getElementById('bold').addEventListener('click', () => {
 //     const bold = document.getElementById('bold');
@@ -70,7 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const token = localStorage.getItem('token');
         // console.log(token);
-        const response = await fetch(`https://nate2898-github-io.onrender.com/api/notes/${noteId}` || `http://localhost:3000/api/notes/${noteId}` , {
+        const response = await fetch(`https://nate2898-github-io.onrender.com/api/notes/${noteId}`,{
+        // const response = await fetch(`http://localhost:3000/api/notes/${noteId}`{  
             method: 'GET',
             headers: {
                 'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid
@@ -119,9 +123,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function saveNote(noteId) {
     const title = document.getElementById('title-input').value;
     const note = document.getElementById('your-note').innerHTML;
+    if(title.trim().length < 5)
+    {
+        showToast('Title must be at least 5 characters', 'dc3545');
+        return;
+    }
 
     try {
         const token = localStorage.getItem('token');
+        // const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
         const response = await fetch(`https://nate2898-github-io.onrender.com/api/notes/${noteId}`, {
             method: 'PUT',
             headers: {
@@ -163,49 +173,69 @@ function showToast(message, color) {
 
 let sortOrder = 'newest';
 let notesArray = [];
+import { userExport } from "./sidepanel.js";
 
 //reloads the notes when the reload button is clicked
 document.getElementById('reloadnotes').addEventListener('click', loadNotes); 
 
 //loads notes from the server and displays them in the note list
 async function loadNotes() {
+    // Start spinner immediately
+    document.getElementById('spinner').querySelector('.path').style.animation = '';
+    document.getElementById('spinner').querySelector('.path').style.stroke = '';
+    document.getElementById('spinner').style.zIndex = 7;
+    document.getElementById('spinner').style.display = 'block';
+
+    // Set a 5-second delay for showing the "Loading server" popup
+    const loadingPopupTimeout = setTimeout(() => {
+        document.getElementById('loading-popup').style.display = 'flex';
+    }, 5000);
+
     try {
-        document.getElementById('spinner').querySelector('.path').style.animation = '';
-        document.getElementById('spinner').querySelector('.path').style.stroke = '';
-        document.getElementById('spinner').style.zIndex = 7;
-        document.getElementById('spinner').style.display = 'block';
         const token = localStorage.getItem('token');
-        const response = await fetch('https://nate2898-github-io.onrender.com/api/notes',{
+        // const response = await fetch('http://localhost:3000/api/notes', {
+        const response = await fetch('https://nate2898-github-io.onrender.com/api/notes', {
             method: 'GET',
             headers: {
-                'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid
-            }        
+                'x-auth-token': `${token}`
+            }
         });
         const notes = await response.json();
-        if(notes.message === 'Token has expired! Please login again'){
+
+        // Clear the popup timeout if the notes load within 5 seconds
+        clearTimeout(loadingPopupTimeout);
+        document.getElementById('loading-popup').style.display = 'none';
+
+        if (notes.message === 'Token has expired! Please login again') {
             showToast(notes.message, 'dc3545');
             logoutBar.style.display = 'none';
-             barLogin.style.display = 'block';
+            barLogin.style.display = 'block';
+            localStorage.removeItem('username');
             localStorage.removeItem('token');
-            // window.location.href = 'html/login.html';
             document.getElementById('spinner').querySelector('.path').style.animation = 'none';
             document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
+            userExport();
             return;
-        }
-        else if(response.status != 200) {
+        } else if (response.status !== 200) {
             console.error('Invalid ID');
             showToast(notes.message, 'dc3545');
             document.getElementById('spinner').querySelector('.path').style.animation = 'none';
             document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
             return;
         }
-        notesArray = notes; //stores the notes in the array
-        displayNotes(); //display notes based on the current sort order
+
+        // Store the notes and display them
+        notesArray = notes;
+        displayNotes();
     } catch (error) {
         console.error('Error loading notes:', error);
-        showToast(`Server Unreachable: ${error}`, 'dc3545')
+        showToast(`Server Unreachable: ${error}`, 'dc3545');
         document.getElementById('spinner').querySelector('.path').style.animation = 'none';
         document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
+
+        // Clear the popup timeout in case of error
+        clearTimeout(loadingPopupTimeout);
+        document.getElementById('loading-popup').style.display = 'none';
     }
 }
 //start of the notes becoming displayed

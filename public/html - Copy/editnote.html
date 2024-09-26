@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New | Notepad Online</title>
+    <title>Edit | Notepad Online</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/editnote.css" type="text/css">
     <link rel="stylesheet" href="../css/notelist-sidebyside.css" type="text/css">
-    <link rel="stylesheet" href="../css/newnote.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
@@ -36,19 +36,19 @@
     <div class="note-tab" id="note-tab">
         <h1>Notes</h1>
         <div class="note-tab-buttons">
-            <a title="New Note" id="newnote-side" href="./newnote.html">
+            <a title="New Note" href="./newnote.html"id="newnote-side">
                 <i class="bi bi-plus-circle" aria-hidden="true"></i>
                 <i class="bi bi-plus-circle-fill" aria-hidden="true" ></i>
             </a>
-            <a title="Share Note" id="sharenote" style="cursor: pointer;">
+            <a title="Share Note" style="cursor: pointer;" id="sharenote">
                 <i class="bi bi-share" aria-hidden="true"></i>
                 <i class="bi bi-share-fill" aria-hidden="true" ></i>
             </a>
-            <a title="Reload Notes" id="reloadnotes" style="cursor: pointer;">
+            <a title="Reload Notes" style="cursor: pointer;" id="reloadnotes">
                 <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
                 <i class="bi bi-arrow-clockwise" aria-hidden="true" ></i>
             </a>
-            <a title="Settings" class="settings-button" id="settings-button" style="cursor: pointer;">
+            <a title="Settings" style="cursor: pointer;" class="settings-button" id="settings-button">
                 <i class="bi bi-gear" aria-hidden="true"></i>
                 <i class="bi bi-gear-fill" aria-hidden="true" ></i>
             </a>
@@ -79,7 +79,9 @@
             </div>
         </div>
     </div>
-    <!-- settings Popout -->
+    <!-- settings popout -->
+    <div class="settings-block2 class show" style="z-index: 9;" id="settings-block2"></div>
+    </div>
     <div class="settings-block" id="settings-block">
         <div class="settings-pop">
             <h1>Settings</h1>
@@ -135,13 +137,13 @@
 <!-- Notepad input -->
 <div class="noted">
     <div class="notepad">
+       
         <div class="notepad-title">
-         <input id="title-input" maxlength="20" type="text" placeholder="Title" required>      
+             <input id="title-input" maxlength="20" type="text" placeholder="Title" required >      
         </div>
-        <textarea id="your-note" type="text" class="your-note" placeholder="Enter your note here" required></textarea>
-        <!-- <div id="your-note" contenteditable="true" class="your-note" style="color:  rgb(0, 0, 24);"></div> -->
-        <!-- notepad buttons  -->
-        
+        <div class="your-note" id="your-note" contenteditable="true" style="color: rgb(0, 0, 24);">Your new Note
+        </div>
+        <!-- Notepad Buttons -->
         <div class="toolbar">
             <a style="cursor: pointer;" title="Text Style" id="text-style">
                 <i class="bi bi-highlighter" aria-hidden="true"></i>
@@ -153,18 +155,19 @@
             </div>
         </div>
         <div class="save-btn">  
-            <a type="submit" title="Save Note" href="#save" id="save-note"><p>Save Note</p>
+            <a style="cursor: pointer;" title="Save Note" id="save-note"><p>Save Note</p>
                 <i class="bi bi-floppy" aria-hidden="true"></i>
                 <i class="bi bi-floppy-fill" aria-hidden="true"></i>
+            </a>
+            <a style="cursor: pointer;" title="Delete Note" id="deletenote"><p>Delete Note</p>
+                  <i class="bi bi-trash" aria-hidden="true"></i>
+                  <i class="bi bi-trash-fill" aria-hidden="true"></i>
             </a>
         </div>
     </div>
 </div>
-<!-- Toaster popups -->
-<div class="toast-container position-fixed">
-</div>
 
-<!-- Popup delete  -->
+<!-- Delete popup -->
 <div id="delete-popup-box" style="display: none;">
     <div id="popup-delete">
         <h3>Are you sure you want to delete this note?</h3>
@@ -172,50 +175,11 @@
         <button id="confirm-delete">Yes, delete</button>
         <button id="cancel-delete">Cancel</button>
         <i class="bi bi-exclamation-triangle"></i>
-    </div>
 </div>
-
-<!-- Loading server popup -->
-<div id="loading-popup" style="display: none;">
-    <div class="loading-content">
-        <h3>Server is Starting Up</h3>
-        <svg id="spinner2" viewBox="0 0 50 50">
-            <circle class="outline" cx="25" cy="25" r="20" fill="none"></circle>
-            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-        </svg>
-    </div>
 </div>
-
-
-<!-- Change Username popup -->
-<div style="display: none;" class="change-popup"   id="change-username-popup">
-    <div id="change-username-popup-content" class="popup-content">
-        <h3>Change Username</h3>
-        <p>Enter your new Username</p>
-        <input id="new-username" type="text" placeholder="New Username" required>
-        <p>Confirm your Email:</p>
-        <input id="email" type="email" placeholder="Email" required>
-        <p>Confirm your Password:</p>
-        <input id="password" type="password" placeholder="Password" required>
-        <button id="confirm-username">Confirm</button>
-        <button id="cancel-username">Cancel</button>
-    </div>
+<!-- Toaster popups -->
+<div class="toast-container position-fixed">
 </div>
-
-<!-- Change Password popup -->
-<div class="change-popup" style="display: none;" id="change-password-popup">
-    <div id="change-password-popup-content" class="popup-content">
-        <h3>Change Password for:</h3>
-        <p id="your-email" style="font-weight: bold;"></p>
-        <p>Enter your Old Password</p>
-        <input id="old-password" type="password" placeholder="Old Password" required>
-        <p>Enter your New Password</p>
-        <input id="new-password" type="password" placeholder="New Password" required>
-        <button id="confirm-password">Confirm</button>
-        <button id="cancel-password">Cancel</button>
-    </div>
-</div>
-
 
 <!-- Popup login  -->
 <div id="popup-box">
@@ -225,44 +189,9 @@
         <i class="bi bi-exclamation-triangle"></i>
     </div>
 </div>
-<script>
-    document.getElementById('new-password').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-password').click();
-        }
-
-    document.getElementById('old-password').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-password').click();
-        }
-    });
-    if (e.key === 'Enter') {
-        document.getElementById('confirm-password').click();
-    }
-    });
-
-    document.getElementById('new-username').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
-
-    document.getElementById('email').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
-
-    document.getElementById('password').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
-
-</script>
 
 <script src="../js/authpopup.js" type="module"></script>
-<script src="../js/newnote.js" type="module"></script>
-<script src="../js/sidepanel.js" type="module"></script>
+<script src="../js/editnote.js"  type="module"></script>
+<script src="../js/sidepanel.js"  type="module"></script>
 </body>
 </html>

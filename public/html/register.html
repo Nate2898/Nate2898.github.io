@@ -52,6 +52,14 @@
     <!-- Toaster popups -->
 <div class="toast-container position-fixed">
 </div>
+
+<!-- Register button Enter -->
+<script>
+    document.getElementById("registerForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        register();
+    }); 
+</script>
         
 <script src="../js/user.js"></script>
 <!-- <script src="../js/sidepanel.js"></script> -->

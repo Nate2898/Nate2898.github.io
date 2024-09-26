@@ -58,7 +58,8 @@ if(loginForm){ //used to check if the login form exists
     console.log(email + password)//ensures the email and password values are being captured
     //tries to send a post request to the server with the body json data
     try{
-    const response = await fetch( 'https://nate2898-github-io.onrender.com/api/auth/login' || 'http://localhost:3000/api/auth/login',{
+    const response = await fetch( 'https://nate2898-github-io.onrender.com/api/auth/login',{
+    //    const response = await fetch('http://localhost:3000/api/auth/login',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -70,12 +71,17 @@ if(loginForm){ //used to check if the login form exists
         
 
         if(response.ok){
-            showToast(result.message, '28a745')
+            // console.log("Username being set:", result.username);  // Debug log
             localStorage.setItem('token', result.token);
             localStorage.setItem('username', result.username);
+            localStorage.setItem('email', result.email);
+            // console.log("email being set:", result.email);  // Debug log
+            showToast('User Logged In Successfully', '28a745')
             setTimeout(() => {
                 window.location.href = '../index.html';
             }, 500);
+        
+        
         
 
         }else{

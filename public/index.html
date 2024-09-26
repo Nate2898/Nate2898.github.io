@@ -65,6 +65,7 @@
             </div>
             <!-- notes appear list  -->
             <div>
+                
                 <!-- Popup login  -->
                 <div id="popup-box">
                     <div class="popup-login">
@@ -101,7 +102,7 @@
                         <button id="font1" type="button">Font 1</button>
                         <button id="font2" type="button">Font 2</button>
                     </div>
-                    
+                    <div id="user-settings" style="display: none;">
                     <div class="user">
                         <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
                     </div>
@@ -119,10 +120,22 @@
                             </a>
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+<!-- Loading server popup -->
+<div id="loading-popup" style="display: none;">
+    <div class="loading-content">
+        <h3>Server is Starting Up</h3>
+        <svg id="spinner2" viewBox="0 0 50 50">
+            <circle class="outline" cx="25" cy="25" r="20" fill="none"></circle>
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    </div>
+</div>
 
 <!-- Popup delete  -->
 <div id="delete-popup-box" style="display: none;">
@@ -138,12 +151,39 @@
 <div class="toast-container position-fixed">
 </div>
 
+<div class="change-popup" id="change-username-popup">
+    <div id="change-username-popup-content" class="popup-content">
+        <h3>Change Username</h3>
+        <p>Enter your new Username</p>
+        <input id="new-username" type="text" placeholder="New Username" required>
+        <p>Confirm your Email:</p>
+        <input id="email" type="email" placeholder="Email" required>
+        <p>Confirm your Password:</p>
+        <input id="password" type="password" placeholder="Password" required>
+        <button id="confirm-username">Confirm</button>
+        <button id="cancel-username">Cancel</button>
+    </div>
+</div>
+
+<div class="change-popup" style="display: none;" id="change-password-popup">
+    <div id="change-password-popup-content" class="popup-content">
+        <h3>Change Password for:</h3>
+        <p id="your-email" style="font-weight: bold;"></p>
+        <p>Enter your Old Password</p>
+        <input id="old-password" type="password" placeholder="Old Password" required>
+        <p>Enter your New Password</p>
+        <input id="new-password" type="password" placeholder="New Password" required>
+        <button id="confirm-password">Confirm</button>
+        <button id="cancel-password">Cancel</button>
+    </div>
+</div>
+
 <!-- Welcome message -->
 <div class="welcome-box">
     <div class="welcome-message">
         <h3>Welcome to my Notepad website!</h3>
             <div class="message">
-                 <p>Here, you can easily create and access your notes. Simply sign up or login to get started. Once you're logged in, you can create new notes by clicking on the "New Note" button. Your notes will be displayed in the "Notes" section on the right, where you can easily sort them by date. To access a specific note, simply click on its name. If you ever need to delete a note, just click on the trash icon next to it. </p><p>Enjoy using Notepad Online!</p>
+                 <p>Here, you can easily create and access your notes. Simply sign up or login to get started. Once you're logged in, you can create new notes by clicking on the "New Note" button. Your notes will be displayed in the "Notes" section on the right, where you can easily sort them by date. To access a specific note, simply click on its name. If you ever need to delete a note, just click on the trash icon next to it. </p><p style="text-align: center;">Enjoy using Notepad Online!</p>
          <!-- <input class="title-input" type="text" placeholder="Title">       -->
             </div>
             <div class="message">  
@@ -154,6 +194,42 @@
             </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('new-password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-password').click();
+        }
+
+    document.getElementById('old-password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-password').click();
+        }
+    });
+    if (e.key === 'Enter') {
+        document.getElementById('confirm-password').click();
+    }
+    });
+
+    document.getElementById('new-username').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+    document.getElementById('email').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+    document.getElementById('password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+</script>
 
 <script src="./js/authpopup.js" type="module"></script>
 <script src="./js/index.js" type="module"></script>

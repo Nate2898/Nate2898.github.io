@@ -328,6 +328,7 @@ a:hover #trash{
     border-bottom:rgb(0, 47, 255) 5px solid; 
     border-top:rgb(0, 47, 255) 5px solid; 
 }
+
 .content {
     /* display: flex; */
     justify-content: center;
@@ -493,3 +494,4 @@ a {
       stroke-dashoffset: -124;
     }
   }
+

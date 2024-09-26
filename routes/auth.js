@@ -58,11 +58,12 @@ router.post('/login', async (req,res)=>{
             return res.status(400).json({success: false, message: 'Invalid Password' })
         }
         //otherwise it creates a payload with the user id used to create a token
-        const payload = { user: { id: user.id, username: user.username } };
+        const payload = { user: { id: user.id, username: user.username, email: user.email } };
 
-        jwt.sign(payload, JWT_SECRET, { expiresIn: "24hr" }, (err, token) => {
+        jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" }, (err, token) => {
             if (err) throw err;
-            res.json({ token, username: user.username });
+            console.log('User logged in:', user.email);
+            res.json({ token, username: user.username, email: user.email });
         })
     } catch (err) {
         res.status(500).json({
@@ -70,5 +71,34 @@ router.post('/login', async (req,res)=>{
            });
     }
 })
+
+router.post('/change-password', async (req, res) => {
+    const { email, oldPW, newPW } = req.body;
+    try {
+        console.log('Finding user by email:', email);
+        let user = await User.findOne({ email });
+        
+        if (!user) {
+            console.log('User not found');
+            return res.status(400).json({ success: false, message: 'User not found' });
+        }
+
+        console.log('Comparing passwords');
+        const isMatch = await bcrypt.compare(oldPW, user.password);
+        
+        if (!isMatch) {
+            console.log('Invalid Password');
+            return res.status(400).json({ success: false, message: 'Invalid Password' });
+        }
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(newPW, salt);
+        await user.save();
+        
+        res.json({ message: 'Password Changed Successfully' });
+    } catch (err) {
+        console.error('Error:', err);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
 
 module.exports = router

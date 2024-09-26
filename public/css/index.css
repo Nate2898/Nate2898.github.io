@@ -138,7 +138,7 @@ a {
     width: 50vw;
     border: #000000 1px solid;
 }
-@media(max-width: 650px){
+@media(max-width: 750px){
     .welcome-message{
         width: 100vw;
     }
