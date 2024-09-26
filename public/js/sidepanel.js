@@ -81,9 +81,13 @@ changePassword.addEventListener('click', () => {
     }
 });
 
-
+document.getElementById('cancel-password').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default button behavior
+    changePwPopup.style.display = "none"; // Hide the popup
+});
 
 confirmPW.addEventListener('click', async function() {
+    event.preventDefault(); 
     const oldPW = document.getElementById('old-password').value;
     const newPW = document.getElementById('new-password').value;
     const email = emailStorage;

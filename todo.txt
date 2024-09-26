@@ -1,0 +1,1 @@
+the change password route isnt working it just reloads the page

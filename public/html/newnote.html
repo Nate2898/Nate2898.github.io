@@ -208,11 +208,19 @@
         <h3>Change Password for:</h3>
         <p id="your-email" style="font-weight: bold;"></p>
         <p>Enter your Old Password</p>
-        <input id="old-password" type="password" placeholder="Old Password" required>
-        <p>Enter your New Password</p>
-        <input id="new-password" type="password" placeholder="New Password" required>
-        <button id="confirm-password">Confirm</button>
-        <button id="cancel-password">Cancel</button>
+        <form id="change-form">
+            <div class="password-container">
+                <input id="old-password" type="password" placeholder="Old Password" required>
+                <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('old-password', this)"></i>
+            </div>
+            <p>Enter your New Password</p>
+            <div class="password-container">
+                <input id="new-password" type="password" placeholder="New Password" required>
+                <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('new-password', this)"></i>
+            </div>
+            <button id="confirm-password">Confirm</button>
+            <button id="cancel-password">Cancel</button>
+        </form>
     </div>
 </div>
 
@@ -227,6 +235,18 @@
     </div>
 </div>
 <script>
+    function togglePassword(inputId, icon) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+        } else {
+            input.type = "password";
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+        }
+    }
     document.getElementById('new-password').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             document.getElementById('confirm-password').click();
@@ -262,7 +282,7 @@
 
 </script>
 
-<script src="../js/authpopup.js" type="module"></script>
+<!-- <script src="../js/authpopup.js" type="module"></script> -->
 <script src="../js/newnote.js" type="module"></script>
 <script src="../js/sidepanel.js" type="module"></script>
 </body>
