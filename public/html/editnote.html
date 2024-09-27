@@ -286,12 +286,12 @@
     });
 
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    document.querySelectorAll('a').forEach(link => {
-      if (!isLocal) {
+    if (!isLocal) {
         // Remove .html for GitHub Pages
-        link.href = link.href.replace('.html', '');
-      }
-    });
+        const currentUrl = window.location.href;
+        const newUrl = currentUrl.replace('.html', '');
+        window.history.replaceState(null, '', newUrl);
+    }
 
 </script>
 
