@@ -255,12 +255,12 @@ function logout() {
     logoutBar.addEventListener('click', () => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
-        window.location.href = '/public/index';
+        window.location.href = '/public/index.html';
     });
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
-        window.location.href = '/public/index';
+        window.location.href = '/public/index.html';
     });
 }
 

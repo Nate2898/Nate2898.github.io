@@ -36,7 +36,7 @@ if(registerForm){ //used to check if the register form exists
         showToast('User Registered Successfully', '28a745') //shows the toast message
         localStorage.setItem('token', result.token); //store the token to the local storage
         setTimeout(() => {
-            window.location.href = '../index'; //redirects the user to the home page
+            window.location.href = '../index.html'; //redirects the user to the home page
         }, 500);
     //if the status code is not ok the user was not registered successfully
     }else{
@@ -93,7 +93,7 @@ if(loginForm){ //used to check if the login form exists
             // console.log("email being set:", result.email);  // Debug log
             showToast('User Logged In Successfully', '28a745')
             setTimeout(() => {
-                window.location.href = '../index';
+                window.location.href = '../index.html';
             }, 500);
         
         

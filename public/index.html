@@ -23,7 +23,7 @@
         <div class="topbar">
             <a id="active" class="topbar-middle" href="">Notepad Online</a>
             <div>
-                <a class="topbar-right" id="bar-login" href="./html/login">Login/ SignUp</a>
+                <a class="topbar-right" id="bar-login" href="./html/login.html">Login/ SignUp</a>
                 <a class="topbar-right" id="logout" href="#logout" style="display: none;">LogOut</a>
             </div>
         </div>     <!-- Mobile menu for side panel -->
@@ -38,7 +38,7 @@
     <div class="note-tab" id="note-tab">
         <h1>Notes</h1>
         <div class="note-tab-buttons">
-            <a title="New Note" href="./html/newnote" id="newnote-side">
+            <a title="New Note" href="./html/newnote.html" id="newnote-side">
                 <i class="bi bi-plus-circle" aria-hidden="true"></i>
                 <i class="bi bi-plus-circle-fill" aria-hidden="true" ></i>
             </a>
@@ -195,7 +195,7 @@
          <!-- <input class="title-input" type="text" placeholder="Title">       -->
             </div>
             <div class="message">  
-                 <a title="New Note" href="./html/newnote" id="newnote-main"><p>New Note</p>
+                 <a title="New Note" href="./html/newnote.html" id="newnote-main"><p>New Note</p>
                 <i class="bi bi-plus-circle" aria-hidden="true"></i>
                 <i class="bi bi-plus-circle-fill" aria-hidden="true"></i>
                  </a>
@@ -249,8 +249,19 @@
         }
     });
 
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    document.querySelectorAll('a').forEach(link => {
+      if (!isLocal) {
+        // Remove .html for GitHub Pages
+        link.href = link.href.replace('.html', '');
+      }
+    });
+
 </script>
 
+
+
+  
 <!-- <script src="./js/authpopup.js" type="module"></script> -->
 <script src="./js/index.js" type="module"></script>
 <script src="./js/sidepanel.js" type="module"></script>

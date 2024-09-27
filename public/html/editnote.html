@@ -20,9 +20,9 @@
 <body>
     <header>
         <div class="topbar">
-            <a id="active" class="topbar-middle" href="../index">Notepad Online</a>
+            <a id="active" class="topbar-middle" href="../index.html">Notepad Online</a>
             <div>
-                <a class="topbar-right" id="bar-login" href="./login">Login/ SignUp</a>
+                <a class="topbar-right" id="bar-login" href="./login.html">Login/ SignUp</a>
                 <a class="topbar-right" id="logout" href="#logout" style="display: none;">LogOut</a>
             </div>
         </div>
@@ -36,7 +36,7 @@
     <div class="note-tab" id="note-tab">
         <h1>Notes</h1>
         <div class="note-tab-buttons">
-            <a title="New Note" href="./newnote" id="newnote-side">
+            <a title="New Note" href="./newnote.html" id="newnote-side">
                 <i class="bi bi-plus-circle" aria-hidden="true"></i>
                 <i class="bi bi-plus-circle-fill" aria-hidden="true" ></i>
             </a>
@@ -283,6 +283,14 @@
         if (e.key === 'Enter') {
             document.getElementById('confirm-username').click();
         }
+    });
+
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    document.querySelectorAll('a').forEach(link => {
+      if (!isLocal) {
+        // Remove .html for GitHub Pages
+        link.href = link.href.replace('.html', '');
+      }
     });
 
 </script>

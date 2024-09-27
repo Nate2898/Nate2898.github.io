@@ -332,7 +332,7 @@ async function deleteNote(noteId) {
         //checks to see if the noteId matches the currentNoteId from the getNoteIdFromUrl function
         const currentNoteId = getNoteIdFromUrl();
         if (currentNoteId === noteId) {
-            window.location.href = '../index'; //takes the user back to the index page
+            window.location.href = '../index.html'; //takes the user back to the index page
         }
         //catches any errors and logs them to the console and shows a toast message
     } catch (error) {

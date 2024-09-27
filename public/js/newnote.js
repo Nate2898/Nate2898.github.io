@@ -47,7 +47,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
             //takes the id from the response and sets it to the newNoteId
             const newNoteId = newNote._id; 
             //loads the user to the editnote page with there newly created note
-            window.location.href = `editnote?id=${newNoteId}#new`; 
+            window.location.href = `editnote.html?id=${newNoteId}#new`; 
         
         } else {
             showToast(response.statusText, 'dc3545');
@@ -160,7 +160,7 @@ function displayNotes() {
     function noteTemplate(note) {
         return `
             <li class="note">
-                <a href="editnote?id=${note._id}" class="note-link">
+                <a href="editnote.html?id=${note._id}" class="note-link">
                     <span class="note-name">${note.title}</span>
                     <span class="note-date">${new Date(note.updatedAt).toLocaleString()}</span>
                 </a>

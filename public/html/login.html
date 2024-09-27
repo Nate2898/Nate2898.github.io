@@ -19,7 +19,7 @@
 <body>
     <header>
         <div class="topbar">
-            <a  class="topbar-middle" href="../index">Notepad Online</a>
+            <a  class="topbar-middle" href="../index.html">Notepad Online</a>
             <div>
                 <a class="topbar-right" href="">Login</a>
                 <a class="topbar-right" href="#logout" style="display: none;">LogOut</a>
@@ -43,7 +43,7 @@
                 </div>
              </div>
             <div class="buttons">
-                <a id="regbutton" class="alt" href="./register">Register?</a>
+                <a id="regbutton" class="alt" href="./register.html">Register?</a>
                 <button id="logbutton" type="submit">Login</button>
             </div>
         </form>
@@ -80,6 +80,14 @@
     document.getElementById("loginForm").addEventListener("submit", function(event){
         event.preventDefault();
         login();
+    });
+
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    document.querySelectorAll('a').forEach(link => {
+      if (!isLocal) {
+        // Remove .html for GitHub Pages
+        link.href = link.href.replace('.html', '');
+      }
     });
     
 </script>
