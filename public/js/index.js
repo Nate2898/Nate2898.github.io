@@ -91,7 +91,7 @@ function displayNotes() {
     function noteTemplate(note) {
         return `
             <li class="note">
-                <a href="html/editnote.html?id=${note._id}" class="note-link">
+                <a href="html/editnote?id=${note._id}" class="note-link">
                     <span class="note-name">${note.title}</span>
                     <span class="note-date">${new Date(note.updatedAt).toLocaleString()}</span>
                 </a>
