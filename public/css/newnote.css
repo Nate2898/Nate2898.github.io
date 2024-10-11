@@ -164,13 +164,11 @@ body {
     font-weight: 700;
     text-align: center;
 }
-#your-note {
+#your-note{
     border: #000000 2px solid;
+    justify-content: center;
     width: 84%;
     min-height: 35vw;
-    display: flex;
-    align-items: flex-start; /* Align the content at the top */
-    background-color: none;
 }
 @media (max-width: 750px) {
     #your-note {    
@@ -242,13 +240,15 @@ body {
     margin-right: 5px;
     width: 100%;
     border: #0000002a 1px solid;
+    /* box-shadow: inset #000000 0px 0px 2px 2px; */
+
 }
 
 
 .toolbar {
     background-color: #f0f0f0;
-    margin: 5px;
-    padding: 2px;
+    /* margin: 5px; */
+    /* padding: 2px; */
     display: flex;
     position: relative;
     justify-content: center;

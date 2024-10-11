@@ -12,13 +12,20 @@ if(registerForm){ //used to check if the register form exists
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     //tries to send a post request to the server with the body json data
+    if (username >= 13 || username <= 3) {
+        showToast('Username must be between 3 and 12 characters', 'dc3545')
+        registerButton.disabled = false;
+        registerButton.textContent = 'Register';
+        return;
+    }
     const loadingPopupTimeout = setTimeout(() => {
         document.getElementById('loading-popup').style.display = 'flex';
     }, 5000);
 
     
     try{
-    const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/register',{
+    // const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/register',{
+    const response = await fetch('http://localhost:3000/api/auth/register',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -34,9 +41,9 @@ if(registerForm){ //used to check if the register form exists
     if(response.ok){
         console.log("Registered Successfully") 
         showToast('User Registered Successfully', '28a745') //shows the toast message
-        localStorage.setItem('token', result.token); //store the token to the local storage
+        //store the token to the local storage
         setTimeout(() => {
-            window.location.href = '../index.html'; //redirects the user to the home page
+            window.location.href = './login.html'; //redirects the user to the home page
         }, 500);
     //if the status code is not ok the user was not registered successfully
     }else{
@@ -64,7 +71,7 @@ if(loginForm){ //used to check if the login form exists
 
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
-    console.log(email + password)//ensures the email and password values are being captured
+    // console.log(email + password)//ensures the email and password values are being captured
     //tries to send a post request to the server with the body json data
     const loadingPopupTimeout = setTimeout(() => {
         document.getElementById('loading-popup').style.display = 'flex';
@@ -80,7 +87,7 @@ if(loginForm){ //used to check if the login form exists
         body: JSON.stringify({email,password})
         })
         const result = await response.json()
-        console.log(result)
+        // console.log(result)
         clearTimeout(loadingPopupTimeout);
         document.getElementById('loading-popup').style.display = 'none';
         

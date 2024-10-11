@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelector('.your-note');
-    
     // Focus the content area when the page loads
     content.focus();
 });
@@ -30,6 +29,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     //tries to post the note to the server
     try {
         const token = localStorage.getItem('token');
+        // const response = await fetch('http://localhost:3000/api/notes', {
         const response = await fetch('https://nate2898-github-io.onrender.com/api/notes', {
             method: 'POST',
             headers: {
@@ -130,14 +130,20 @@ async function loadNotes() {
 }
 
 
+
 document.getElementById('text-style').addEventListener('click', () => {
     if (document.getElementById('style-buttons').style.display === 'block') {
         document.getElementById('style-buttons').style.display = 'none';
         document.getElementById('text-style').style.width = '100%';
+        document.getElementById('text-style').style.position = 'relative';
+        document.getElementById('text-style').style.boxShadow = 'none';
         return;
     }
     document.getElementById('style-buttons').style.display = 'block';
     document.getElementById('text-style').style.width = '10%';
+    document.getElementById('text-style').style.position = 'absolute';
+    document.getElementById('text-style').style.left = '0';
+    document.getElementById('text-style').style.boxShadow = 'inset rgb(0, 0, 0) 0px 0px 2px 2px';
 });
 
 //start of the notes becoming displayed

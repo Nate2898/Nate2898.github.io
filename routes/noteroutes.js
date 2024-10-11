@@ -29,19 +29,19 @@ router.get('/:id',auth, async (req, res, next) => {
             return next(error);
         }
         const note = await Note.findById(req.params.id);
-        //if the note user is not the same as the request user id returns an error
-        if(note.user.toString() !== req.user.id) {
-            const error = new Error('Unauthorized');
-            error.status = 401;
-            return next(error);
-        }
         //if the note is not found returns an error
         if (!note) { 
             const error = new Error(`The note with the id ${req.params.id} was not found`);
             error.status = 404;
             return next(error);
         }
-        res.status(200).send(note);
+        //if the note user is not the same as the request user id returns an error
+        if(note.user.toString() !== req.user.id) {
+            const error = new Error('Unauthorized');
+            error.status = 401;
+            return next(error);
+        }
+        return res.status(200).send(note);
     } catch (error) {
         error.status = 500;
         next(error);
@@ -66,7 +66,13 @@ router.post('/', auth,async (req, res, next) => {
         }
         res.send(note);
     } catch (error) {
-        error.status = 500;
+        if (error.code === 11000) { 
+            const error = new Error('Duplicate note detected. Please avoid spamming the save button.');
+            error.status = 409;
+            return next(error);
+        } else {
+            error.status = 500;
+        }
         next(error);
     }
 });

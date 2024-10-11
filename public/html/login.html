@@ -43,8 +43,8 @@
                 </div>
              </div>
             <div class="buttons">
-                <a id="regbutton" class="alt" href="./register.html">Register?</a>
                 <button id="logbutton" type="submit">Login</button>
+                <a id="regbutton" class="alt" href="./register.html">Register?</a>
             </div>
         </form>
     </div>
@@ -77,10 +77,7 @@
             icon.classList.add("bi-eye-slash");
         }
     }
-    document.getElementById("loginForm").addEventListener("submit", function(event){
-        event.preventDefault();
-        login();
-    });
+    
 
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     if (!isLocal) {

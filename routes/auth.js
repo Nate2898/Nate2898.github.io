@@ -11,6 +11,9 @@ router.post('/register', async (req,res)=>{
     //gets the parameters from the request body
     const {username, email, password} = req.body
     try {
+        if(username.length > 13 || username.length < 3){
+            return res.status(400).json({success: false, message: 'Username must be between 3 and 12 characters' })
+        }
         //checks if the user already exists with the email
         let user = await User.findOne({email})
         if(user){

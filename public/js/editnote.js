@@ -19,10 +19,13 @@ document.getElementById('text-style').addEventListener('click', () => {
     if (document.getElementById('style-buttons').style.display === 'block') {
         document.getElementById('style-buttons').style.display = 'none';
         document.getElementById('text-style').style.width = '100%';
+        document.getElementById('text-style').style.position = 'relative';
         return;
     }
     document.getElementById('style-buttons').style.display = 'block';
     document.getElementById('text-style').style.width = '10%';
+    document.getElementById('text-style').style.position = 'absolute';
+    document.getElementById('text-style').style.left = '0';
 });
 
 
@@ -74,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const token = localStorage.getItem('token');
         // console.log(token);
         const response = await fetch(`https://nate2898-github-io.onrender.com/api/notes/${noteId}`,{
-        // const response = await fetch(`http://localhost:3000/api/notes/${noteId}`{  
+        // const response = await fetch(`http://localhost:3000/api/notes/${noteId}`,{  
             method: 'GET',
             headers: {
                 'x-auth-token': `${token}` //checks the token from the local storage, then the server checks if it is valid
@@ -83,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // console.log(response);
         const note = await response.json();
         if(response.status != 200) {
-            console.error('Invalid ID');
+            // console.error('Invalid ID');
             showToast(note.message, 'dc3545');
             return;
         }

@@ -33,7 +33,7 @@
             <h2>Register</h2>
             <div class="inputs">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="register-username" placeholder="Your Username" required autocomplete="username">
+                <input type="text" id="username" name="register-username" placeholder="Your Username" maxlength="12" required autocomplete="username">
             </div>
             <div class="inputs">
                 <label for="email">Email:</label>
@@ -47,8 +47,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <a id="logbutton" class="alt" href="./login.html">Login?</a>
                 <button id="regbutton" type="submit">Register</button>
+                <a id="logbutton" class="alt" href="./login.html">Login?</a>
             </div>
         </form>
     </div>
@@ -81,10 +81,7 @@
             icon.classList.add("bi-eye-slash");
         }
     }
-    document.getElementById("registerForm").addEventListener("submit", function(event){
-        event.preventDefault();
-        register();
-    }); 
+
 
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     if (!isLocal) {
