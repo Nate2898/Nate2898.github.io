@@ -104,4 +104,36 @@ router.post('/change-password', async (req, res) => {
     }
 });
 
+router.post('/change-username', async (req, res) => {
+    const { email, password, newUsername } = req.body;
+    try {
+        if (newUsername.length > 20 || newUsername.length < 3) {
+            return res.status(400).json({ success: false, message: 'Username must be between 3 and 20 characters' });
+        }
+        console.log('Finding user by email:', email);
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            console.log('User not found');
+            return res.status(400).json({ success: false, message: 'User not found' });
+        }
+
+        console.log('Comparing passwords');
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            console.log('Invalid Password');
+            return res.status(400).json({ success: false, message: 'Invalid Password' });
+        }
+
+        user.username = newUsername;
+        await user.save();
+
+        res.json({ message: 'Username Changed Successfully' });
+    } catch (err) {
+        console.error('Error:', err);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
 module.exports = router

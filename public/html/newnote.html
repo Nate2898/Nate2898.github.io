@@ -92,19 +92,30 @@
                         <i class="bi bi-gear" aria-hidden="true"></i>
                         <i class="bi bi-gear-fill" aria-hidden="true" ></i>
                     </a>
-                <div class="settings-content">
+                <div class="settings-content" style="display: none;">
                     <p>Change Theme:</p>
                     <div class="center">
                         <button id="light" type="button">Light</button>
                         <button id="dark" type="button">Dark</button>
                     </div>
                 </div>
-                <div class="settings-content">
+                <div class="settings-content" style="display: none;">
                     <p>Change Font:</p>
                     <div class="center">
                         <button id="font1" type="button">Font 1</button>
                         <button id="font2" type="button">Font 2</button>
                     </div>
+                </div>
+                <div class="settings-content" id="login-reminder">
+                    <p class="text-style">Login to change settings</p>
+                    <div class="center">
+                        <a title="Login" href="./html/login.html" id="login-button"><p>Login</p>
+                            <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+                            <i class="bi bi-box-arrow-in-right-fill" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="settings-content"> 
                     
                    
                     <div id="user-settings" style="display: none;">
@@ -222,21 +233,24 @@
 </div>
 
 
+
 <!-- Change Username popup -->
-<div style="display: none;" class="change-popup"   id="change-username-popup">
+<div class="change-popup" id="change-username-popup">
     <div id="change-username-popup-content" class="popup-content">
         <h3>Change Username</h3>
         <p>Enter your new Username</p>
-        <input id="new-username" type="text" placeholder="New Username" required>
-        <p>Confirm your Email:</p>
-        <input id="email" type="email" placeholder="Email" required>
+        <input id="new-username" type="text" placeholder="New Username" required minlength="3" maxlength="20">
+        <!-- <p>Confirm your Email:</p>
+        <input id="email" type="email" placeholder="Email" required> -->
         <p>Confirm your Password:</p>
-        <input id="password" type="password" placeholder="Password" required>
+        <div class="password-container">
+            <input id="password" type="password" placeholder="Password" required>
+            <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('password', this)"></i>
+        </div>
         <button id="confirm-username">Confirm</button>
         <button id="cancel-username">Cancel</button>
     </div>
 </div>
-
 <!-- Change Password popup -->
 <div class="change-popup" style="display: none;" id="change-password-popup">
     <div id="change-password-popup-content" class="popup-content">
@@ -303,11 +317,6 @@
         }
     });
 
-    document.getElementById('email').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            document.getElementById('confirm-username').click();
-        }
-    });
 
     document.getElementById('password').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
@@ -321,6 +330,21 @@
         const newUrl = currentUrl.replace('.html', '');
         window.history.replaceState(null, '', newUrl);
     }
+    document.getElementById('old-password').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+    
+    document.getElementById('new-password').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+    document.getElementById('new-username').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+  
+    document.getElementById('password').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+    
 </script>
 
 <!-- <script src="../js/authpopup.js" type="module"></script> -->

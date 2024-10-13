@@ -84,6 +84,13 @@ p{
     margin-bottom: 0;
     margin-top: 0;
 }
+.text-style{
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px;
+}
 .inline{
     justify-content: space-between;
     display: flex;
@@ -242,6 +249,26 @@ a:hover #trash{
 #newnote-side:hover .bi-plus-circle-fill ,#sharenote:hover .bi-share-fill ,#settings-button:hover .bi-gear-fill, #settings-button2:hover .bi-gear-fill, #logout-button:hover .bi-x-square-fill, #reloadnotes:hover .bi-arrow-clockwise { 
     display: inline;
 }
+#login-button{
+    font-size: 50px;
+    color: white;
+    padding: 25px 50px 0px 50px;
+    background-color: rgb(0, 47, 255, 0.5);
+    border-radius: 10px;
+    border: #000000 1px solid;
+}
+#login-button p{
+    font-family: kanit, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    transform: translate(-20%,-75%);
+    position: absolute;
+}
+#newnote-main:hover, #logout:hover, #login-button:hover{
+    transition: background-color 0.1s ease-in-out;
+    background-color: rgb(0, 47, 255, 0.7);
+}
+
 #logout-button{
     font-size: 50px;
     color: white;
@@ -448,6 +475,7 @@ a:hover #trash{
 .settings-content button:hover{
     background-color: #f1f1f1;
     transform: scale(1.01);
+    transition: background-color 0.1s ease-in-out;
 }
 .center{
     display: flex;
@@ -530,6 +558,7 @@ a {
 #popup-delete button:hover{
     background-color: #f1f1f1;
     transform: scale(1.05);
+    transition: background-color 0.1s ease-in-out;
 }
 .bi-exclamation-triangle{
     font-size: 100px;
@@ -627,7 +656,7 @@ a {
     font-weight: 700;
     border-radius: 10px;
     cursor: pointer;
-    margin: 1px;
+    margin: 2px;
     background-color: #fbfbfb;
     border: 1px solid #000000;
     transition: transform 0.3s ease;
@@ -635,6 +664,7 @@ a {
 .popup-content button:hover{
     background-color: #f1f1f1;
     transform: scale(1.05);
+    transition: background-color 0.1s ease-in-out;
 }
 
 .popup-content input{
@@ -642,7 +672,6 @@ a {
     font-size: 15px;
     font-weight: 700;
     border-radius: 10px;
-    cursor: pointer;
     margin: 1px;
     background-color: #fbfbfb;
     border: 1px solid #000000;

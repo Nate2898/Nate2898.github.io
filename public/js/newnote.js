@@ -13,7 +13,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     const titleInput = document.getElementById('title-input');
     const noteInput = document.getElementById('your-note');
     const title = titleInput.value;
-    const note = noteInput.value;
+    const note = noteInput.innerText;
 
     //checks if title is empty if so it shows custom validation message
     if (title.trim().length < 5) {
@@ -22,8 +22,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
         return;
     }
     if (note.trim().length < 1) {
-        noteInput.setCustomValidity('A Note is required.');
-        noteInput.reportValidity();
+        showToast('A Note is required.', 'dc3545');     
         return;
     }
     //tries to post the note to the server

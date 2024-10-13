@@ -111,11 +111,51 @@ confirmPW.addEventListener('click', async function() {
         if (response.ok) {
             showToast(result.message, '28a745');
             changePwPopup.style.display = "none";
+            document.getElementById('old-password').value = '';
+            document.getElementById('new-password').value = '';
         } else {
             showToast(result.message,'dc3545');
         }
     } catch (error) {
         // console.error('Error changing password:', error);
+        showToast(`Server Unreachable: ${error}`, 'dc3545');
+    }
+});
+
+const confirmNewUsername = document.getElementById('confirm-username');
+
+confirmNewUsername.addEventListener('click', async function() {
+    const newUsername = document.getElementById('new-username').value;
+    const password = document.getElementById('password').value;
+    const email = localStorage.getItem('email');
+    if (newUsername === "" || password === "" ) {
+        showToast('Please fill in all fields', 'dc3545');
+        return;
+    }
+    try {
+        // const response = await fetch('http://localhost:3000/api/auth/change-username', {
+        const response = await fetch('https://nate2898-github-io.onrender.com/api/auth/change-username', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': localStorage.getItem('token')
+            },
+            body: JSON.stringify({ newUsername, password, email })
+        });
+        const result = await response.json();
+        if (response.ok) {
+            showToast(result.message, '28a745');
+            changeUnPopup.style.display = "none";
+            localStorage.setItem('username', newUsername);
+            document.getElementById('new-username').value = '';
+            document.getElementById('password').value = '';
+            // document.getElementById('email').value = '';
+            userExport();
+        } else {
+            showToast(result.message, 'dc3545');
+        }
+    } catch (error) {
+        // console.error('Error changing username:', error);
         showToast(`Server Unreachable: ${error}`, 'dc3545');
     }
 });
@@ -235,6 +275,7 @@ const popup = document.getElementById('popup-box');
 const logoutBar = document.getElementById('logout');
 const barLogin = document.getElementById('bar-login');
 const logoutButton = document.getElementById('logout-button');
+const loginReminder = document.getElementById('login-reminder');
 
 function checkToken() {
     if (!token) {
@@ -248,6 +289,7 @@ function loggedIn() {
     if (token) {
         logoutBar.style.display = 'block';
         barLogin.style.display = 'none';
+        loginReminder.style.display = 'none';
     }
 }
 

@@ -57,6 +57,8 @@ router.post('/', auth,async (req, res, next) => {
             note: req.body.note,
             user: req.user.id
         });
+        console.log('user id',req.user.id)
+        
         note = await note.save();
         //if the note is not created returns an error
         if (!note) {
@@ -66,13 +68,7 @@ router.post('/', auth,async (req, res, next) => {
         }
         res.send(note);
     } catch (error) {
-        if (error.code === 11000) { 
-            const error = new Error('Duplicate note detected. Please avoid spamming the save button.');
-            error.status = 409;
-            return next(error);
-        } else {
-            error.status = 500;
-        }
+        error.status = 500;
         next(error);
     }
 });

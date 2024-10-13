@@ -58,6 +58,7 @@ body {
    position: relative;  
    /* margin-left: -230px;  */
    background-color:  rgba(0, 47, 255);
+   transition: background-color 0.1s ease-in-out;
 }
 @media (max-width: 650px) {
     .topbar-middle {
@@ -79,7 +80,8 @@ body {
 
 .topbar a:hover {
     background-color: rgba(0, 47, 255, 0.5);
-    
+    transition: background-color 0.1s ease-in-out;
+
 }
 .fadee{
    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 162, 232) 79%);
@@ -107,6 +109,7 @@ body {
     border-radius: 10px;
     border: #000000 1px solid;
 }
+
 
 /* Notepad Input */
 .welcome-box{
