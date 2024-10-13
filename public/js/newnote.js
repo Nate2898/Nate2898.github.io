@@ -14,6 +14,8 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     const noteInput = document.getElementById('your-note');
     const title = titleInput.value;
     const note = noteInput.innerText;
+    const saveButton = document.getElementById('save-button');
+    
 
     //checks if title is empty if so it shows custom validation message
     if (title.trim().length < 5) {
@@ -25,6 +27,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
         showToast('A Note is required.', 'dc3545');     
         return;
     }
+    saveButton.disabled = true;
     //tries to post the note to the server
     try {
         const token = localStorage.getItem('token');
@@ -54,6 +57,8 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     } catch (error) {
         console.error('Error saving note:', error);
         showToast(`Server Unreachable: ${error}`, 'dc3545');
+    } finally {
+        saveButton.disabled = false;
     }
 });
 

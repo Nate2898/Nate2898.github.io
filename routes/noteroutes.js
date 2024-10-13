@@ -47,7 +47,6 @@ router.get('/:id',auth, async (req, res, next) => {
         next(error);
     }
 });
-
 //create a new note
 router.post('/', auth,async (req, res, next) => {
     try {
@@ -68,13 +67,7 @@ router.post('/', auth,async (req, res, next) => {
         }
         res.send(note);
     } catch (error) {
-        if (error.code === 11000) { 
-            const error = new Error('Duplicate note detected. Please avoid spamming the save button.');
-            error.status = 409;
-            return next(error);
-        } else {
-            error.status = 500;
-        }
+        error.status = 500;
         next(error);
     }
 });
