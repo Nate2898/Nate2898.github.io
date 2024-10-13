@@ -68,7 +68,13 @@ router.post('/', auth,async (req, res, next) => {
         }
         res.send(note);
     } catch (error) {
-        error.status = 500;
+        if (error.code === 11000) { 
+            const error = new Error('Duplicate note detected. Please avoid spamming the save button.');
+            error.status = 409;
+            return next(error);
+        } else {
+            error.status = 500;
+        }
         next(error);
     }
 });
