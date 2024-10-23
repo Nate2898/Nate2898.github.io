@@ -14,7 +14,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     const noteInput = document.getElementById('your-note');
     const title = titleInput.value;
     const note = noteInput.innerText;
-    const saveButton = document.getElementById('save-button');
+    const saveButton = document.getElementById('save-note');
     
 
     //checks if title is empty if so it shows custom validation message
