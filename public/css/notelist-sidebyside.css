@@ -249,14 +249,60 @@ a:hover #trash{
 #newnote-side:hover .bi-plus-circle-fill ,#sharenote:hover .bi-share-fill ,#settings-button:hover .bi-gear-fill, #settings-button2:hover .bi-gear-fill, #logout-button:hover .bi-x-square-fill, #reloadnotes:hover .bi-arrow-clockwise { 
     display: inline;
 }
-#login-button{
+#login-button {
     font-size: 50px;
     color: white;
     padding: 25px 50px 0px 50px;
-    background-color: rgb(0, 47, 255, 0.5);
+    background: linear-gradient(
+        to right,
+        rgb(0, 47, 255, 0.5),
+        rgb(0, 220, 254),
+        rgb(0, 47, 255, 0.5)
+    );
+    background-size: 200% 100%;
     border-radius: 10px;
     border: #000000 1px solid;
+    animation: gradientFlow 2s ease infinite;
+    box-shadow: black 1px 1px 10px;
 }
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+#bar-login {
+    background: linear-gradient(
+        to left,
+        #ffffff 0%,
+        #91ecf6 50%,
+        #ffffff 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textFlow 2s linear infinite;
+    transition: background-color 0.4s ease;
+}
+
+#bar-login:hover {
+    background-clip: border-box;
+    color: white;
+    background: rgb(0, 47, 255, 0.7);
+    animation: none;
+    transition: background-color 0.4s ease;
+}
+
+@keyframes textFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
 #login-button p{
     font-family: kanit, sans-serif;
     font-size: 30px;
@@ -295,7 +341,7 @@ a:hover #trash{
     /* overflow: hidden; */
     justify-content: right;
     /* margin-top: 20px; */
-    background-color: #00dcfe;  
+    background-color: rgb(0, 220, 254);  
     height: 100%;
     position: absolute;
     right: 0;
@@ -572,10 +618,9 @@ a {
 }
 @media (max-width: 750px) {
     .toast-container{
-        top: 50px;
+        top: 100px;
         right:  0px;
-        z-index: 100;
-        padding: 0px;
+        padding: 1px;
     }
 }
 .toast-header{
@@ -725,7 +770,7 @@ a {
     position: absolute;
     top: 50%; 
     left: 50%;
-    transform: translate(-60%, -50%); 
+    transform: translate(-50%, -50%); 
     /* background: #ff0000; */
     border-radius: 10px;
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
@@ -812,5 +857,34 @@ a {
       stroke-dasharray: 90, 150;
       stroke-dashoffset: -124;
     }
+  }
+
+
+/* END server loading spinner */
+
+.fadee {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 162, 232) 79%);
+  }
+  
+  .fadee::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(0, 89, 255) 79%);
+    opacity: 0;
+    animation: fadeOpacity 8s ease-in-out infinite;
+  }
+  
+  @keyframes fadeOpacity {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
   }
 

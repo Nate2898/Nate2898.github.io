@@ -128,7 +128,7 @@ header {
   color: #fcfcfc;
   text-decoration: none;
   transition: all 0.3s ease;
-  margin-top: -10px;;
+  margin-top: -10px;
   animation: sizeChange 1s infinite;
 }
 
@@ -158,9 +158,9 @@ header {
 .wrapper img, .wrapper li {
   max-width: 400px;
   float:right;
-  margin-top:25px;
+  margin-top:-25px;
   border-radius: 20px;
-  margin-right: 10%;
+  margin-right: 4%;
   margin-bottom: 0;
   text-align: center;
   transition: transform 0.3s ease;
@@ -172,6 +172,9 @@ header {
       max-width: 100%;
       float:none;
       margin-right: 0%;
+      margin-top: 0px;
+      padding: 0px;
+
     }
   }
   @media (max-width:700px) {
@@ -197,9 +200,10 @@ h1 {
 h2 {
 	text-align: center;
 	font-family: kalam,sans-serif;
-	padding: 40px;
+	padding: 0px;
 	font-size: 35px;
   font-weight: bold;
+  margin-bottom: 0px;
 }
 h3, h3 a{
   text-align: center;
@@ -218,7 +222,7 @@ h4{
 }
 p{
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 130%;
   text-align: center;
   padding-left: 5%;
   padding-right: 5%;
@@ -226,10 +230,10 @@ p{
 }
 .wrapperleft li{
   font-family: sans-serif;
-  font-size: 20;
+  font-size: 130%;
   text-align: center;
   padding-top: 8px;
-  margin-right: 20%;
+  /* margin-right: 20%; */
 }
 li{
   font-family: sans-serif;
@@ -309,7 +313,7 @@ li{
 .wrappersmall p {
   font-family: sans-serif;
   font-size: 25px;
-  padding-top: 5%;
+  padding-top: 0%;
 }
 @media (max-width:1000px) {
   .wrappersmall {
