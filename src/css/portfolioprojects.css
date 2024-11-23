@@ -118,7 +118,10 @@ nav {
   background-color: lightgray;
   border: 5px solid rgb(18, 179, 248);
   border-bottom: 8px solid rgb(19, 157, 216);
+  position: relative;
 }
+
+
 .wrapper img {
   max-width: 400px;
   float:right;
@@ -128,7 +131,7 @@ nav {
   transition: transform 0.3s ease;
   border: 2px solid rgb(19, 157, 216);
   }
-  @media (max-width:700px) {
+  @media (max-width:850px) {
     .wrapper img{
       max-width: 100%;
       float:none;
@@ -136,7 +139,7 @@ nav {
       margin-left: 0;
     }
   }
-  @media (max-width:700px) {
+  @media (max-width:880px) {
     .wrapper {
       width: 100%;
     }
@@ -232,16 +235,16 @@ p{
   /* border-bottom: 8px solid rgb(19, 157, 216); */
   position: relative;
 }
-
-.wrapperleft::before {
+#border-wrap::before {
   content: '';
   position: absolute;
+  padding-bottom: 10px;
+  border-radius: 20px;
   top: -5px;
   left: -5px;
   right: -5px;
-  bottom: -8px;
-  border: 3px solid #001aff;
-  border-radius: 25px;
+  bottom: -5px;
+  border: 6px solid #001aff;
   animation: borderRotate 2s linear infinite;
 }
 
@@ -262,7 +265,7 @@ p{
   transition: transform 0.3s ease;
   border: 2px solid rgb(19, 157, 216);
   }
-  @media (max-width:700px) {
+  @media (max-width:850px) {
     .wrapperleft img  {
       max-width: 100%;
       float:none;
@@ -271,7 +274,7 @@ p{
       
     }
   }
-  @media (max-width:700px) {
+  @media (max-width:880px) {
     .wrapperleft {
       width: 100%;
     }

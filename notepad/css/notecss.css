@@ -1,0 +1,89 @@
+/* Note button and hover effect */
+#save-note:hover .bi-floppy {
+    display: none;
+}
+#save-note .bi-floppy-fill{
+    display: none;
+}
+#save-note:hover .bi-floppy-fill{ 
+    display: inline;
+}
+#save-note{
+    font-size: 50px;
+    color: white;
+    padding: 25px 50px 0px 50px;
+    background-color: rgb(0, 47, 255, 0.5);
+    border-radius: 10px;
+    border: #000000 1px solid;
+}
+.save-btn{
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.save-btn p{
+    font-family: kanit, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    transform: translate(-30%,-75%);
+    position: absolute;
+
+}
+/* Notepad Input */
+.noted{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin-left:-230px ; */
+}
+.notepad{
+    background-color: rgba(184, 184, 184, 0.7);
+    margin: 20px;
+    height: 90%;
+    width: 50vw;
+    border: #000000 1px solid;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+}
+@media (max-width: 750px) {
+    .noted {
+        margin-left:0px ;
+    }
+}
+@media (max-width: 750px) {
+    .notepad {
+        width: 100% ;
+    }
+}
+.notepad-title{
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    font-size: 30px;
+    font-weight: 700;
+    justify-content: center;
+}
+#title-input{
+    width: 90%;
+    background-color: rgba(184, 184, 184, 0.7);
+    font-family: kanit, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+#your-note{
+    border: #000000 2px solid;
+    justify-content: center;
+    width: 98%;
+    min-height: 35vw;
+}
+@media (max-width: 750px) {
+    #your-note {    
+        min-height: 60vw;
+    }
+}

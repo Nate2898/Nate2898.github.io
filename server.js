@@ -6,11 +6,11 @@ const morgan = require('morgan') //used to log requests to the console for debug
 const cors = require('cors'); //use to allow cross-origin requests
 require('dotenv').config() //allows the use of the .env file to hide sensitive information for public use
 
-const handleErrors = require('./middleware/middleware.js');//imports the error handling middleware
-const connectDB = require('./config/databaseconfig'); //import the function to connect to the database 
-const userAuth = require('./routes/auth.js');//import the user auth routes
-const noteRoutes = require('./routes/noteroutes.js'); //note routes location
-const authMiddleware = require('./middleware/auth.js');//import the middleware for user authentication
+const handleErrors = require('./notepad/middleware/middleware.js');//imports the error handling middleware
+const connectDB = require('./notepad/config/databaseconfig'); //import the function to connect to the database 
+const userAuth = require('./notepad/routes/auth.js');//import the user auth routes
+const noteRoutes = require('./notepad/routes/noteroutes.js'); //note routes location
+const authMiddleware = require('./notepad/middleware/auth.js');//import the middleware for user authentication
 
 
 const app = express();//sets the app to use the express package 

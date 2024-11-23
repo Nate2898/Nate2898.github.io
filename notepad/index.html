@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <title>Notepad Online</title>
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/notelist-sidebyside.css" type="text/css">
+    <link rel="stylesheet" href="./css/notepad_index.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/nameicon.ico" type="image/ico">
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <a id="active" class="topbar-middle" href="./">Notepad Online</a>
+            <div>
+                <a class="topbar-right" id="bar-login" href="./login/">Login/ SignUp</a>
+                <a class="topbar-right" id="logout" href="#logout" style="display: none;">LogOut</a>
+            </div>
+        </div>  
+        <!-- Mobile menu for side panel -->
+        <a id="mobile-menu" href="#menu">
+            <i class="bi bi-list"></i>
+       </a>
+        <div class="fadee"></div>
+    </header>
+   
+    
+    <!-- Side panel -->
+    <div class="note-tab" id="note-tab">
+        <h1>Notes</h1>
+        <div class="note-tab-buttons">
+            <a title="New Note" href="./new/" id="newnote-side">
+                <i class="bi bi-plus-circle" aria-hidden="true"></i>
+                <i class="bi bi-plus-circle-fill" aria-hidden="true" ></i>
+            </a>
+            <a title="Share Note" style="cursor: pointer;" id="sharenote">
+                <i class="bi bi-share" aria-hidden="true"></i>
+                <i class="bi bi-share-fill" aria-hidden="true" ></i>
+            </a>
+            <a title="Reload Notes" style="cursor: pointer;" id="reloadnotes">
+                <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                <i class="bi bi-arrow-clockwise" aria-hidden="true" ></i>
+            </a>
+            <a title="Settings" style="cursor: pointer;" class="settings-button" id="settings-button">
+                <i class="bi bi-gear" aria-hidden="true"></i>
+                <i class="bi bi-gear-fill" aria-hidden="true" ></i>
+            </a>
+        </div>
+        <div class="note-tab-content">
+            <div class="inline">
+                <p>Sort by Date:</p><button id="inline-button" type="button">Newest</button>
+            </div>
+            <div class="paragraph">
+                <p>Note Name</p>
+                <p>Date</p>
+            </div>
+            <!-- notes appear list  -->
+            <div>
+                
+                <!-- Popup login  -->
+                <div id="popup-box">
+                    <div class="popup-login">
+                        <h3>You are not Logged In!</h3>
+                        <p>You have to login to access the notes</p>
+                        <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                </div>
+                <svg id="spinner" viewBox="0 0 50 50">
+                    <circle class="outline" cx="25" cy="25" r="20" fill="none"></circle>
+                    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                </svg>
+                <ul id="note-list">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- settings popout  -->
+    <div class="settings-block" id="settings-block"> <!-- 'class sho' is for testing -->
+        <div class="settings-pop">
+            <h1>Settings</h1>
+            <div class="settings-content">
+                <div class="settings-content" style="display: none;">
+                    <p>Change Theme:</p>
+                    <div class="center">
+                        <button id="light" type="button">Light</button>
+                        <button id="dark" type="button">Dark</button>
+                    </div>
+                </div>
+                <div class="settings-content" style="display: none;"> 
+                    <p>Change Font:</p>
+                    <div class="center">
+                        <button id="font1" type="button">Font 1</button>
+                        <button id="font2" type="button">Font 2</button>
+                    </div>
+                </div>
+                <div class="settings-content" id="login-reminder">
+                    <p class="text-style">Login to change settings</p>
+                    <div class="center">
+                        <a title="Login" href="./login" id="login-button"><p>Login</p>
+                            <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+                            <i class="bi bi-box-arrow-in-right-fill" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="settings-content"> 
+                    <div id="user-settings" style="display: none;">
+                    <div class="user">
+                        <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
+                    </div>
+
+                    <div class="content">
+                        <p>Change Account Settings:</p>
+                        <div class="center">
+                            <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
+                        </div>
+                        <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
+                        <div class="center">
+                            <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
+                                <i class="bi bi-x-square" aria-hidden="true"></i>
+                                <i class="bi bi-x-square-fill" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Loading server popup -->
+<div id="loading-popup" style="display: none;">
+    <div class="loading-content">
+        <h3>Server is Starting Up</h3>
+        <svg id="spinner2" viewBox="0 0 50 50">
+            <circle class="outline" cx="25" cy="25" r="20" fill="none"></circle>
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    </div>
+</div>
+
+<!-- Popup delete  -->
+<div id="delete-popup-box" style="display: none;">
+    <div id="popup-delete">
+        <h3>Are you sure you want to delete this note?</h3>
+        <p id="note-title"></p>
+        <button id="confirm-delete">Yes, delete</button>
+        <button id="cancel-delete">Cancel</button>
+        <i class="bi bi-exclamation-triangle"></i>
+    </div>
+</div>
+<!-- Toaster popups -->
+<div class="toast-container position-fixed">
+</div>
+<!-- Change Username popup -->
+<div class="change-popup" id="change-username-popup">
+    <div id="change-username-popup-content" class="popup-content">
+        <h3>Change Username</h3>
+        <p>Enter your new Username</p>
+        <input id="new-username" type="text" placeholder="New Username" required minlength="3" maxlength="20">
+        <!-- <p>Confirm your Email:</p>
+        <input id="email" type="email" placeholder="Email" required> -->
+        <p>Confirm your Password:</p>
+        <div class="password-container">
+            <input id="password" type="password" placeholder="Password" required>
+            <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('password', this)"></i>
+        </div>
+        <button id="confirm-username">Confirm</button>
+        <button id="cancel-username">Cancel</button>
+    </div>
+</div>
+
+<!-- Change Password popup -->
+<div class="change-popup" style="display: none;" id="change-password-popup">
+    <div id="change-password-popup-content" class="popup-content">
+        <h3>Change Password for:</h3>
+        <p id="your-email" style="font-weight: bold;"></p>
+        <p>Enter your Old Password</p>
+        <form id="change-form">
+            <div class="password-container">
+                <input id="old-password" type="password" placeholder="Old Password" required>
+                <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('old-password', this)"></i>
+            </div>
+            <p>Enter your New Password</p>
+            <div class="password-container">
+                <input id="new-password" type="password" placeholder="New Password" required>
+                <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('new-password', this)"></i>
+            </div>
+            <button id="confirm-password">Confirm</button>
+            <button id="cancel-password">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- Welcome message -->
+<div class="welcome-box">
+    <div class="welcome-message">
+        <h3>Welcome to my Notepad website!</h3>
+            <div class="message">
+                 <p>Here, you can easily create and access your notes. Simply sign up or login to get started. Once you're logged in, you can create new notes by clicking on the "New Note" button. Your notes will be displayed in the "Notes" section on the right, where you can easily sort them by date. To access a specific note, simply click on its name. If you ever need to delete a note, just click on the trash icon next to it. </p><p style="text-align: center;">Enjoy using Notepad Online!</p>
+         <!-- <input class="title-input" type="text" placeholder="Title">       -->
+            </div>
+            <div class="message">  
+                 <a title="New Note" href="./new/" id="newnote-main"><p>New Note</p>
+                <i class="bi bi-plus-circle" aria-hidden="true"></i>
+                <i class="bi bi-plus-circle-fill" aria-hidden="true"></i>
+                 </a>
+            </div>
+    </div>
+</div>
+<a href="https://nate2898.github.io/src/index" style="color: white;" target="_blank"><h3 id="owner" style="font-style: italic; margin-left:0%; bottom:0; position:relative">Website By Nathan Drummond-Schwass</h3></a>
+<script>
+    function togglePassword(inputId, icon) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+        } else {
+            input.type = "password";
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+        }
+    }
+    document.getElementById('new-password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-password').click();
+        }
+
+    document.getElementById('old-password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-password').click();
+        }
+    });
+    if (e.key === 'Enter') {
+        document.getElementById('confirm-password').click();
+    }
+    });
+
+    document.getElementById('new-username').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+
+   
+
+    document.getElementById('password').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('confirm-username').click();
+        }
+    });
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    if (!isLocal) {
+        // Remove .html for GitHub Pages
+        const currentUrl = window.location.href;
+        const newUrl = currentUrl.replace('.html', '');
+        window.history.replaceState(null, '', newUrl);
+       
+    }
+    document.getElementById('old-password').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+    
+    document.getElementById('new-password').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+    document.getElementById('new-username').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+  
+    document.getElementById('password').addEventListener('blur', function() {
+        this.reportValidity(); // This triggers the validation message if the field is invalid
+    });
+    
+    
+
+</script>
+
+
+
+  
+<!-- <script src="./js/authpopup.js" type="module"></script> -->
+<script src="./js/index.js" type="module"></script>
+<script src="./js/sidepanel.js" type="module"></script>
+</body>
+</html>
