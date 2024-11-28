@@ -1,0 +1,102 @@
+
+/* .List dropdown */
+.list-dropdown {
+    width: 90%; 
+    /* max-width: 360px;  */
+    margin-left: 20px; 
+    margin-right: 20px;
+    /* margin: 30px auto 20px; */
+    /* background: #FFF;  */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    list-style: none;
+  }
+  
+  .list-dropdown .link {
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 15px;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  
+  .list-dropdown li:last-child .link { border-bottom: 0; }
+  
+  .list-dropdown li i {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    /* font-size: 18px; */
+    color: #595959;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  
+  .list-dropdown li i.fa-chevron-down {
+    right: 12px;
+    left: auto;
+    /* font-size: 16px; */
+  }
+  
+  .list-dropdown li.open .link { color: #139dd8; }
+  
+  .list-dropdown li.open i { color: #139dd8; }
+  
+  .list-dropdown li.open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  
+ /* Submenu */
+
+  
+  
+  .submenu {
+    display: none;
+    background: #139dd813;
+    font-size: 14px;
+  }
+  
+  .submenu li {
+     border-bottom: 1px solid #4b4a5e; 
+     list-style-type: none;
+  }
+  
+  ul .submenu {
+    list-style: none;
+    padding: 0;
+  }
+  .downdrop-text{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding: 10px;
+    margin: 0px;
+    color: black;
+  }
+  
+  .submenu a {
+    display: block;
+    text-decoration: none;
+    color: #d9d9d9;
+    padding: 12px;
+    padding-left: 42px;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+  }
+  
+  .submenu a:hover {
+    background: #b63b4d;
+    color: #FFF;
+  }

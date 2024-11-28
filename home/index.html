@@ -6,18 +6,32 @@
       <title>Nathans Portfolio</title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+
       <!-- Bootstrap -->
-      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
-      CUSTOM CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+      <!-- CUSTOM CSS  -->
       <link rel="stylesheet" href="../src/css/index.css" type="text/css">
       <link rel="stylesheet" href="../src/css/chat.css" type="text/css">
+
+      <!-- drop down list CSS -->
+      <link rel="stylesheet" href="../src/css/list-dropdown.css" type="text/css">
+      
+      <!-- Navbar CSS -->
+      <link rel="stylesheet" href="../src/css/nav-bar.css" type="text/css">
+
+      <!-- favicon -->
       <link rel="icon" href="../src/images/nameicon.ico" type="image/ico">
+
+      <!-- Google Fonts -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+
+      <!-- jQuery -->      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>z
   </head>
   <body>
     <header>
@@ -56,7 +70,62 @@
     <div class="align">
         <div class="wrapperleft">
             <h2>Skills gained from my ICT Infrastructure Degree</h2>
-            <img src="../src/images/ictskills.jpg" title="ICT Skills" alt="ICT skills">
+            <div class="content-align"> 
+            <img src="../src/images/ictskills.jpg" class="img-ictskills" title="ICT Skills" alt="ICT skills">
+            <ul id="list-dropdown" class="list-dropdown">
+              <li>
+                <div class="link"><i class="bi bi-hdd-network"></i>Networking <i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li>
+                    <p class="downdrop-text">text to come soon</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="link"><i class="bi bi-shield-shaded"></i>Security<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li>
+                    <p class="downdrop-text">HTML and CSS</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="link"><i class="bi bi-bricks"></i>Firewall<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li>
+                    <p class="downdrop-text">HTML and CSS</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="link"><i class="fa fa-linux"></i>Linux<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li>
+                    <p class="downdrop-text">HTML and CSS</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <div class="link"><i class="bi bi-windows"></i>Windows Server<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li>
+                    <p class="downdrop-text">HTML and CSS</p>
+                  </li>
+                </ul>
+              </li>
+             
+              <!-- <li>
+                <div class="link"><i class="fa fa-globe"></i>Computer Building<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><a href="#">Google</a></li>
+                  <li><a href="#">Bing</a></li>
+                  <li><a href="#">Yahoo</a></li>
+                </ul>
+              </li> -->
+            </ul>
+            </div>
+            
+            <!-- old
             <ul style="list-style-position: inside; padding:0px; font-weight:bold;">
 
                 <li>Linux</li>
@@ -66,9 +135,9 @@
                 <li>Computer Building</li>
                 <li>PfSense Firewall</li> 
               
-            </ul>
+            </ul> -->
             <p><strong>Skills I have gained from work experiences include:</strong></p>
-            <img src="../src/images/personalskills.jpg" title="Grow, Learn, Explore" alt="personal skils">
+            <img src="../src/images/personalskills.jpg" class="leftimg-other" title="Grow, Learn, Explore" alt="personal skils">
             <ul style="list-style-position: inside; padding:0px;">
                 <li>Customer interaction</li>
                  <li>Advanced computer skills</li>
@@ -77,7 +146,7 @@
                  <li>Liaise with co-workers</li>
                 </ul>
                  <p><strong>I have gained personal skills from studying and my own research:</strong></p>
-                 <img src="../src/images/computers.png" title="Device screens" alt="computer">
+                 <img src="../src/images/computers.png" class="leftimg-other" title="Device screens" alt="computer">
                 <ul style="list-style-position: inside; padding:0px;">
                  <li>HTML and CSS</li>
                  <li>Javascript, GitHub and Devops</li>
@@ -169,6 +238,34 @@ messageInput.addEventListener("keypress", function (e) {
     sendButton.click();
   }
 });
+
+$(function() {
+	var Accordion = function(el, multiple) {
+		this.el = el || {};
+		this.multiple = multiple || false;
+
+		// Variables privadas
+		var links = this.el.find('.link');
+		// Evento
+		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+	}
+
+	Accordion.prototype.dropdown = function(e) {
+		var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+
+		$next.slideToggle();
+		$this.parent().toggleClass('open');
+
+		if (!e.data.multiple) {
+			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+		};
+	}	
+
+	var accordion = new Accordion($('#list-dropdown'), false);
+});
+
     </script>
     </body>
 </html>
