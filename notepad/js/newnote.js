@@ -13,7 +13,7 @@ document.getElementById('save-note').addEventListener('click', async function(e)
     const titleInput = document.getElementById('title-input');
     const noteInput = document.getElementById('your-note');
     const title = titleInput.value;
-    const note = noteInput.innerText;
+    const note = noteInput.innerHTML;
     const saveButton = document.getElementById('save-note');
     
 
@@ -135,20 +135,20 @@ async function loadNotes() {
 
 
 
-document.getElementById('text-style').addEventListener('click', () => {
-    if (document.getElementById('style-buttons').style.display === 'block') {
-        document.getElementById('style-buttons').style.display = 'none';
-        document.getElementById('text-style').style.width = '100%';
-        document.getElementById('text-style').style.position = 'relative';
-        document.getElementById('text-style').style.boxShadow = 'none';
-        return;
-    }
-    document.getElementById('style-buttons').style.display = 'block';
-    document.getElementById('text-style').style.width = '10%';
-    document.getElementById('text-style').style.position = 'absolute';
-    document.getElementById('text-style').style.left = '0';
-    document.getElementById('text-style').style.boxShadow = 'inset rgb(0, 0, 0) 0px 0px 2px 2px';
-});
+// document.getElementById('text-style').addEventListener('click', () => {
+//     if (document.getElementById('style-buttons').style.display === 'block') {
+//         document.getElementById('style-buttons').style.display = 'none';
+//         document.getElementById('text-style').style.width = '100%';
+//         document.getElementById('text-style').style.position = 'relative';
+//         document.getElementById('text-style').style.boxShadow = 'none';
+//         return;
+//     }
+//     document.getElementById('style-buttons').style.display = 'block';
+//     document.getElementById('text-style').style.width = '10%';
+//     document.getElementById('text-style').style.position = 'absolute';
+//     document.getElementById('text-style').style.left = '0';
+//     document.getElementById('text-style').style.boxShadow = 'inset rgb(0, 0, 0) 0px 0px 2px 2px';
+// });
 
 //start of the notes becoming displayed
 function displayNotes() {

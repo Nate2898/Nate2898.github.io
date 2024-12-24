@@ -1,11 +1,11 @@
 /* Note button and hover effect */
-#save-note:hover .bi-floppy {
+#save-note:hover .bi-floppy, #deletenote:hover .bi-trash{
     display: none;
 }
-#save-note .bi-floppy-fill{
+#save-note .bi-floppy-fill,#deletenote .bi-trash-fill{
     display: none;
 }
-#save-note:hover .bi-floppy-fill{ 
+#save-note:hover .bi-floppy-fill,#deletenote:hover .bi-trash-fill{
     display: inline;
 }
 #save-note{
@@ -16,19 +16,30 @@
     border-radius: 10px;
     border: #000000 1px solid;
 }
-.save-btn{
+#deletenote{
+    font-size: 50px;
+    color: white;
+    padding: 25px 70px 0px 55px;
+    background-color: rgb(0, 47, 255, 0.5);
+    border-radius: 10px;
+    border: #000000 1px solid;
+    margin-left: 2px;
+}
+.save-btn, .delete-btn{
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
-.save-btn p{
+.save-btn p, .delete-btn p{
     font-family: kanit, sans-serif;
-    font-size: 30px;
+    font-size: 46%;
     font-weight: 700;
-    transform: translate(-30%,-75%);
+    transform: translate(-28%, -75%);
     position: absolute;
-
 }
+
+
 /* Notepad Input */
 .noted{
     display: flex;
@@ -48,6 +59,14 @@
     position: relative;
     align-items: center;
     flex-direction: column;
+    margin-top: 80px;
+    /* z-index: -1; */
+}
+
+@media (max-width: 495px) {
+    .notepad {
+        margin-top: 120px;
+    }
 }
 @media (max-width: 750px) {
     .noted {
@@ -86,4 +105,178 @@
     #your-note {    
         min-height: 60vw;
     }
+}
+
+/* toolbar */
+
+#text-style{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px; 
+    margin-right: 5px;
+    width: 100%;
+    border: #0000002a 1px solid;
+    /* box-shadow: inset #000000 0px 0px 2px 2px; */
+}
+#mobile-textstyle-button{
+    position: fixed;
+    padding: 12px; 
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    z-index: 6;
+    right: 1px;
+    top: 121px;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+#mobile-textstyle-button.active {
+    background-color: #00e1ff;
+    box-shadow: #000000 0px 0px 2px 2px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+
+#mobile-textstyle {
+    position: fixed;
+    width: 40px;
+    flex-direction: column;
+    background-color: #616161;
+    z-index: 5;
+    right: 1px;
+    top: 170px;
+    display: none;
+    padding: 0px;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.show-mobile-textstyle {
+    display: flex !important;
+    animation: slideDown 0.3s ease forwards;
+}
+
+.hide-mobile-textstyle {
+    animation: slideUp 0.3s ease forwards;
+}
+
+.mobile-toolbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mobile-style-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mobile-style-buttons button {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+}
+.mobile-style-buttons button:hover {
+    background-color: #c0b3b3;
+}
+
+
+.toolbar {
+    background-color: #f0f0f0;
+    /* margin: 5px; */
+    padding: 2px;
+    margin-bottom: -20px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #000000;
+}
+/* @media (max-width: 1058px){
+    .toolbar {
+        left: -5%;
+    }
+} */
+@media (max-width: 750px){
+    .toolbar {
+        /* position: fixed; */
+        /* margin: 10px 0px 0px 15px; */
+        /* top: auto; */
+        display: flex;
+        flex-flow: row wrap;
+        /* bottom: 0; */
+        justify-content: center;
+        /* left: 0;
+        right: 0; */
+    }
+}
+
+.style-buttons button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: inline-flex;
+    /* justify-content: center; */
+    justify-content: space-evenly;
+}
+
+@media (max-width: 750px){
+    .style-buttons button {
+        display: wrap;
+        width: 130px;
+        height: 50px;
+        max-width: 99%;
+    }
+}
+.style-buttons{
+    display: none;
+    
+    transition: transform 0.5s ease;
+}
+
+.style-buttons button:hover {
+    background-color: #ddd;
+}
+
+@media (max-width: 750px){
+    #settings-textstyle{
+        display: none;
+    }
+
+}
+@media (min-width: 750px){
+    #settings-textstyle{
+        display: block;
+    }
+
 }

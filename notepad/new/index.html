@@ -82,18 +82,10 @@
         </div>
     </div>
     <!-- settings Popout -->
-    <div class="settings-block" id="settings-block">
+    <div class="settings-block" id="settings-block"> 
         <div class="settings-pop">
             <h1>Settings</h1>
-            <div class="user" style="margin-top: -11px;">
-                <!-- <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3> -->
-            </div>
             <div class="settings-content">
-                <!-- new settings appear -->
-                    <a title="Settings"  style="cursor: pointer; display:none;" class="settings-button2" id="settings-button2">
-                        <i class="bi bi-gear" aria-hidden="true"></i>
-                        <i class="bi bi-gear-fill" aria-hidden="true" ></i>
-                    </a>
                 <div class="settings-content" style="display: none;">
                     <p>Change Theme:</p>
                     <div class="center">
@@ -101,7 +93,7 @@
                         <button id="dark" type="button">Dark</button>
                     </div>
                 </div>
-                <div class="settings-content" style="display: none;">
+                <div class="settings-content" style="display: none;"> 
                     <p>Change Font:</p>
                     <div class="center">
                         <button id="font1" type="button">Font 1</button>
@@ -111,40 +103,105 @@
                 <div class="settings-content" id="login-reminder">
                     <p class="text-style">Login to change settings</p>
                     <div class="center">
-                        <a title="Login" href="../login/" id="login-button"><p>Login</p>
+                        <a title="Login" href="./login" id="login-button"><p>Login</p>
                             <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
                             <i class="bi bi-box-arrow-in-right-fill" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
                 <div class="settings-content"> 
-                    
-                   
                     <div id="user-settings" style="display: none;">
-                        <div class="user">
-                            <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
-                        </div>
-    
-                        <div class="content">
-                            <p>Change Account Settings:</p>
-                            <div class="center">
-                                <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
-                            </div>
-                            <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
-                            <div class="center">
-                                <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
-                                    <i class="bi bi-x-square" aria-hidden="true"></i>
-                                    <i class="bi bi-x-square-fill" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-                </div>
-            </div>
-    </div>
-    
+                    <div class="user">
+                        <h3 style="font-style: oblique;">Welcome: &nbsp;</h3><h3 id="username"></h3>
+                    </div>
 
+                    <div class="content">
+                        <p>Change Account Settings:</p>
+                        <div class="center">
+                            <button id="change-username" style="background-color: rgb(0,134,255); color:white; margin-bottom:4px;" type="button">Change Username</button>
+                        </div>
+                        <button id="change-password" style="background-color: rgb(0,134,255); color:white;" type="button">Change Password</button>
+                        <div class="center">
+                            <a title="Logout" href="#logout" id="logout-button"><p>Logout</p>
+                                <i class="bi bi-x-square" aria-hidden="true"></i>
+                                <i class="bi bi-x-square-fill" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <!-- <div class="toolbar">
+                         <a style="cursor: pointer; width: 10%;" title="Text Style" id="text-style">
+                            <i class="bi bi-highlighter" aria-hidden="true"></i>
+                            
+                        </a> 
+                        <a style="cursor: pointer; width: 100%;" title="More Style" id="text-style">
+                        <i class="bi bi-highlighter" aria-hidden="true"></i>
+                    </a> -->
+                    
+                     <div id="settings-textstyle">
+                            <h1>Text Style</h1>
+                            <div class="toolbar">
+                                <div class="style-buttons" id="style-buttons" style="display: block;">
+                                    <!-- <button id="indentincrease" title="Increase Indent" onclick="document.execCommand('indent', false, '10px')"><i class="bi bi-text-indent-left"></i></button>
+                                    <button id="indentdecrease" title="Decrease Indent" onclick="document.execCommand('outdent', false, '')"><i class="bi bi-text-indent-right"></i></button> -->
+                                    <button id="alignleft" title="Align Left" onclick="document.execCommand('justifyLeft', false, '')"><i class="bi bi-text-left"></i></button>
+                                    <button id="aligncenter" title="Align Center" onclick="document.execCommand('justifyCenter', false, '')"><i class="bi bi-text-center"></i></button>
+                                    <button id="alignright" title="Align Right" onclick="document.execCommand('justifyRight', false, '')"><i class="bi bi-text-right"></i></button>
+                                    <button onclick="document.execCommand('fontSize', false, '1')" title="Small">S</button>
+                                    <button onclick="document.execCommand('fontSize', false, '3')" title="Normal">N</button>
+                                    <button onclick="document.execCommand('fontSize', false, '5')" title="Large">L</button>
+                                    <p style="position: relative; transform: translate(27%, -50%); pointer-events: none;">Font Size</p>
+                                </div>
+                            </div>
+                            
+                            <div class="toolbar">
+                                <div class="style-buttons" id="style-buttons" style="display: block;">
+                                    <button id="bold" title="Bold" onclick="document.execCommand('bold', false, '')"><b>B</b></button>
+                                    <button id="italic" title="Italic" style="padding: 5px 13.6px;" onclick="document.execCommand('italic', false, '')"><i>I</i></button>
+                                    <button id="underline" title="Underline" onclick="document.execCommand('underline', false, '')"><u>U</u></button>
+                                    <button id="strike" title="Strikethrough" onclick="document.execCommand('strikeThrough', false, '')"><s>S</s></button>
+                                    <button id="undo" title="Undo" onclick="document.execCommand('undo', false, '')"><i class="bi bi-arrow-counterclockwise"></i></button>
+                                    <button id="redo" title="Redo" onclick="document.execCommand('redo', false, '')"><i class="bi bi-arrow-clockwise"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Mobile text style -->
+    <a style="cursor: pointer;" title="Text Style" id="mobile-textstyle-button">
+        <i class="bi bi-highlighter" aria-hidden="true"></i>
+    </a>
+    <div id="mobile-textstyle">
+        <!-- <h1>Text Style</h1> -->
+        <div class="mobile-toolbar">
+            <div class="mobile-style-buttons" id="style-buttons">
+                <!-- <button id="indentincrease" title="Increase Indent" onclick="document.execCommand('indent', false, '10px')"><i class="bi bi-text-indent-left"></i></button>
+                <button id="indentdecrease" title="Decrease Indent" onclick="document.execCommand('outdent', false, '')"><i class="bi bi-text-indent-right"></i></button> -->
+                <button id="alignleft" title="Align Left" onclick="document.execCommand('justifyLeft', false, '')"><i class="bi bi-text-left"></i></button>
+                <button id="aligncenter" title="Align Center" onclick="document.execCommand('justifyCenter', false, '')"><i class="bi bi-text-center"></i></button>
+                <button id="alignright" title="Align Right" onclick="document.execCommand('justifyRight', false, '')"><i class="bi bi-text-right"></i></button>
+                <button onclick="document.execCommand('fontSize', false, '1')" title="Small">S</button>
+                <button onclick="document.execCommand('fontSize', false, '3')" title="Normal">N</button>
+                <button onclick="document.execCommand('fontSize', false, '5')" title="Large">L</button>
+                <!-- <p style="position: relative; transform: translate(27%, -50%); pointer-events: none;">Font Size</p> -->
+            </div>
+        </div>
+        
+        <div class="mobile-toolbar">
+            <div class="mobile-style-buttons" id="style-buttons">
+                <button id="bold" title="Bold" onclick="document.execCommand('bold', false, '')"><b>B</b></button>
+                <button id="italic" title="Italic" style="padding: 5px 13.6px;" onclick="document.execCommand('italic', false, '')"><i>I</i></button>
+                <button id="underline" title="Underline" onclick="document.execCommand('underline', false, '')"><u>U</u></button>
+                <button id="strike" title="Strikethrough" onclick="document.execCommand('strikeThrough', false, '')"><s>S</s></button>
+                <button id="undo" title="Undo" onclick="document.execCommand('undo', false, '')"><i class="bi bi-arrow-counterclockwise"></i></button>
+                <button id="redo" title="Redo" onclick="document.execCommand('redo', false, '')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+        </div>
+    </div>
 <!-- Notepad input -->
 <div class="noted">
     <div class="notepad">
@@ -168,38 +225,7 @@
           
         <!-- notepad buttons  -->
         
-        <div class="toolbar">
-            <!-- <a style="cursor: pointer; width: 10%;" title="Text Style" id="text-style">
-                <i class="bi bi-highlighter" aria-hidden="true"></i>
-                
-            </a> -->
-            <a style="cursor: pointer; width: 100%;" title="More Style" id="text-style">
-            <i class="bi bi-highlighter" aria-hidden="true"></i>
-        </a>
-            <div class="style-buttons" id="style-buttons" style="display: none;">
-                <!-- <button id="indentincrease" title="Increase Indent" onclick="document.execCommand('indent', false, '10px')"><i class="bi bi-text-indent-left"></i></button>
-                <button id="indentdecrease" title="Decrease Indent" onclick="document.execCommand('outdent', false, '')"><i class="bi bi-text-indent-right"></i></button> -->
-                <button id="alignleft" title="Align Left" onclick="document.execCommand('justifyLeft', false, '')"><i class="bi bi-text-left"></i></button>
-                <button id="aligncenter" title="Align Center" onclick="document.execCommand('justifyCenter', false, '')"><i class="bi bi-text-center"></i></button>
-                <button id="alignright" title="Align Right" onclick="document.execCommand('justifyRight', false, '')"><i class="bi bi-text-right"></i></button>
-                <select onchange="document.execCommand('fontSize', false, this.value)" style="padding: 5px 10px;">
-                    <option value="1">Small</option>
-                    <option value="3" selected>Normal</option>
-                    <option value="5">Large</option>
-                  </select>
-            </div>
-        </div>
-        <div class="toolbar">
-            
-            <div class="style-buttons" id="style-buttons" style="display: block;">
-                <button id="bold" title="Bold" onclick="document.execCommand('bold', false, '')"><b>B</b></button>
-                <button id="italic" title="Italic" style="padding: 5px 13.6px;" onclick="document.execCommand('italic', false, '')"><i>I</i></button>
-                <button id="underline" title="Underline" onclick="document.execCommand('underline', false, '')"><u>U</u></button>
-                <button id="strike" title="Strikethrough" onclick="document.execCommand('strikeThrough', false, '')"><s>S</s></button>
-                <button id="undo" title="Undo" onclick="document.execCommand('undo', false, '')"><i class="bi bi-arrow-counterclockwise"></i></button>
-                <button id="redo" title="Redo" onclick="document.execCommand('redo', false, '')"><i class="bi bi-arrow-clockwise"></i></button>
-            </div>
-        </div>
+    
         <div class="save-btn">  
             <a role="button" title="Save Note" href="#save" id="save-note"><p>Save Note</p>
                 <i class="bi bi-floppy" aria-hidden="true"></i>
@@ -275,7 +301,7 @@
     </div>
 </div>
 
-<a href="../../home/" style="color: black;" target="_blank"><h3 id="owner" style="font-style: italic; margin-left:0%; bottom:0; position:relative">Website By Nathan Drummond-Schwass</h3></a>
+<a href="../home/" style="color: white;" target="_blank"><h3 id="owner" style="font-style: italic; margin-left:0%; bottom:0; position:relative">Website By Nathan Drummond-Schwass</h3></a>
 
 <!-- Popup login  -->
 <div id="popup-box">

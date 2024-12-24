@@ -4,6 +4,7 @@ import { userExport } from "./sidepanel.js";
 
 const logoutBar = document.getElementById('logout');
 const barLogin = document.getElementById('bar-login');
+const sidePanelPopup = document.getElementById('popup-box');
 
 localStorage.removeItem
 //reloads the notes when the reload button is clicked
@@ -41,6 +42,7 @@ async function loadNotes() {
             showToast(notes.message, 'dc3545');
             logoutBar.style.display = 'none';
             barLogin.style.display = 'block';
+            sidePanelPopup.style.display = 'block';
             localStorage.removeItem('username');
             localStorage.removeItem('token');
             document.getElementById('spinner').querySelector('.path').style.animation = 'none';
@@ -52,6 +54,7 @@ async function loadNotes() {
             showToast(notes.message, 'dc3545');
             document.getElementById('spinner').querySelector('.path').style.animation = 'none';
             document.getElementById('spinner').querySelector('.path').style.stroke = '#dc3545';
+            sidePanelPopup.style.display = 'block';
             return;
         }
 

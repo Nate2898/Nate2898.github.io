@@ -14,21 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-document.getElementById('text-style').addEventListener('click', () => {
-    if (document.getElementById('style-buttons').style.display === 'block') {
-        document.getElementById('style-buttons').style.display = 'none';
-        document.getElementById('text-style').style.width = '100%';
-        document.getElementById('text-style').style.position = 'relative';
-        return;
-    }
-    document.getElementById('style-buttons').style.display = 'block';
-    document.getElementById('text-style').style.width = '10%';
-    document.getElementById('text-style').style.position = 'absolute';
-    document.getElementById('text-style').style.left = '0';
-});
-
-
 // document.getElementById('bold').addEventListener('click', () => {
 //     const bold = document.getElementById('bold');
 //     if (bold.style.backgroundColor === 'rgb(255, 0, 0)') {

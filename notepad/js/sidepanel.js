@@ -216,10 +216,14 @@ settingsButton.addEventListener('click', () => {
     }
 });
 
+
+let showMobileMenu = false;
 //mobile popout menu
 mobileMenuButton.addEventListener('click', () => {
     const icon = mobileMenuButton.querySelector('i');
+    // hide the note tab
     if (noteTab.classList.contains('show'))  {
+        showMobileMenu = false;
         noteTab.classList.remove("show");
         mobileMenuButton.classList.remove("show");
         settingsPopout.classList.remove("show");
@@ -242,9 +246,51 @@ mobileMenuButton.addEventListener('click', () => {
         }
         setTimeout(() => {
             noteTab.classList.add("show");
+            showMobileMenu = true;
             mobileMenuButton.classList.add("show");
         }, 0);
     }
+});
+
+let topBarlastScrollTop = 0;
+let topBarisScrolling;
+
+const topbar = document.querySelector('.topbar');
+const SCROLL_TIMEOUT = 1500; // ms to wait after scroll stops
+
+// Add initial styles
+topbar.style.transition = 'transform 0.5s ease-in-out';
+topbar.style.position = 'fixed';
+topbar.style.top = '0';
+topbar.style.width = '100%';
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (showMobileMenu === true) {
+        topbar.style.transform = 'translateY(0)';
+        return;
+    }
+    else{
+    
+    // Determine scroll direction
+    if (currentScroll > topBarlastScrollTop && showMobileMenu === false) {
+
+        // Scrolling down
+        topbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up
+        topbar.style.transform = 'translateY(0)';
+    }}
+    
+    topBarlastScrollTop = currentScroll;
+
+    // Clear previous timeout
+    clearTimeout(topBarisScrolling);
+
+    // Set timeout to detect when scrolling stops
+    topBarisScrolling = setTimeout(() => {
+        topbar.style.transform = 'translateY(0)';
+    }, SCROLL_TIMEOUT);
 });
 
 function settingsSlideDown() {
@@ -269,6 +315,8 @@ function settingsSlideDown() {
         }, 800);
     }
 }
+
+
 // authentication
 const token = localStorage.getItem('token');
 const popup = document.getElementById('popup-box');
@@ -322,6 +370,30 @@ window.addEventListener('scroll', () => {
         mobileMenu.classList.remove('scrolling');
     }, 1500); 
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileTextStyleButton = document.getElementById('mobile-textstyle-button');
+    const mobileTextStyle = document.getElementById('mobile-textstyle');
+
+    mobileTextStyleButton.addEventListener('click', () => {
+        if (mobileTextStyle.classList.contains('show-mobile-textstyle')) {
+            mobileTextStyle.classList.add('hide-mobile-textstyle');
+            mobileTextStyleButton.classList.remove('active');
+            mobileTextStyle.addEventListener('animationend', () => {
+                mobileTextStyle.classList.remove('show-mobile-textstyle');
+                mobileTextStyle.classList.remove('hide-mobile-textstyle');
+            }, { once: true });
+        } else {
+            mobileTextStyle.style.display = 'flex';
+            mobileTextStyleButton.classList.add('active');
+            requestAnimationFrame(() => {
+                mobileTextStyle.classList.add('show-mobile-textstyle');
+            });
+        }
+    });
+});
+
 
 logout();
 loggedIn();

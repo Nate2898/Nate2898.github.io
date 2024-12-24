@@ -29,22 +29,23 @@ body {
     }
 }
 
+/* Update existing .topbar class */
 .topbar {
     z-index: 15;
     background-color: #353636;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    position: relative;
     width: 100%;
-    top: 0;
     font-family: "Kanit", sans-serif;
     font-size: 30px;
     font-weight: 700;
     font-style: normal;
     border-bottom: rgb(0, 47, 255) 5px solid;
     transition: background-color 0.4s ease;
+    will-change: transform;
 }
+
 .topbar a {
     display: flex;
     color: rgb(255, 255, 255);
@@ -111,14 +112,20 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 50px;
     /* margin-left:-230px ; */ /* disabled for now */
 }
 @media(max-width: 650px){
     .welcome-box{
         margin-left: 0px;
+        margin-top: 80px;
     }
 }
-
+@media(max-width: 495px){
+    .welcome-box{
+        margin-top: 100px;
+    }
+}
 h3{
     font-family: kanit, sans-serif;
     font-size: 30px;
