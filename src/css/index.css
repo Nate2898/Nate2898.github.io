@@ -143,13 +143,44 @@ h3, h3 a{
   padding-left: 20px;
   font-size: 20px;
   color: white;
+  font-weight: bold;
   text-decoration: none;
+}
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
 }
 h4{
   float: right;
   font-family: sans-serif;
   color: white;
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
   padding-right: 5%;
+  font-size: initial;
+
+}
+h1, h2, h3, h4, h5, h5 a{
+  line-height: initial;
+}
+
+
+h5{
+  text-align: center;
+	font-family: kalam,sans-serif;
+	font-size: 30px;
+  font-weight: bold;
 }
 p{
   font-family: sans-serif;
@@ -182,6 +213,7 @@ li{
   border: 5px solid rgb(18, 179, 248);
   border-bottom: 8px solid rgb(19, 157, 216);
   border-radius: 20px;
+  transition: all 0.3s ease;
 }
 /* .wrapperleft img {
   max-width: 400px;
@@ -198,11 +230,20 @@ li{
       
     }
   } */
+  @media (max-width:1200px) {
+    .wrapperleft {
+      width: 90%;
+      transition: all 0.3s ease;
+    }
+  }
   @media (max-width:880px) {
     .wrapperleft,li {
       width: 100%;
+      transition: all 0.3s ease;
     }
   }
+
+
   a{
     text-decoration: none;
     color: #00A2E8;
@@ -325,10 +366,19 @@ li{
   margin-top: -20px;
   border-radius: 20px;
   margin-left: 10%;
+  
+}
+
+#skills-img{
+  margin-top: -15px;
+  margin-left: 0px;
+  margin-right: 10%;
 }
 @media (max-width:1300px) {
-  .img-ictskills, .list-dropdown  {
+  .img-ictskills, .list-dropdown, #skills-img  {
     margin-left: 0%;
+    width: 50%;
+    margin-right: 0%;
     
   }
   .list-dropdown {
@@ -338,13 +388,15 @@ li{
 }
 @media (max-width: 700px) {
   .content-align {
-      flex-direction: column;
+      flex-direction: column-reverse;
       align-items: center;
   }
 
-  .img-ictskills {
+  .img-ictskills, #skills-img {
       margin-bottom: 20px;
       max-width: 100%;
+      margin-top: 0px;
+      width: 100%;
   }
 
   .list-dropdown {
@@ -360,6 +412,15 @@ li{
   justify-content: center;
   align-items: center;
   flex-shrink: initial;
+}
+#skills {
+  flex-direction: row-reverse;
+}
+@media (max-width: 700px) {
+  #skills {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 
 .leftimg-other{
