@@ -3,9 +3,19 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Note = require('../models/notemodel');
+const sanitizeHtml = require('sanitize-html');
+
+// s
+const sanitizeOptions = {
+    allowedTags: [ 
+      'b', 'i', 'em', 'strong', 'u', 's', 'p', 'br'
+    ],
+    allowedAttributes: {},
+    disallowedTagsMode: 'discard'
+  };
 
 //get all notes
-router.get('/',auth, async (req, res, next) => {
+router.get('/', auth, async (req, res, next) => {
     try {
         const noteList = await Note.find({user: req.user.id});
         if (!noteList) {
@@ -13,7 +23,12 @@ router.get('/',auth, async (req, res, next) => {
             error.status = 500;
             return next(error);
         }
-        res.status(200).send(noteList);
+        // Sanitize note content before sending
+        const sanitizedNotes = noteList.map(note => ({
+            ...note.toObject(),
+            note: sanitizeHtml(note.note, sanitizeOptions)
+        }));
+        res.status(200).send(sanitizedNotes);
     } catch (error) {
         error.status = 500;
         next(error);
@@ -21,29 +36,20 @@ router.get('/',auth, async (req, res, next) => {
 });
 
 //get a note by ID
-router.get('/:id',auth, async (req, res, next) => {
+router.get('/:id', auth, async (req, res, next) => {
     try {
-        if (req.params.id.length !== 24) { //if the id is not 24 characters long returns an error
+        if (req.params.id.length !== 24) {
             const error = new Error('Invalid ID');
-            error.status = 400;
+            error.status = 400; 
             return next(error);
         }
         const note = await Note.findById(req.params.id);
-        //if the note is not found returns an error
-        if (!note) { 
-            const error = new Error(`The note with the id ${req.params.id} was not found`);
-            error.status = 404;
-            return next(error);
+        if (note) {
+            // Sanitize note content before sending
+            note.note = sanitizeHtml(note.note, sanitizeOptions);
         }
-        //if the note user is not the same as the request user id returns an error
-        if(note.user.toString() !== req.user.id) {
-            const error = new Error('Unauthorized');
-            error.status = 401;
-            return next(error);
-        }
-        return res.status(200).send(note);
+        res.send(note);
     } catch (error) {
-        error.status = 500;
         next(error);
     }
 });
