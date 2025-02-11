@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;url=/home">
+    <meta http-equiv="refresh" content="0;url=">
 </head>
 <body>
-    <p>If you are not redirected, <a href="/home">click here</a>.</p>
+    <p>If you are not redirected, <a href="">click here</a>.</p>
 </body>
 </html>
