@@ -1,3 +1,4 @@
+
 body {
     font-family:Arial;
     margin: 0;
@@ -42,8 +43,7 @@ body {
     font-weight: 700;
     font-style: normal;
     border-bottom: rgb(0, 47, 255) 5px solid;
-    transition: background-color 0.4s ease;
-    will-change: transform;
+    transition: background-color 0.4s ease, transform 1s ease; /* Added transform transition */
 }
 
 .topbar a {

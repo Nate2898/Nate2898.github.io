@@ -252,46 +252,53 @@ mobileMenuButton.addEventListener('click', () => {
     }
 });
 
-let topBarlastScrollTop = 0;
-let topBarisScrolling;
 
-const topbar = document.querySelector('.topbar');
-const SCROLL_TIMEOUT = 1500; // ms to wait after scroll stops
+
+
+// const topbar = document.querySelector('.topbar');
+ // ms to wait after scroll stops
 
 // Add initial styles
-topbar.style.transition = 'transform 0.5s ease-in-out';
-topbar.style.position = 'fixed';
-topbar.style.top = '0';
-topbar.style.width = '100%';
+// topbar.style.transition = 'transform 0.5s ease-in-out';
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (showMobileMenu === true) {
-        topbar.style.transform = 'translateY(0)';
-        return;
+
+let topBarisScrolling;
+let lastScrollY = window.scrollY;
+let navbarOffset = 0; // Tracks how much the navbar has moved up
+
+const navbar = document.querySelector(".topbar");
+
+navbar.style.position = 'fixed';
+navbar.style.top = '0';
+navbar.style.width = '100%';
+
+window.addEventListener("scroll", () => {
+    let scrollDelta = window.scrollY - lastScrollY;
+
+    // Scroll down: Move navbar up, but not beyond its full height
+    if (scrollDelta > 0) {
+        navbarOffset = Math.min(navbarOffset + scrollDelta, navbar.offsetHeight);
+    } 
+    // Scroll up: Move navbar back down, but not below 0
+    else {
+        navbarOffset = Math.max(navbarOffset + scrollDelta, 0);
     }
-    else{
-    
-    // Determine scroll direction
-    if (currentScroll > topBarlastScrollTop && showMobileMenu === false) {
 
-        // Scrolling down
-        topbar.style.transform = 'translateY(-100%)';
-    } else {
-        // Scrolling up
-        topbar.style.transform = 'translateY(0)';
-    }}
-    
-    topBarlastScrollTop = currentScroll;
+    // Apply the transform to move the navbar
+    navbar.style.transform = `translateY(-${navbarOffset}px)`;
 
-    // Clear previous timeout
+    lastScrollY = window.scrollY;
+
+    // Clear the previous timeout if scrolling continues
     clearTimeout(topBarisScrolling);
 
-    // Set timeout to detect when scrolling stops
+    // After 1 seconds of no scroll, make the navbar appear
     topBarisScrolling = setTimeout(() => {
-        topbar.style.transform = 'translateY(0)';
-    }, SCROLL_TIMEOUT);
+        navbarOffset = 0; // Reset to original position
+        navbar.style.transform = `translateY(0)`;
+    }, 1000); // Adjust the delay (2000ms = 2 seconds)
 });
+
 
 function settingsSlideDown() {
     if (!settingsPopout2 || !settingsButton2) {
