@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
 body{
   padding:0px;
 	padding-top: 28px;
@@ -6,101 +8,7 @@ body{
   justify-content: center;
   align-items: center;
 }
-/*START navigation bar code*/
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #333;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-bottom: 5px solid rgb(18, 179, 248);
-}
 
-.navbar {
-    max-width: 900px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	  font-family: Arial Black;
-}
-.nav-item {
-    color: #fff;
-    text-decoration: none;
-    padding: 15px 15px;
-}
-
-.logo {
-    max-height: 30px;
-}
-.navimg, .navimg-small{
-	  flex-wrap:wrap;
-    margin-top: 5px;
- 	  width: 100%;
-    max-width:350px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 0px;
-	  max-height: 50px;
-    transition: transform 0.3s ease;
-}
-.nav-item-highlight {
-  color: #00A2E8;
-  text-decoration: none;
-  padding: 15px 15px;
-}
-.navimg:hover,.navimg-small:hover{
-    transform: scale(1.1);
-    filter: saturate(10);
-  }
-@media (max-width:629px) {
-    img.navimg {
-      display: none;
-    }
-  }
-  @media (min-width:629px) {
-    .navimg-small {
-      display: none;        
-    }
-  }
-  @media (max-width:300px) {
-    .navimg-small, img.navimg {
-      display: none;        
-    }
-  }
-.navbar a:hover{
-	color: #10EEEE;
-}
-/*END navigation bar code */
-/*START bottom navigation bar code*/
-.navbottomcontent{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-.navbottomblock{
-  background-color: #333;
-  border-top: 5px solid #10EEEE;
-  width: 100%;
-  bottom: 0;
-  overflow: hidden;
-  padding-bottom: 1%;
-}
-.navbarbottom {
-  max-width: 900px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial Black;
-}
-
-/* END bottom navigation bar code*/
 /*START text box*/
 .align{
   display: flex;
@@ -161,20 +69,55 @@ h2{
   color: black;
   font-size: 25px;
 }
+
 h3, h3 a{
   text-align: center;
   font-family: sans-serif;
   padding-left: 20px;
   font-size: 20px;
   color: white;
+  font-weight: bold;
   text-decoration: none;
+  transition: font-size 0.3s ease;
 }
+
+h3 a:hover{
+  color: #28bfff;
+    text-decoration: underline;
+    font-size: 19.5px;  
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+
 h4{
   float: right;
   font-family: sans-serif;
   color: white;
+  display: block;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
   padding-right: 5%;
+  font-size: initial;
+
 }
+h1, h2, h3, h4, h5, h5 a{
+  line-height: initial;
+}
+
 h5, h5 a{
   text-align: center;
  font-family: sans-serif;
@@ -203,20 +146,73 @@ p{
     text-decoration: none;
     color: #00A2E8;
     text-decoration: underline;
-    transition: font-size 0.3s ease;
+    transition: transform 0.3s ease;
     font-size: 20px;
+    display: inline-block;
   }
   a:hover{
     color: #28bfff;
     text-decoration: underline;
-    font-size: 19.5px; 
-    
+    /* transform: scale(1.02);  */
   }
   a:active{
     color: #0049e8;
     text-decoration: underline;
  
   }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  li {
+    padding: 10px;
+    font-family: sans-serif;
+    color: white;
+    transition: all 0.3s ease;
+    
+  }
+  li:hover{
+    color: #00A2E8;
+    /* font-size: 22px; */
+  }
+  ul li a {
+    text-decoration: none;
+  }
+  
+  ul li a:hover {
+    text-decoration: none;
+  }
+
+#social{
+  font-size: 100px;
+  
+}
+@media (max-width: 700px){
+  #social{
+    font-size: 50px;
+  }
+}
+
+#social-name{
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  /* color: white; */
+  padding-top: 8px;
+}
+.icon-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 /*Contact form css*/
 .contact-form {
   width: 50%;

@@ -10,67 +10,7 @@ body{
   font-family: kalam;
 }
 
-/*START bottom navigation bar code*/
-.navbottomcontent{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-.navbottomblock{
-  background-color: #333;
-  border-top: 5px solid #10EEEE;
-  width: 100%;
-  bottom: 0;
-  overflow: hidden;
-  padding-bottom: 1%;
-}
-.navbarbottom {
-  max-width: 900px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial Black;
-}
-.center-under {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -10px;
-}
 
-@keyframes sizeChange {
-  0% {
-    transform: scale(1);
-    color: rgb(0, 255, 251);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.center-under #important {
-  font-size: 25px;
-  font-weight: bold;
-  color: #fcfcfc;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: -10px;
-  animation: sizeChange 1s infinite;
-}
-
-#important:hover {
-  color: #10EEEE;
-  transform: scale(1.1);
-  transition: all 0.3s ease;
-  animation-play-state: paused; 
-}
-/* END bottom navigation bar code*/
 /*START text box*/
 .align{
   display: flex;
