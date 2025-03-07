@@ -85,7 +85,7 @@
     color: black;
   }
   
-  .submenu a {
+  /* .submenu a {
     display: block;
     text-decoration: none;
     color: #d9d9d9;
@@ -99,4 +99,4 @@
   .submenu a:hover {
     background: #b63b4d;
     color: #FFF;
-  }
+  } */

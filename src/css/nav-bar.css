@@ -86,6 +86,7 @@ color: #10EEEE;
   bottom: 0;
   overflow: hidden;
   padding-bottom: 1%;
+  margin-top: 20px;
 }
 .navbarbottom {
   max-width: 900px;

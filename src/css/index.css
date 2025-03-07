@@ -59,6 +59,7 @@ body{
 .bgimg{
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,162,232) 79%);
   background-repeat: no-repeat;
+  padding: 2px;
   /* height: 220px; */
 }
 /*Text css*/
@@ -108,12 +109,10 @@ h4{
   font-weight: bold;
   unicode-bidi: isolate;
   padding-right: 5%;
-  font-size: initial;
+
 
 }
-h1, h2, h3, h4, h5, h5 a{
-  line-height: initial;
-}
+
 
 
 h5{
@@ -345,7 +344,6 @@ li{
       margin-left: 0;
   }
 }
-
 
 .content-align{
   display: flex;

@@ -48,6 +48,7 @@ body{
 .bgimg{
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,162,232) 79%);
   background-repeat: no-repeat;
+  padding: 2px;
   /* height: 220px; */
 }
 /*Text css*/
@@ -114,9 +115,7 @@ h4{
   font-size: initial;
 
 }
-h1, h2, h3, h4, h5, h5 a{
-  line-height: initial;
-}
+
 
 h5, h5 a{
   text-align: center;
@@ -151,10 +150,16 @@ p{
     display: inline-block;
   }
   a:hover{
-    color: #28bfff;
+    color: #063be7;
     text-decoration: underline;
-    /* transform: scale(1.02);  */
+    transition: color 0.3s ease;
   }
+  
+  a:hover #social{
+    color: #0051ff;
+    transition: color 0.3s ease;
+  }
+
   a:active{
     color: #0049e8;
     text-decoration: underline;
