@@ -1,0 +1,275 @@
+/* 
+	name: nFloat Updated
+	description: Compact mobile mode for Discord
+	author: TheMintGamer
+	version: 1	
+	update_time: 8/4/2025
+	website: https://nate2898.github.io
+	source: https://github.com/Nate2898/nFloat-Discordtheme 
+*/ 
+
+/* :root{
+    --sidebar-delay-close: 1.3s;
+	--sidebar-closed-width: 64px;
+	
+} */
+
+/* Right sidebar (servers, channels) */
+.sidebarList_c48ade {
+    display: block;
+    right: 0;
+    width: var(--sidebar-closed-width, 64px) !important;
+    min-width: 0 !important;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    height: 100%;
+	container-type: normal !important;
+}
+
+/* Super small screen size */
+@media (max-width:400px){
+	.sidebarList_c48ade{
+		width: 0px !important;
+	}	
+	.container_c8ffbb, .container__7641b{
+		position: relative !important; 
+		right: -100px !important;
+	}
+	.content_f75fb0{
+		margin-right: -55px !important;
+	}
+	.username__0a06e{
+		overflow: visible;
+	}
+	.title_c38106{
+		justify-content: left;
+	}
+
+}
+
+/* Open sidebar on hover to user set width */
+.sidebar_c48ade:hover .sidebarList_c48ade{
+    width: calc(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width)) !important;
+    transition: width 0.3s ease-in-out;
+}
+
+/* quick actions fade */
+.sidebar_c48ade:not(:hover) .buttons__37e49 {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease 1s, visibility 0s linear var(--sidebar-delay-close, 1.3s);
+}
+
+.sidebar_c48ade .buttons__37e49 {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.3s ease, visibility 0s linear;
+}
+/* Delay to close the sidebar */
+.sidebarList_c48ade:not(:hover) {
+    transition: width 0.3s ease-in-out var(--sidebar-delay-close, 1.3s);
+}
+
+/* Add a gap at the bottom of the message list for game activity */
+.content__99f8c{
+	margin-bottom: 45px;
+}
+
+/* Active now panel */
+.nowPlayingColumn__133bf {
+	display: block;
+	position: absolute !important;
+	right: 0;
+	width: 82px !important;
+	min-width: 0 !important;
+	overflow: hidden;
+	z-index: 1000;
+	transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out;
+	height: 100%;
+}
+ .nowPlayingColumn__133bf:hover {
+	width: 490px !important; 
+	min-width: 400px !important;
+	.headerAvatar__00943{
+		margin-left: 0px;
+		transition: margin-left 0.2s ease-in-out;
+	}
+	
+} 
+
+/* Changes by width */
+@media (max-width: 1200px){
+	.peopleColumn__133bf {
+		max-width: 92.5% !important;
+	}
+	@media(max-width:750px){
+		.peopleColumn__133bf {
+			max-width: 90% !important;
+		}
+	}
+	@media(max-width:680px){
+		.peopleColumn__133bf {
+			max-width: 100% !important;
+		}
+		.nowPlayingColumn__133bf{
+			display: none;
+		}
+		.peopleColumn__133bf{
+			margin-right: 0px;
+		}
+	}
+
+	.header__7d20c{
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+	.headerAvatar__00943{
+		margin-left:-9px;
+		transition: margin-left 0.2s ease-in-out;
+	}
+}
+
+/* Extreme small screen size friends buttons */
+/* @media(max-width:650px){
+	.topPill_b3f026{
+		flex-wrap: wrap;
+	}
+	.scrollable__9293f{
+		flex-wrap: wrap;
+	}
+} */
+
+
+/* Collapsing the members list */
+.container_c8ffbb, .container__7641b {
+	position: relative !important; 
+	right: 0;
+	width: var(--member-list-width-close, 62px) !important;
+	min-width: 0 !important;
+	z-index: 1000;
+	transition: transform 0.3s ease-in-out var(--member-list-delay-close, 0s), min-width 1s ease-in-out var(--member-list-delay-close, 0s);
+}
+
+@media (min-width: 400px) {
+	.container_c8ffbb:hover, .container__7641b:hover  {
+		transform: translateX(var(--member-list-width-open, -203px));
+		transition: transform 0.3s ease-in-out var(--member-list-delay-open, 0s);
+	}
+}
+
+@media (max-width: 399px) {
+	.container_c8ffbb:hover, .container__7641b:hover  {
+		transform: translateX(-255px);
+		transition: transform 0.3s ease-in-out var(--member-list-delay-open, 0s);
+	}
+}
+
+.container_c8ffbb:hover, .container__7641b:hover  {
+	transform: translateX(var(--member-list-width-open, -203px));
+	transition: transform 0.3s ease-in-out var(--member-list-delay-open, 0s);
+}
+
+/* Member category text  */
+.container__7641b:not(:hover) .membersGroup_c8ffbb{
+	transform: translateX(90px);
+	transition: transform 0.3s ease-in-out var(--member-list-delay-close, 0s);
+}
+.container__7641b:hover .membersGroup_c8ffbb{
+	transform: translateX(90px);
+	transition: transform 0.3s ease-in-out var(--member-list-delay-open, 0s);
+}
+
+
+/* align icons centered */ 
+.container__7641b:not(:hover) .member__5d473{
+	margin-left: 100px;
+	transition: margin-left 0.3s ease-in-out var(--member-list-delay-close, 0s);
+}
+.container__7641b:hover .member__5d473{
+	margin-left: 100px;
+	transition: margin-left 0.3s ease-in-out var(--member-list-delay-open, 0s);
+}
+
+/* alternate member list */
+/* Member category text  */
+.container_c8ffbb:not(:hover) .membersGroup_c8ffbb{
+	transform: translateX(-13px);
+	transition: transform 0.3s ease-in-out var(--member-list-delay-close, 0s);
+}
+.container_c8ffbb:hover .membersGroup_c8ffbb{
+	transform: translateX(-13px);
+	transition: transform 0.3s ease-in-out var(--member-list-delay-open, 0s);
+}
+
+/* align icons centered */
+.container_c8ffbb:not(:hover) .member__5d473{
+	margin-left: 0px;
+	transition: margin-left 0.3s ease-in-out var(--member-list-delay-close, 0s);
+}
+.container_c8ffbb:hover .member__5d473{
+	margin-left: 10px;
+	transition: margin-left 0.3s ease-in-out var(--member-list-delay-open, 0s);
+}
+
+/* Content area */
+/* .messagesWrapper__36d07{
+	margin-right: 63px;
+} */
+
+/* Friend online content area */
+@media(min-width:680px){
+	.peopleColumn__133bf{
+		margin-right: 80px;
+	}
+}
+
+/* Message input */
+/* .form_f75fb0 {
+	margin-right: 62px;
+} */
+
+/* new message popup */
+/* .newMessagesBar__0f481{
+	margin-right: 20px;
+} */
+
+.scroller__36d07{
+	scroll-padding: 50px;
+}
+
+
+/* Settings menu */
+/* side settings menu */
+@media(max-width:1052px){
+	.sidebar__23e6b{
+		max-width: 200px !important;
+	}
+	.sidebarRegion__23e6b{
+		flex: 0;
+	}
+}
+@media(max-width: 650px){
+	.sidebarRegion__23e6b{
+		max-width: 50px !important;
+		transition: max-width 0.3s ease-in-out ;
+	}
+	.sidebarRegion__23e6b:hover{
+		max-width: 200px !important;
+		transition: max-width 0.3s ease-in-out ;
+	}
+}
+
+/* settings content */
+@media(max-width:1000px){
+	.contentColumn__23e6b{
+		width: 50% !important;
+	}
+	.contentTransitionWrap__23e6b{
+		width: 100% !important;
+	}
+	.contentRegion__23e6b {
+		width: 50% !important;
+	}
+}
