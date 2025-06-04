@@ -9,7 +9,8 @@
         
         <!-- CSS -->
         <link rel="stylesheet" href="../src/css/portfolioprojects.css" type="text/css">
-        <link rel="stylesheet" href="../src/css/chat.css" type="text/css">
+        <!-- <link rel="stylesheet" href="../src/css/chat.css" type="text/css"> -->
+        <link rel="stylesheet" href="../src/css/popupprojects.css" type="text/css">
 
         <!-- Navbar CSS -->
         <link rel="stylesheet" href="../src/css/nav-bar.css" type="text/css">
@@ -45,16 +46,32 @@
         <a href="https://nate2898.github.io/public/index.html" ><img src="../src/images/notepadwebsite.png"  alt="Notepad Website" title="Click to view the website"></a>
       </div>  
     </div> -->
+    <h3>Network Infrastructure Projects</h3>
+    <div class="align">
+      <div class="wrapperleft">
+        <h3>Network Domain Project for InterTrode</h3>
+        <a id="intertrode" style="cursor: pointer;"><img src="../src/images/NetworkDiagramIntertrode.png"  alt="Network Domain Project" title="Click to view the project"></a>
+        <p>In a team of 3 we created a comprehensive network domain design for InterTrode, a small fictional company. My roles involved setting up Migration, VLAN, Backup Solution, IPSec, and Domain Join Sophos, though I primarily focused on completing VLAN, Backup Solution, IPSec, and Sophos Firewall setup. <a id="intertrode" style="cursor: pointer;">Click here to view it</a></p>
+      </div>
+    </div>
+    <div class="align">
+        <div class="wrapper">
+          <h3>VMware vSphere Network Infrastructure Project</h3>
+          <a id="vmware" style="cursor: pointer;"><img src="https://dawan.training/wp-content/uploads/2021/03/vmware_vsphere.png"  alt="VMware Project" title="Click to view the project"></a>
+          <p>In this project, I designed and implemented a virtualised network infrastructure using VMware vSphere. The project featured High Availability (HA) using pfSense firewalls, which were configured to provide failover for the network. I was the team leader, overseeing the implementation and ensuring all components worked seamlessly together. I also completed most of the work myself, as the other team member was away for a while. <a id="vmware" style="cursor: pointer;">Click here to view it</a></p>
+        </div>
+      </div>
+    </div>
+
     <br id="notepad" id="api"><br>
     <h3>RESTful API Notepad Website</h3>
     <div class="align">
       <div id="border-wrap" class="wrapperleft" >
-          <!-- <p><strong>My NEFFEX website</strong></p> -->
           <a  href="../notepad/" ><img  src="../src/images/notepadwebsiteupdate.png"  alt="Notepad Website" title="Click to view the website"></a>
           <p>I made a Notepad website that allows users to create, edit, and delete notes. It uses a RESTful API which allows users to create an account, login, and save notes to their account. The website is fully responsive and can be used on any device. The website is made using HTML, CSS, JavaScript, and NodeJS. The NodeJS is hosted on Render and uses MongoDB as the database. <a href = "../notepad/">Click here to view it</a></p>
        </div>
     </div>
-    <div class="old-project"><a  href="/old projects/">More Projects</a></div>
+    <!-- <div class="old-project"><a  href="/old projects/">More Projects</a></div> -->
     
     <!-- <div class="fade-container"> -->
       <div class="second-title" style="padding-top:20px;">Projects I've created in my spare time in recent years</div>
@@ -102,7 +119,40 @@
         </div>
     </div>
 
+<!-- Popup Overlay vmware-->
+<div id="popup-overlay-vmware" class="popup-overlay">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h2 style="flex:1; text-align:center; margin:0; padding:27px;">VMware vSphere Network Infrastructure Project</h2>
+      <span class="close-popup" style="position:absolute; right:20px; top:15px;">&times;</span>
+    </div>
+    <div id="popup-container">
+      <!-- Example content - replace with your actual project content -->
+      <div class="project-content">
+        <h3>Project Overview</h3>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Popup overlay intertrode -->
+<div id="popup-overlay-intertrode" class="popup-overlay">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h2 style="flex:1; text-align:center; margin:0; padding:27px;">InterTrode Network Domain Project</h2>
+      <span class="close-popup" style="position:absolute; right:20px; top:15px;">&times;</span>
+    </div>
+    <div id="popup-container">
+      <!-- Example content - replace with your actual project content -->
+      <div class="project-content">
+        <h3>Project Overview</h3>
+
+      </div>
+    </div>
+</div>
+
 <!-- Scripts -->
+<script src="../src/js/projects.js"></script>
 <script src="../src/js/script.js"></script>
 <script>
       //allow user to press enter to send a message

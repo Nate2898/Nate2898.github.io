@@ -32,6 +32,7 @@ body{
   float:right;
   border-radius: 20px;
   margin-right: 8%;
+  margin-bottom: 1px;
   margin-left: 5px;
   transition: transform 0.3s ease;
   border: 2px solid rgb(19, 157, 216);
@@ -243,7 +244,7 @@ p{
   margin-top:20px;
   border-radius: 20px;
   margin-left: 8%;
-  margin-right: 5px;
+  margin-right: 7px;
   transition: transform 0.3s ease;
   border: 2px solid rgb(19, 157, 216);
   }
