@@ -17,3 +17,8 @@ firebase deploy --only functions - deploy to firebase functions
 firebase deploy --only database - deploy to firebase database
 firebase deploy --only storage - deploy to firebase storage
 firebase deploy --only firestore - deploy to firebase firestore
+
+
+GEM Jekyll
+bundle exec jekyll clean
+bundle exec jekyll serve

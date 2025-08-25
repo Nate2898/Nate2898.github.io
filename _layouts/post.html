@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <!-- Your existing CSS -->
+    <!-- <link rel="stylesheet" href="{{ '/src/css/portfolioprojects.css' | relative_url }}" type="text/css"> -->
+    <link rel="stylesheet" href="{{ '/src/css/posts.css' | relative_url }}" type="text/css">
+    
+    <link rel="stylesheet" href="{{ '/src/css/nav-bar.css' | relative_url }}" type="text/css">
+    <link rel="icon" href="{{ '/src/images/nameicon.ico' | relative_url }}" type="image/ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="/projects/" class="nav-item{% if page.url contains '/projects/' %}-highlight{% endif %}">Projects</a>
+            <a href="/.."> <img class="navimg-small" src="{{ '/src/images/namesmall.png' | relative_url }}" alt="Small"></a>
+            <a href="/.."> <img class="navimg" src="{{ '/src/images/name.png' | relative_url }}" alt="Large"></a>
+            <a href="/contact/" class="nav-item{% if page.url contains '/contact/' %}-highlight{% endif %}">Contact</a>
+        </div>
+    </nav>
+   <!-- Add the blue gradient background for all pages -->
+    <div class="bgimg">
+        <!-- <h1 style="font-size: 40px; font-weight:bold; color:white;">Nathan Drummond - Schwass Portfolio</h1> -->
+        {% if page.title %}
+            <h1>{{ page.title }}</h1>
+        {% endif %}
+    </div>
+    <div class="align">
+        <div class="wrapper" >
+            {{ content }}
+        </div>
+    </div>
+
+
+    <div class="navbottomblock">
+        <div class="navbottomcontent">
+            <div class="navbarbottom">
+                <h5><a href="/..">Home</a></h5>
+                <h5><a href="/projects/">Projects</a></h5>
+                <h5><a href="/contact/">Contact</a></h5>
+                <h5>|</h5>
+                <h5 style="padding: 0%;"><a target="_blank" href="https://www.linkedin.com/in/nathan-d1998">Linkedin</a></h5>
+                <h5 style="padding: 0%;"><a target="_blank" href="https://mintphotographynz.weebly.com">Photography Website</a></h5>
+                <h5 style="padding: 0%;"><a target="_blank" href="../notepad/">My Notepad Website</a></h5>
+            </div>
+        </div>
+        <h4>Website By Nathan Drummond-Schwass</h4>
+    </div>
+</body>
+</html>

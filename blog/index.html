@@ -1,0 +1,47 @@
+---
+layout: default
+title: Blog
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="{{ '/src/css/portfolioprojects.css' | relative_url }}" type="text/css">
+    <!-- <link rel="stylesheet" href="{{ '/src/css/blog.css' | relative_url }}" type="text/css"> -->
+    
+    <link rel="stylesheet" href="{{ '/src/css/nav-bar.css' | relative_url }}" type="text/css">
+    <link rel="icon" href="{{ '/src/images/nameicon.ico' | relative_url }}" type="image/ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<div class="bgimg">
+        <h1 style="font-size: 40px; font-weight:bold; color:white;">All Blog Posts</h1>
+    </div>
+<div class="align">
+    <div class="wrapper">       
+        {% assign posts = site.posts | where_exp: "post", "post.date <= site.time" %}
+        
+        {% if posts.size > 0 %}
+            {% for post in posts %}
+            <article class="blog-preview">
+                <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+                <h6><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h6>
+                {% assign excerpt_text = post.excerpt | default: post.content | strip_html | truncatewords: 30 %}
+                <p>{{ excerpt_text }}</p>
+                <a href="{{ post.url | relative_url }}" class="read-more" style="display: block;">Read more →</a>
+            </article>
+            {% unless forloop.last %}<hr>{% endunless %}
+            {% endfor %}
+        {% else %}
+        <p style="text-align: center; display: block;">No blog posts yet. Check back soon!</p>
+        {% endif %}
+    </div>
+</div>

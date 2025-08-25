@@ -1,3 +1,8 @@
+---
+layout: default  
+title: Projects     
+---
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,6 +19,9 @@
 
         <!-- Navbar CSS -->
         <link rel="stylesheet" href="../src/css/nav-bar.css" type="text/css">
+
+        <!-- Blog CSS -->
+        <link rel="stylesheet" href="../src/css/blog.css" type="text/css">
 
         <!-- Favicon -->
         <link rel="icon" href="../src/images/nameicon.ico" type="image/ico">
@@ -46,6 +54,51 @@
         <a href="https://nate2898.github.io/public/index.html" ><img src="../src/images/notepadwebsite.png"  alt="Notepad Website" title="Click to view the website"></a>
       </div>  
     </div> -->
+
+    
+<!-- Recent Blog Posts Section -->
+<div class="second-title" style="padding-top:40px;">Latest Projects</div>
+<div class="align">
+  <div class="wrapper">
+    {% comment %}
+      Optionally filter posts by category 'blog'. If you don't want category filtering,
+      comment out the next line and use `site.posts` directly instead of `posts`.
+    {% endcomment %}
+    {% assign posts = site.posts | where_exp: "post", "post.date <= site.time" %}
+    {%- comment -%} if you want only posts with category 'blog', uncomment next line {%- endcomment -%}
+    {%- comment -%} {% assign posts = posts | where_exp: "post", "post.categories contains 'blog'" %} {%- endcomment -%}
+
+    {% if posts.size > 0 %}
+      {% for post in posts limit:3 %}
+        <article class="blog-preview">
+          <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <h6><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h6>
+          
+
+          {%- comment -%}
+            Build a reliable excerpt: use post.excerpt if present, otherwise fall back to content,
+            strip HTML tags and truncate to 30 words.
+          {%- endcomment -%}
+          {% assign excerpt_text = post.excerpt | default: post.content | strip_html | truncatewords: 30 %}
+          <p style="padding: 0 1px;">{{ excerpt_text }}</p>
+          <a href="{{ post.url | relative_url }}" style="display: block;" class="read-more">Read more →</a>
+        </article>
+        {% unless forloop.last %}<hr>{% endunless %}
+      {% endfor %}
+
+      {% if posts.size > 3 %}
+        <p style="text-align: center; margin-top: 2rem;">
+          <a href="{{ '/blog/' | relative_url }}" class="view-all-posts">View all posts →</a>
+        </p>
+      {% endif %}
+    {% else %}
+      <p style="text-align: center;">No blog posts yet. Check back soon!</p>
+    {% endif %}
+  </div>
+</div>
+
+</div>
+
     <h3>Network Infrastructure Projects</h3>
     <div class="align">
       <div class="wrapperleft">

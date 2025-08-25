@@ -1,0 +1,94 @@
+.blog-preview, .blog-post-summary {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.blog-preview h4, .blog-post-summary h3 {
+    margin-bottom: 0.5rem;
+}
+.blog-preview h6 a {
+    text-align: center;
+    font-family: kalam,sans-serif;
+    font-size: 28px;
+    display: block;
+}
+
+.blog-preview h4 a, .blog-post-summary h3 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.blog-preview h4 a:hover, .blog-post-summary h3 a:hover {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.post-meta {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+    /* margin-top: -20px; */
+}
+
+.read-more, .view-all-posts {
+    text-align: center;
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: kalam,sans-serif;
+}
+
+.read-more:hover, .view-all-posts:hover {
+    text-decoration: underline;
+    font-size: 21px;
+}
+
+.post-content {
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+
+.post-tags {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.tag, .category {
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.post-navigation {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.prev-post, .next-post {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.prev-post:hover, .next-post:hover {
+    text-decoration: underline;
+}
+
+.post-title {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.previous-project-title {
+  text-align: center;
+  font-family: kalam,sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0;
+}

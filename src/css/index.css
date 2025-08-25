@@ -55,6 +55,16 @@ body{
     }
   }
 /*END text box*/
+
+.second-title {
+	text-align: center;
+	font-family: kalam,sans-serif;
+	padding-top: 79px;
+	font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 /*-Fade down effect-*/
 .bgimg{
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,162,232) 79%);

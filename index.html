@@ -1,3 +1,9 @@
+---
+layout: default  
+title: Home     
+---
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,6 +22,9 @@
       <!-- CUSTOM CSS  -->
       <link rel="stylesheet" href="./src/css/index.css" type="text/css">
       <link rel="stylesheet" href="./src/css/chat.css" type="text/css">
+
+      <!-- Blog CSS -->
+      <link rel="stylesheet" href="./src/css/blog.css" type="text/css">
 
       <!-- drop down list CSS -->
       <link rel="stylesheet" href="./src/css/list-dropdown.css" type="text/css">
@@ -46,7 +55,7 @@
           <a href="/notepad/" id="important">Notepad Online</a>
       </div> -->
   </header>
-    <div class="bgimg">
+ <div class="bgimg">
         <h1 style="font-size: 40px; font-weight:bold; color:white;">Nathan Drummond - Schwass Portfolio</h1>
         <h1>Introduction</h1>
     </div>
@@ -56,14 +65,56 @@
             <p>My name is <strong>Nathan Drummond-Schwass</strong> I am currently studying for a Bachelor of Information Technology at NMIT where I will be <strong>Majoring in ICT Infrastructure</strong></p>
         </div>
     </div>
+    <div class="second-title" style="padding-top:40px;">Latest Projects</div>
+    <div class="align">
+  <div class="wrapper">
+    {% comment %}
+      Optionally filter posts by category 'blog'. If you don't want category filtering,
+      comment out the next line and use `site.posts` directly instead of `posts`.
+    {% endcomment %}
+    {% assign posts = site.posts | where_exp: "post", "post.date <= site.time" %}
+    {%- comment -%} if you want only posts with category 'blog', uncomment next line {%- endcomment -%}
+    {%- comment -%} {% assign posts = posts | where_exp: "post", "post.categories contains 'blog'" %} {%- endcomment -%}
+
+    {% if posts.size > 0 %}
+      {% for post in posts limit:2 %}
+
+        {% if forloop.index == 2 %}
+          <h5 class="previous-project-title" style="margin: 0; text-decoration: underline;">Previous Project</h5>
+        {% endif %}
+
+        <article class="blog-preview">
+          <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <h6><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h6>
+          
+
+          {%- comment -%}
+            Build a reliable excerpt: use post.excerpt if present, otherwise fall back to content,
+            strip HTML tags and truncate to 30 words.
+          {%- endcomment -%}
+          {% assign excerpt_text = post.excerpt | default: post.content | strip_html | truncatewords: 30 %}
+          <p style="padding: 0 1px;">{{ excerpt_text }}</p>
+          <a href="{{ post.url | relative_url }}" style="display: block;" class="read-more">Read more →</a>
+        </article>
+        {% unless forloop.last %}<hr>{% endunless %}
+      {% endfor %}
+
+      {% if posts.size > 2 %}
+        <p style="text-align: center; margin-top: 2rem;">
+          <a href="{{ '/blog/' | relative_url }}" class="view-all-posts">View all posts →</a>
+        </p>
+      {% endif %}
+    {% else %}
+      <p style="text-align: center;">No blog posts yet. Check back soon!</p>
+    {% endif %}
+  </div>
+</div>
+
     <div class="align">
         <div class="wrapper">
-            <h2>Personal Interests</h2>
+            <h2>Career-Focused Interests</h2>
             <img src="../src/images/personalinterest.jpg" title="Personal Interests" alt="personal interest">
-            <p>My personal interests are in the areas of <b>Design and ICT Infrastructure.</b> 
-            My desired career area would in either <b>Network Infrastructure</b> such as; building and maintaining computer networks, servers, and security or <b>Design</b> such as; designing products, websites, or user interfaces, such as UX/UI design. <br>
-            I've spent of a lot of my study and spare time learning <b>Python, HTML, Linux, Linux based Firewalls, Windows Server, Networking Fundamentals, Security Fundamentals, and Computer Building.</b>
-            </p>
+            <p>I focus on Network and Cloud infrastructure with a career goal in Network Engineering, Cloud (AWS) or Infrastructure Security. I have hands‑on experience designing and securing networks and servers using <b>pfSense</b>, <b>Sophos</b> and <b>Windows Server</b>, and administering <b>Linux</b> systems. I've built reliable, scalable architectures—deploying services on <b>AWS</b>, automating tasks with <b>Python</b>, and implementing monitoring and observability with tools like Prometheus and Grafana. I’m skilled at troubleshooting hardware and system issues and applying security best practices, and I’m ready to contribute to teams delivering secure, highly available network and cloud solutions.</p>
         </div>
       </div>
     <h2>Skills gained from my ICT Infrastructure Degree</h2>
@@ -73,6 +124,14 @@
             <div class="content-align"> 
             <img src="../src/images/ictskills.jpg" class="img-ictskills" title="ICT Skills" alt="ICT skills">
             <ul id="list-dropdown" class="list-dropdown">
+              <li>
+                <div class="link"><i class="fa-brands fa-aws"></i> Amazon Web Services (AWS) <i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li>
+                    <p class="downdrop-text">Demonstrated practical AWS architecture and operations skills: designed and deployed a multi-AZ VPC with public and private subnets, secure networking (security groups, NAT), and a load-balanced EC2 web tier with Auto Scaling and EFS for shared storage. <br>Implemented an RDS MySQL instance with automated backups and multi-AZ considerations.<br> A serverless API using Lambda + API Gateway and a Step Functions workflow to process parcel updates and publish notifications via SNS.<br> Ensuring it follows the AWS Well-Architected Framework (6 pillars). <br><b>A Grade</b></p>
+                  </li>
+                </ul>
+              </li>
               <li>
                 <div class="link"><i class="bi bi-hdd-network"></i>Networking <i class="fa fa-chevron-down"></i></div>
                 <ul class="submenu">
@@ -95,7 +154,7 @@
                 <div class="link"><i class="bi bi-bricks"></i>Firewall<i class="fa fa-chevron-down"></i></div>
                 <ul class="submenu">
                   <li>
-                    <p class="downdrop-text">I have extensive expertise in setting up a PfSense Firewall, Sophos Firewall, and Windows Firewall to secure a network. I have configured the firewall to block and allow traffic based on rules, set up peer-to-peer VPN, pfSense High Availability  and configured NAT and Port Forwarding. <br> I have also setup monitoring tools such as Prometheus with Grafana for visualisation and other monitoring software.<br> <b>Multiple A+ Grades</b>
+                    <p class="downdrop-text">I have extensive expertise in setting up a PfSense Firewall, Sophos Firewall, and Windows Firewall to secure a network. I have configured the firewall to block and allow traffic based on rules, set up peer-to-peer VPN, pfSense High Availability  and configured NAT and Port Forwarding. <br><b>Multiple A+ Grades</b>
                     </p>
                   </li>
                 </ul>
