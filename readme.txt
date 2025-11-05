@@ -22,3 +22,15 @@ firebase deploy --only firestore - deploy to firebase firestore
 GEM Jekyll
 bundle exec jekyll clean
 bundle exec jekyll serve
+python -m http.server 4000 --directory _site
+
+# check environment
+ruby -v
+gem -v
+bundle -v
+
+# install gems from the Gemfile (first time)
+bundle install
+
+# serve the site (live-reload in modern Jekyll)
+bundle exec jekyll serve --livereload
