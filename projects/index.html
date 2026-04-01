@@ -71,7 +71,12 @@ title: Projects
     {% if posts.size > 0 %}
       {% for post in posts limit:3 %}
         <article class="blog-preview">
-          <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <p class="post-meta">
+            <span class="post-date">{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.last_modified_at %}
+              <span class="updated-badge">Updated: {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+            {% endif %}
+          </p>
           <h6><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h6>
           
 

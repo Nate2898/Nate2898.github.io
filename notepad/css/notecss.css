@@ -218,6 +218,147 @@
     background-color: #c0b3b3;
 }
 
+@media (max-width: 750px) {
+    .notepad {
+        width: calc(100% - 12px);
+        margin: 8px 6px 12px;
+        margin-top: 138px;
+    }
+
+    .notepad-title {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    #title-input {
+        width: 96%;
+        font-size: clamp(1.7rem, 7vw, 2.2rem);
+    }
+
+    #your-note {
+        width: 96%;
+        min-height: clamp(48vh, 56vh, 62vh);
+    }
+
+    .save-btn {
+        width: 96%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+
+    #save-note,
+    #deletenote {
+        width: 50%;
+        font-size: clamp(2rem, 8vw, 2.3rem);
+        padding: 12px 6px 2px;
+        margin-left: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+
+    .save-btn p,
+    .delete-btn p {
+        position: static;
+        transform: none;
+        margin: 0 0 4px;
+        font-size: 0.7em;
+        line-height: 1;
+    }
+
+    #mobile-textstyle-button {
+        top: 180px;
+        right: 10px;
+        bottom: auto;
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.95);
+        z-index: 3;
+    }
+
+    #mobile-textstyle {
+        left: 8px;
+        right: 8px;
+        top: 50px;
+        bottom: auto;
+        width: auto;
+        padding: 8px;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.35);
+        background: rgba(245, 245, 245, 0.98);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+        transform: translateY(16px);
+        max-height: 42vh;
+        overflow-y: auto;
+        z-index: 2;
+    }
+
+    .show-mobile-textstyle {
+        animation: mobileSheetIn 0.2s ease forwards;
+    }
+
+    .hide-mobile-textstyle {
+        animation: mobileSheetOut 0.2s ease forwards;
+    }
+
+    .mobile-style-buttons {
+        width: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 4px;
+    }
+
+    .mobile-style-buttons button {
+        width: 100%;
+        min-width: 0;
+        height: 40px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 495px) {
+    .notepad {
+        margin-top: 146px;
+    }
+
+    #your-note {
+        min-height: clamp(50vh, 58vh, 66vh);
+    }
+
+    .mobile-style-buttons {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@keyframes mobileSheetIn {
+    from {
+        transform: translateY(16px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes mobileSheetOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(16px);
+        opacity: 0;
+    }
+}
+
 
 button{
     font-size: 14px;

@@ -8,9 +8,20 @@ const sanitizeHtml = require('sanitize-html');
 // s
 const sanitizeOptions = {
     allowedTags: [ 
-      'b', 'i', 'em', 'strong', 'u', 's', 'p', 'br'
+      'b', 'i', 'em', 'strong', 'u', 's', 'p', 'div', 'br'
     ],
-    allowedAttributes: {},
+    allowedAttributes: {
+        p: ['align', 'style'],
+        div: ['align', 'style']
+    },
+    allowedStyles: {
+        p: {
+            'text-align': [/^left$/i, /^center$/i, /^right$/i, /^justify$/i]
+        },
+        div: {
+            'text-align': [/^left$/i, /^center$/i, /^right$/i, /^justify$/i]
+        }
+    },
     disallowedTagsMode: 'discard'
   };
 

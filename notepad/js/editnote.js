@@ -300,6 +300,7 @@ function getNoteIdFromUrl() {
 async function deleteNote(noteId) {
     try {
         const token = localStorage.getItem('token');
+        // const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, { 
         const response = await fetch(`https://nate2898-github-io.onrender.com/api/notes/${noteId}`, { 
             method: 'DELETE' ,
             headers: {

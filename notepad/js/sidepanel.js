@@ -383,22 +383,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileTextStyleButton = document.getElementById('mobile-textstyle-button');
     const mobileTextStyle = document.getElementById('mobile-textstyle');
 
-    mobileTextStyleButton.addEventListener('click', () => {
-        if (mobileTextStyle.classList.contains('show-mobile-textstyle')) {
-            mobileTextStyle.classList.add('hide-mobile-textstyle');
-            mobileTextStyleButton.classList.remove('active');
-            mobileTextStyle.addEventListener('animationend', () => {
-                mobileTextStyle.classList.remove('show-mobile-textstyle');
-                mobileTextStyle.classList.remove('hide-mobile-textstyle');
-            }, { once: true });
-        } else {
-            mobileTextStyle.style.display = 'flex';
-            mobileTextStyleButton.classList.add('active');
-            requestAnimationFrame(() => {
-                mobileTextStyle.classList.add('show-mobile-textstyle');
-            });
-        }
-    });
+    if (mobileTextStyleButton && mobileTextStyle) {
+        mobileTextStyleButton.addEventListener('click', () => {
+            if (mobileTextStyle.classList.contains('show-mobile-textstyle')) {
+                mobileTextStyle.classList.add('hide-mobile-textstyle');
+                mobileTextStyleButton.classList.remove('active');
+                mobileTextStyle.addEventListener('animationend', () => {
+                    mobileTextStyle.classList.remove('show-mobile-textstyle');
+                    mobileTextStyle.classList.remove('hide-mobile-textstyle');
+                }, { once: true });
+            } else {
+                mobileTextStyle.style.display = 'flex';
+                mobileTextStyleButton.classList.add('active');
+                requestAnimationFrame(() => {
+                    mobileTextStyle.classList.add('show-mobile-textstyle');
+                });
+            }
+        });
+    }
 });
 
 
