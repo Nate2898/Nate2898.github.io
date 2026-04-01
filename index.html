@@ -62,7 +62,7 @@ title: Home
     <div class="align">
         <div class="wrappersmall">
             <img src="../src/images/nathan.png" title="Picture of Nathan" alt="Nathan">
-            <p>My name is <strong>Nathan Drummond-Schwass</strong> I am currently studying for a Bachelor of Information Technology at NMIT where I will be <strong>Majoring in ICT Infrastructure</strong></p>
+            <p>I'm <strong>Nathan Drummond-Schwass</strong>, a recent graduate with a Bachelor of Information Technology from NMIT, specialising in <strong>ICT Infrastructure</strong>. I'm actively seeking employment opportunities in the ICT field where I can apply my technical expertise and passion for building secure, scalable systems.</p>
         </div>
     </div>
     <div class="second-title" style="padding-top:40px;">Latest Projects</div>
@@ -84,7 +84,12 @@ title: Home
         {% endif %}
 
         <article class="blog-preview">
-          <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <p class="post-meta">
+            <span class="post-date">{{ post.date | date: "%B %-d, %Y" }}</span>
+            {% if post.last_modified_at %}
+              <span class="updated-badge">Updated: {{ post.last_modified_at | date: "%B %-d, %Y" }}</span>
+            {% endif %}
+          </p>
           <h6><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h6>
           
 
@@ -114,7 +119,7 @@ title: Home
         <div class="wrapper">
             <h2>Career-Focused Interests</h2>
             <img src="../src/images/personalinterest.jpg" title="Personal Interests" alt="personal interest">
-            <p>I focus on Network and Cloud infrastructure with a career goal in Network Engineering, Cloud (AWS) or Infrastructure Security. I have hands‑on experience designing and securing networks and servers using <b>pfSense</b>, <b>Sophos</b> and <b>Windows Server</b>, and administering <b>Linux</b> systems. I've built reliable, scalable architectures—deploying services on <b>AWS</b>, automating tasks with <b>Python</b>, and implementing monitoring and observability with tools like Prometheus and Grafana. I’m skilled at troubleshooting hardware and system issues and applying security best practices, and I’m ready to contribute to teams delivering secure, highly available network and cloud solutions.</p>
+            <p>I am eager to join an ICT team where I can apply my hands-on experience in network infrastructure, cloud architecture, and system administration. I'm passionate about learning and growing in network support, network engineering, cloud infrastructure (AWS), or infrastructure security roles. I have practical experience with <b>pfSense</b>, <b>Sophos</b>, <b>Windows Server</b>, and <b>Linux</b> systems, alongside AWS architecture design and deployment. I'm comfortable with automation using <b>Python</b>, monitoring with <b>Prometheus</b> and <b>Grafana</b>, and troubleshooting complex infrastructure challenges. I'm committed to continuous learning and supporting teams in maintaining and optimising secure, scalable, and highly available network and cloud solutions.</p>
         </div>
       </div>
     <h2>Skills gained from my ICT Infrastructure Degree</h2>
@@ -187,7 +192,7 @@ title: Home
         <div class="wrapperleft">
             <h5>Coding and PC Building Skills</h5>
             <div class="content-align" id="skills"> 
-                <img src="../src/images/coding-skills.jpg" class="img-ictskills" title="ICT Skills" alt="ICT skills" id="skills-img">
+                <img src="../src/images/coding-skills.jpg" class="img-ictskills" title="Coding Skills" alt="Coding skills" id="skills-img">
                 <ul id="list-dropdown-2" class="list-dropdown">
                     <li>
                         <div class="link"><i class="fa-brands fa-python"></i>Python <i class="fa fa-chevron-down"></i></div>

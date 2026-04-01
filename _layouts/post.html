@@ -36,6 +36,22 @@
     </div>
     <div class="align">
         <div class="wrapper" >
+            <div class="post-meta" aria-label="Post metadata">
+                {% if page.last_modified_at %}
+                    <p class="post-meta-item">
+                        <strong>Last updated:</strong> {{ page.last_modified_at | date: "%d %b %Y, %I:%M %p" }}
+                    </p>
+                {% endif %}
+
+                {% if page.tags and page.tags.size > 0 %}
+                    <p class="post-meta-item">
+                        <strong>Tags:</strong>
+                        {% for tag in page.tags %}
+                            <span class="tag-pill">{{ tag }}</span>{% unless forloop.last %} {% endunless %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            </div>
             {{ content }}
         </div>
     </div>

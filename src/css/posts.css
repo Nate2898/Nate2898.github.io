@@ -48,6 +48,28 @@ body{
   position: relative;
 }
 
+.post-meta {
+  text-align: center;
+  padding: 16px 24px 8px 24px;
+}
+
+.post-meta-item {
+  font-family: sans-serif;
+  font-size: 1rem;
+  margin: 4px 0;
+  color: #083f56;
+}
+
+.tag-pill {
+  display: inline-block;
+  margin: 2px 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: #d7f2ff;
+  border: 1px solid #69c9f2;
+  font-size: 0.95rem;
+}
+
 
 .wrapper img {
   max-width: 400px;
