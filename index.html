@@ -73,6 +73,9 @@ title: Home
       comment out the next line and use `site.posts` directly instead of `posts`.
     {% endcomment %}
     {% assign posts = site.posts | where_exp: "post", "post.date <= site.time" %}
+    {% assign modified_posts = posts | where_exp: "post", "post.last_modified_at != nil" | sort: "last_modified_at" | reverse %}
+    {% assign dated_posts = posts | where_exp: "post", "post.last_modified_at == nil" | sort: "date" | reverse %}
+    {% assign posts = modified_posts | concat: dated_posts %}
     {%- comment -%} if you want only posts with category 'blog', uncomment next line {%- endcomment -%}
     {%- comment -%} {% assign posts = posts | where_exp: "post", "post.categories contains 'blog'" %} {%- endcomment -%}
 

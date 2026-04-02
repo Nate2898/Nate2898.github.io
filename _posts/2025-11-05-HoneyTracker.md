@@ -15,7 +15,9 @@ Honey Tracker is an offline-first field app I built with Ionic + React for iOS, 
 
 Users can record hive inspections, pallet movements, batches, and barrels on-site. Data is saved locally in SQLite first, then synced to AWS Amplify when connectivity returns.
 
-![Honey Tracker App Screenshot]({{'/src/images/devhoneyapp.png'}})
+| ![Honey Tracker App Screenshot]({{'/src/images/devhoneyapp.png'}}) |
+| :---: |
+| *Login page for the Honey Tracker* |
 
 ## Why This Project Matters
 

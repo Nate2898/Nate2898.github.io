@@ -1,0 +1,29 @@
+---
+layout: post
+title: Browse By Tag
+---
+
+<div class="tag-sections">
+    {% assign sorted_tags = site.tags | sort %}
+
+    {% if sorted_tags.size > 0 %}
+        {% for tag_entry in sorted_tags %}
+            {% assign tag_name = tag_entry[0] %}
+            {% assign posts_for_tag = tag_entry[1] | sort: "date" | reverse %}
+            <section class="tag-section" id="tag-{{ tag_name | slugify }}">
+                <h2>{{ tag_name }} ({{ posts_for_tag | size }})</h2>
+                <ul class="tag-post-list">
+                    {% for post in posts_for_tag %}
+                        <li>
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                            <span> - {{ post.date | date: "%d %b %Y" }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% unless forloop.last %}<hr>{% endunless %}
+        {% endfor %}
+    {% else %}
+        <p>No tags found yet.</p>
+    {% endif %}
+</div>

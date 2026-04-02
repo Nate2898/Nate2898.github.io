@@ -1,7 +1,7 @@
 .blog-preview, .blog-post-summary {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    /* border-bottom: 1px solid #eee; */
 }
 
 .blog-preview h4, .blog-post-summary h3 {
@@ -12,6 +12,11 @@
     font-family: kalam,sans-serif;
     font-size: 28px;
     display: block;
+}
+
+.blog-preview h6 a:hover {
+    color: #0066cc;
+    font-size: 28.5px;
 }
 
 .blog-preview h4 a, .blog-post-summary h3 a {

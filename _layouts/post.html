@@ -47,7 +47,7 @@
                     <p class="post-meta-item">
                         <strong>Tags:</strong>
                         {% for tag in page.tags %}
-                            <span class="tag-pill">{{ tag }}</span>{% unless forloop.last %} {% endunless %}
+                            <a class="tag-pill" href="{{ '/tags/' | relative_url }}#tag-{{ tag | slugify }}">{{ tag }}</a>{% unless forloop.last %} {% endunless %}
                         {% endfor %}
                     </p>
                 {% endif %}
@@ -71,5 +71,6 @@
         </div>
         <h4>Website By Nathan Drummond-Schwass</h4>
     </div>
+    <script src="{{ '/src/js/scroll-pulse.js' | relative_url }}"></script>
 </body>
 </html>
