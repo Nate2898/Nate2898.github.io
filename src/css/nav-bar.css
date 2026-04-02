@@ -7,9 +7,204 @@ nav {
   height: 50px;
   display: flex;
   align-items: center;
-  border-bottom: 5px solid rgb(18, 179, 248);
+  border-bottom: 5px solid rgb(5, 121, 170);
   z-index: 10;
   box-sizing: unset;
+  overflow: visible;
+}
+
+nav.border-pulse-active {
+  box-shadow: 0 0 0 2px rgba(1, 45, 65, 0.18), 0 0 18px rgba(5, 121, 170, 0.35);
+}
+
+.nav-pulse-overlay {
+  position: fixed;
+  top: 45px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 45px);
+  z-index: 9999;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nav-pulse-wave {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  opacity: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(5, 121, 170, 0.95) 0%, rgba(5, 121, 170, 0.45) 55%, rgba(5, 121, 170, 0) 100%);
+  box-shadow: 0 0 10px rgba(5, 121, 170, 0.9), 0 0 22px rgba(5, 121, 170, 0.5);
+  transform: scaleY(0.08);
+}
+
+.nav-pulse-run {
+  position: absolute;
+  top: 0;
+  height: 6px;
+  opacity: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(5, 121, 170, 0) 0%, rgba(5, 121, 170, 1) 50%, rgba(5, 121, 170, 0) 100%);
+  box-shadow: 0 0 10px rgba(5, 121, 170, 0.9), 0 0 22px rgba(5, 121, 170, 0.5);
+}
+
+.nav-pulse-run.left {
+  left: 0;
+  width: var(--left-span, 0px);
+  transform-origin: right center;
+  transform: scaleX(0.08);
+}
+
+.nav-pulse-run.right {
+  left: var(--right-x, 100%);
+  width: var(--right-span, 0px);
+  transform-origin: left center;
+  transform: scaleX(0.08);
+}
+
+.nav-pulse-wave.left {
+  left: var(--left-x, 0px);
+  transform-origin: top center;
+}
+
+.nav-pulse-wave.right {
+  left: var(--right-x, 100%);
+  transform-origin: top center;
+}
+
+.nav-pulse-meet {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0.15);
+  background: radial-gradient(circle, rgba(5, 121, 170, 1) 0%, rgba(5, 121, 170, 0.55) 42%, rgba(5, 121, 170, 0) 72%);
+  box-shadow: 0 0 18px rgba(5, 121, 170, 0.95), 0 0 38px rgba(5, 121, 170, 0.45);
+  opacity: 0;
+}
+
+.nav-pulse-overlay.active .nav-pulse-wave.left {
+  animation: navPulseLeft 900ms ease-out;
+}
+
+.nav-pulse-overlay.active .nav-pulse-wave.right {
+  animation: navPulseRight 900ms ease-out;
+}
+
+.nav-pulse-overlay.active .nav-pulse-run.left {
+  animation: navPulseRunLeft 900ms ease-out;
+}
+
+.nav-pulse-overlay.active .nav-pulse-run.right {
+  animation: navPulseRunRight 900ms ease-out;
+}
+
+.nav-pulse-overlay.active .nav-pulse-meet {
+  animation: navPulseMeet 900ms ease-out;
+}
+
+@keyframes navPulseLeft {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.08);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes navPulseRight {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.08);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes navPulseMeet {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.15);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(1.15);
+  }
+}
+
+@keyframes navPulseRunLeft {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.08);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes navPulseRunRight {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.08);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+.wrapper.border-pulse-hit,
+.wrapperleft.border-pulse-hit,
+.wrappersmall.border-pulse-hit {
+  animation: wrapperEdgeHit 900ms ease-out;
+}
+
+@keyframes wrapperEdgeHit {
+  0% {
+    box-shadow: inset 0 0 0 rgba(5, 121, 170, 0), 0 0 0 rgba(5, 121, 170, 0);
+  }
+  30% {
+    box-shadow: inset 7px 0 0 rgba(5, 121, 170, 0.55), inset -7px 0 0 rgba(5, 121, 170, 0.55), 0 0 24px rgba(5, 121, 170, 0.2);
+  }
+  100% {
+    box-shadow: inset 0 0 0 rgba(5, 121, 170, 0), 0 0 0 rgba(5, 121, 170, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-pulse-overlay.active .nav-pulse-wave,
+  .nav-pulse-overlay.active .nav-pulse-run,
+  .nav-pulse-overlay.active .nav-pulse-meet,
+  .wrapper.border-pulse-hit,
+  .wrapperleft.border-pulse-hit,
+  .wrappersmall.border-pulse-hit,
+  nav.border-pulse-active {
+    animation-duration: 1ms;
+  }
 }
 
 .navbar {

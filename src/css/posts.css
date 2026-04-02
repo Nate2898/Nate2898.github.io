@@ -5,11 +5,30 @@ li{
   padding-top: 8px;
   padding-left: 1%;
   padding-right: 1%;
-  list-style-type: disc;
-  list-style-position: inside;
 }
 ul{
   padding-left: 20px;
+}
+ul li{
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+ol{
+  padding-left: 40px;
+}
+
+ol li{
+  list-style-type: decimal;
+  list-style-position: outside;
+  text-align: left;
+}
+
+ol li p{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
 }
 
 /*-Fade down effect-*/
@@ -68,6 +87,51 @@ body{
   background-color: #d7f2ff;
   border: 1px solid #69c9f2;
   font-size: 0.95rem;
+  color: #084e6d;
+  text-decoration: none;
+}
+
+.tag-pill:hover,
+.tag-pill:focus-visible {
+  background-color: #b9e8ff;
+  border-color: #3bb4e7;
+  text-decoration: underline;
+}
+
+.tag-sections {
+  padding: 0 6% 24px 6%;
+}
+
+.tag-section {
+  margin-top: 18px;
+  padding-top: 10px;
+}
+
+.tag-section h2 {
+  margin-bottom: 6px;
+}
+
+.tag-post-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+.tag-post-list li {
+  list-style: none;
+  text-align: left;
+  font-size: 1.05rem;
+  padding-top: 4px;
+}
+
+.tag-post-list a {
+  color: #085e84;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1.05rem;
+}
+
+.tag-post-list a:hover {
+  text-decoration: underline;
 }
 
 
@@ -75,7 +139,7 @@ body{
   max-width: 400px;
   float: right;
   border-radius: 20px;
-  margin-right: 8%;
+  /* margin-right: 8%; */
   margin-bottom: 1px;
   margin-left: 5px;
   transition: transform 0.3s ease;
@@ -97,6 +161,32 @@ body{
     }
   }
 
+/* Post content images */
+.wrapper img:not([style*="float"]),
+article img,
+post-content img {
+  max-width: 350px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+  border: 2px solid rgb(19, 157, 216);
+}
+
+@media (max-width:850px) {
+  .wrapper img.no-float {
+    max-width: 100% !important;
+  }
+}
+
+.wrapper img.no-float {
+  float: none !important;
+  display: block;
+  margin: 20px auto !important;
+  max-width: 70%;
+  height: auto;
+}
+
 p{
   font-family: sans-serif;
   font-size: 130%;
@@ -104,6 +194,58 @@ p{
   padding-top: 8px;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+/* Table styling */
+table {
+  float: right;
+  width: auto;
+  margin: 10px 0px 10px 20px;
+  padding-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tables with no-float images - centered and full flow */
+table:has(img.no-float) {
+  float: none;
+  display: block;
+  margin: 0px;
+}
+
+table td {
+  padding: 10px;
+  text-align: center;
+  border: none;
+  font-family: sans-serif;
+}
+
+table img {
+  max-width: 400px;
+  border-radius: 20px;
+  border: 2px solid rgb(19, 157, 216);
+}
+
+/* Images inside no-float tables get constrained width */
+table:has(img.no-float) img {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+@media (max-width: 850px) {
+  table {
+    float: none;
+    margin: 10px auto;
+    width: 100%;
+  }
+  
+  table img {
+    max-width: 100%;
+  }
+  
+  table:has(img.no-float) img {
+    max-width: 100%;
+  }
 }
 
 h1 {
